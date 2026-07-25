@@ -11,6 +11,10 @@ const navigationServices = [
     navLabel: "Landscape design + installation",
   },
   ...serviceList,
+  {
+    slug: "prosper-tx",
+    navLabel: "Landscaping in Prosper, TX",
+  },
 ];
 
 type SiteNavigationProps = {
@@ -214,7 +218,7 @@ export default function SiteNavigation({
         </a>
 
         <div className="mobile-service-list">
-          <p>Explore our services</p>
+          <p>Explore services + locations</p>
           {navigationServices.map((service, index) => (
             <a
               href={`/${service.slug}/`}
