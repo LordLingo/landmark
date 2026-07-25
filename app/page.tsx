@@ -350,7 +350,7 @@ export default function Home() {
             style={{ clipPath: `inset(0 ${100 - slider}% 0 0)` }}
           >
             <img
-              src="/images/texas-home-after.webp"
+              src="/images/texas-home-after-stone.webp"
               alt="The same Texas home with a finished front landscape design"
             />
           </div>
