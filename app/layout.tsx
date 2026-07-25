@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { absoluteUrl, siteUrl } from "./site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://landmarklandscapestx.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Landmark Landscapes | Residential Landscaping in Prosper, TX",
     template: "%s | Landmark Landscapes",
@@ -54,12 +55,12 @@ export default function RootLayout({
   const businessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://landmarklandscapestx.com/#business",
+    "@id": absoluteUrl("/#business"),
     name: "Landmark Landscape Services, LLC",
     alternateName: "Landmark Landscapes",
-    url: "https://landmarklandscapestx.com/",
-    logo: "https://landmarklandscapestx.com/images/landmark-logo.webp",
-    image: "https://landmarklandscapestx.com/images/texas-home-after.webp",
+    url: absoluteUrl("/"),
+    logo: absoluteUrl("/images/landmark-logo.webp"),
+    image: absoluteUrl("/images/texas-home-after.webp"),
     telephone: "+14694928450",
     email: "landmarklandscapesllc@outlook.com",
     address: {
