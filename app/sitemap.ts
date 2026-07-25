@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
+import { locationPageList } from "./location-page-data";
 import { serviceList } from "./service-data";
+import { landscapeDesignPage } from "./seo-page-data";
 
 const prioritySeoPages = [
   {
-    path: "/landscape-design/",
+    slug: landscapeDesignPage.slug,
     priority: 0.95,
   },
-  {
-    path: "/prosper-tx/",
-    priority: 0.95,
-  },
+  ...locationPageList.map((page) => ({
+    slug: page.slug,
+    priority: page.slug === "prosper-tx" ? 0.95 : 0.92,
+  })),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -27,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...prioritySeoPages.map((page) => ({
-      url: `${baseUrl}${page.path}`,
+      url: `${baseUrl}/${page.slug}/`,
       changeFrequency: "monthly" as const,
       priority: page.priority,
     })),
