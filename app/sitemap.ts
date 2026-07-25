@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locationPageList } from "./location-page-data";
 import { serviceList } from "./service-data";
 import { landscapeDesignPage } from "./seo-page-data";
+import { absoluteUrl } from "./site-url";
 
 const prioritySeoPages = [
   {
@@ -15,26 +16,24 @@ const prioritySeoPages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://landmarklandscapestx.com";
-
   return [
     {
-      url: `${baseUrl}/`,
+      url: absoluteUrl("/"),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/contact/`,
+      url: absoluteUrl("/contact/"),
       changeFrequency: "yearly",
       priority: 0.8,
     },
     ...prioritySeoPages.map((page) => ({
-      url: `${baseUrl}/${page.slug}/`,
+      url: absoluteUrl(`/${page.slug}/`),
       changeFrequency: "monthly" as const,
       priority: page.priority,
     })),
     ...serviceList.map((service) => ({
-      url: `${baseUrl}/${service.slug}/`,
+      url: absoluteUrl(`/${service.slug}/`),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
