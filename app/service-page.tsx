@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { serviceList, type ServicePageData } from "./service-data";
 import SiteNavigation from "./site-navigation";
+import { absoluteUrl } from "./site-url";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -39,7 +40,7 @@ export default function ServicePage({
     ? relatedServices.filter((item) => item.slug !== service.slug)
     : serviceList.filter((item) => item.slug !== service.slug).slice(0, 3);
   const contactHref = `/contact/?service=${encodeURIComponent(service.navLabel)}`;
-  const pageUrl = `https://landmarklandscapestx.com/${service.slug}/`;
+  const pageUrl = absoluteUrl(`/${service.slug}/`);
   const breadcrumbId = `${pageUrl}#breadcrumb`;
 
   const jsonLd = {
@@ -70,7 +71,7 @@ export default function ServicePage({
           name: city,
         })),
         provider: {
-          "@id": "https://landmarklandscapestx.com/#business",
+          "@id": absoluteUrl("/#business"),
         },
       },
       {
@@ -81,7 +82,7 @@ export default function ServicePage({
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://landmarklandscapestx.com/",
+            item: absoluteUrl("/"),
           },
           {
             "@type": "ListItem",
