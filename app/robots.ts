@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { absoluteUrl, siteUrl } from "./site-url";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://landmarklandscapestx.com/sitemap.xml",
-    host: "https://landmarklandscapestx.com",
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: siteUrl,
   };
 }
