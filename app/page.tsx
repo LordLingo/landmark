@@ -250,7 +250,6 @@ export default function Home() {
             alt="A family enjoying an elegant landscaped backyard in North Texas"
           />
           <figcaption>
-            <span>No pool required.</span>
             <strong>Just a place everyone wants to be.</strong>
           </figcaption>
         </figure>
