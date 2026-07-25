@@ -5,6 +5,13 @@ import { serviceList } from "./service-data";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
+const navigationServices = [
+  {
+    slug: "landscape-design",
+    navLabel: "Landscape design + installation",
+  },
+  ...serviceList,
+];
 
 type SiteNavigationProps = {
   variant?: "home" | "inner";
@@ -140,13 +147,13 @@ export default function SiteNavigation({
                 <strong>A better-looking yard starts with the right next step.</strong>
               </div>
               <div className="services-menu-links">
-                {serviceList.map((service, index) => (
+                {navigationServices.map((service, index) => (
                   <a
                     href={`/${service.slug}/`}
                     key={service.slug}
                     onClick={closeMenus}
                   >
-                    <small>0{index + 1}</small>
+                    <small>{String(index + 1).padStart(2, "0")}</small>
                     <span>{service.navLabel}</span>
                     <i aria-hidden="true">→</i>
                   </a>
@@ -208,13 +215,13 @@ export default function SiteNavigation({
 
         <div className="mobile-service-list">
           <p>Explore our services</p>
-          {serviceList.map((service, index) => (
+          {navigationServices.map((service, index) => (
             <a
               href={`/${service.slug}/`}
               key={service.slug}
               onClick={closeMenus}
             >
-              <small>0{index + 1}</small>
+              <small>{String(index + 1).padStart(2, "0")}</small>
               <span>{service.navLabel}</span>
               <i aria-hidden="true">→</i>
             </a>
