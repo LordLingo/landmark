@@ -5,16 +5,20 @@ import { serviceList } from "./service-data";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
+const locationLinks = [
+  { slug: "prosper-tx", navLabel: "Landscaping in Prosper, TX" },
+  { slug: "frisco-tx", navLabel: "Landscaping in Frisco, TX" },
+  { slug: "mckinney-tx", navLabel: "Landscaping in McKinney, TX" },
+  { slug: "celina-tx", navLabel: "Landscaping in Celina, TX" },
+  { slug: "the-colony-tx", navLabel: "Landscaping in The Colony, TX" },
+];
 const navigationServices = [
   {
     slug: "landscape-design",
     navLabel: "Landscape design + installation",
   },
   ...serviceList,
-  {
-    slug: "prosper-tx",
-    navLabel: "Landscaping in Prosper, TX",
-  },
+  ...locationLinks,
 ];
 
 type SiteNavigationProps = {
@@ -147,8 +151,8 @@ export default function SiteNavigation({
               id="desktop-services-menu"
             >
               <div>
-                <span className="nav-menu-eyebrow">Residential services</span>
-                <strong>A better-looking yard starts with the right next step.</strong>
+                <span className="nav-menu-eyebrow">Services + service areas</span>
+                <strong>Find the right improvement for your North Texas property.</strong>
               </div>
               <div className="services-menu-links">
                 {navigationServices.map((service, index) => (
