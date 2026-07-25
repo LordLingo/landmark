@@ -5,6 +5,21 @@ import { serviceList } from "./service-data";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
+const locationLinks = [
+  { slug: "prosper-tx", navLabel: "Landscaping in Prosper, TX" },
+  { slug: "frisco-tx", navLabel: "Landscaping in Frisco, TX" },
+  { slug: "mckinney-tx", navLabel: "Landscaping in McKinney, TX" },
+  { slug: "celina-tx", navLabel: "Landscaping in Celina, TX" },
+  { slug: "the-colony-tx", navLabel: "Landscaping in The Colony, TX" },
+];
+const navigationServices = [
+  {
+    slug: "landscape-design",
+    navLabel: "Landscape design + installation",
+  },
+  ...serviceList,
+  ...locationLinks,
+];
 
 type SiteNavigationProps = {
   variant?: "home" | "inner";
@@ -136,17 +151,17 @@ export default function SiteNavigation({
               id="desktop-services-menu"
             >
               <div>
-                <span className="nav-menu-eyebrow">Residential services</span>
-                <strong>A better-looking yard starts with the right next step.</strong>
+                <span className="nav-menu-eyebrow">Services + service areas</span>
+                <strong>Find the right improvement for your North Texas property.</strong>
               </div>
               <div className="services-menu-links">
-                {serviceList.map((service, index) => (
+                {navigationServices.map((service, index) => (
                   <a
                     href={`/${service.slug}/`}
                     key={service.slug}
                     onClick={closeMenus}
                   >
-                    <small>0{index + 1}</small>
+                    <small>{String(index + 1).padStart(2, "0")}</small>
                     <span>{service.navLabel}</span>
                     <i aria-hidden="true">→</i>
                   </a>
@@ -207,14 +222,14 @@ export default function SiteNavigation({
         </a>
 
         <div className="mobile-service-list">
-          <p>Explore our services</p>
-          {serviceList.map((service, index) => (
+          <p>Explore services + locations</p>
+          {navigationServices.map((service, index) => (
             <a
               href={`/${service.slug}/`}
               key={service.slug}
               onClick={closeMenus}
             >
-              <small>0{index + 1}</small>
+              <small>{String(index + 1).padStart(2, "0")}</small>
               <span>{service.navLabel}</span>
               <i aria-hidden="true">→</i>
             </a>

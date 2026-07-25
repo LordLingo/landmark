@@ -5,6 +5,14 @@ import SiteNavigation from "./site-navigation";
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
 const email = "landmarklandscapesllc@outlook.com";
+const defaultServiceAreas = ["Prosper", "Celina", "Frisco", "McKinney", "The Colony"];
+const navigationServices = [
+  {
+    slug: "landscape-design",
+    navLabel: "Landscape design + installation",
+  },
+  ...serviceList,
+];
 
 function Arrow() {
   return <span aria-hidden="true">→</span>;
@@ -12,39 +20,80 @@ function Arrow() {
 
 export default function ServicePage({
   service,
+  relatedServices,
+  areaServed = defaultServiceAreas,
+  faqTitle = "Questions Prosper homeowners ask.",
+  relatedEyebrow = "One yard, connected",
+  relatedTitle = "Explore the next layer.",
+  projectCaption = "Prosper + North Dallas",
 }: {
   service: ServicePageData;
+  relatedServices?: ServicePageData[];
+  areaServed?: string[];
+  faqTitle?: string;
+  relatedEyebrow?: string;
+  relatedTitle?: string;
+  projectCaption?: string;
 }) {
-  const related = serviceList
-    .filter((item) => item.slug !== service.slug)
-    .slice(0, 3);
+  const related = relatedServices
+    ? relatedServices.filter((item) => item.slug !== service.slug)
+    : serviceList.filter((item) => item.slug !== service.slug).slice(0, 3);
   const contactHref = `/contact/?service=${encodeURIComponent(service.navLabel)}`;
+  const pageUrl = `https://landmarklandscapestx.com/${service.slug}/`;
+  const breadcrumbId = `${pageUrl}#breadcrumb`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Service",
-        name: service.navLabel,
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: service.metaTitle,
         description: service.metaDescription,
-        url: `https://landmarklandscapestx.com/${service.slug}/`,
-        areaServed: [
-          { "@type": "City", name: "Prosper" },
-          { "@type": "City", name: "Celina" },
-          { "@type": "City", name: "Frisco" },
-          { "@type": "City", name: "McKinney" },
-          { "@type": "City", name: "The Colony" },
-        ],
-        provider: {
-          "@type": "LocalBusiness",
-          name: "Landmark Landscape Services, LLC",
-          telephone: "+14694928450",
-          email,
-          url: "https://landmarklandscapestx.com/",
+        breadcrumb: {
+          "@id": breadcrumbId,
+        },
+        about: {
+          "@id": `${pageUrl}#service`,
         },
       },
       {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name: service.navLabel,
+        serviceType: service.navLabel,
+        description: service.metaDescription,
+        url: pageUrl,
+        areaServed: areaServed.map((city) => ({
+          "@type": "City",
+          name: city,
+        })),
+        provider: {
+          "@id": "https://landmarklandscapestx.com/#business",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://landmarklandscapestx.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: service.shortLabel,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
         "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
         mainEntity: service.faqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
@@ -98,7 +147,7 @@ export default function ServicePage({
             />
             <figcaption>
               <span>Landmark project</span>
-              <strong>Prosper + North Dallas</strong>
+              <strong>{projectCaption}</strong>
             </figcaption>
           </figure>
           <div className="service-keywords" aria-label="Service highlights">
@@ -190,7 +239,7 @@ export default function ServicePage({
       <section className="service-faq" id="questions">
         <div>
           <p className="eyebrow">Useful before you call</p>
-          <h2>Questions Prosper homeowners ask.</h2>
+          <h2>{faqTitle}</h2>
         </div>
         <div className="faq-list">
           {service.faqs.map((faq) => (
@@ -208,8 +257,8 @@ export default function ServicePage({
       <section className="related-services">
         <div className="related-heading">
           <div>
-            <p className="eyebrow">One yard, connected</p>
-            <h2>Explore the next layer.</h2>
+            <p className="eyebrow">{relatedEyebrow}</p>
+            <h2>{relatedTitle}</h2>
           </div>
           <a className="text-link" href="/#services">
             View all services <Arrow />
@@ -218,7 +267,7 @@ export default function ServicePage({
         <div className="related-grid">
           {related.map((item, index) => (
             <a href={`/${item.slug}/`} key={item.slug}>
-              <span>0{index + 1}</span>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{item.navLabel}</h3>
               <p>{item.metaDescription}</p>
               <i aria-hidden="true">→</i>
@@ -263,7 +312,7 @@ export default function ServicePage({
           </div>
           <div className="footer-service-links">
             <p className="eyebrow">Residential services</p>
-            {serviceList.map((item) => (
+            {navigationServices.map((item) => (
               <a href={`/${item.slug}/`} key={item.slug}>
                 {item.navLabel}
               </a>

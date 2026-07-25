@@ -1,0 +1,212 @@
+import type { ServicePageData } from "./service-data";
+
+export const landscapeDesignPage: ServicePageData = {
+  slug: "landscape-design",
+  navLabel: "Landscape design + installation",
+  shortLabel: "Landscape design",
+  eyebrow: "Residential landscape design · Prosper + North Dallas",
+  title: "A complete landscape starts with one clear direction.",
+  intro:
+    "Landmark plans and installs cohesive residential landscapes for North Texas homes—bringing planting, stone, lighting, drainage and irrigation decisions together before the work begins.",
+  metaTitle: "Landscape Design & Installation in Prosper, TX",
+  metaDescription:
+    "Residential landscape design and installation in Prosper, TX. Plan planting, stone, lighting, drainage and irrigation as one cohesive outdoor transformation.",
+  heroImage: "/images/texas-home-after-stone.webp",
+  heroAlt:
+    "Completed North Texas front-yard landscape with layered planting and natural stone around a mature tree",
+  detailImage: "/images/backyard-life.webp",
+  detailAlt:
+    "Finished residential backyard landscape designed for comfortable everyday outdoor living",
+  imagePosition: "center",
+  detailPosition: "center",
+  problemTitle:
+    "When every improvement is handled separately, the yard never quite comes together.",
+  problemCopy:
+    "A new flower bed can expose a drainage problem. A walkway can feel disconnected from the entrance. Lighting added at the end may miss the best architectural and planting focal points. Landmark begins with the complete property so each decision supports the same finished result.",
+  features: [
+    {
+      title: "Whole-property design direction",
+      copy:
+        "We study the home, existing landscape, views, movement and everyday priorities before defining the layout, focal points and overall character.",
+    },
+    {
+      title: "Planting + material selection",
+      copy:
+        "Plants, stone, bed finishes and lighting details are selected for the architecture, site conditions, mature scale and care level you prefer.",
+    },
+    {
+      title: "A plan you can understand",
+      copy:
+        "The proposed direction, project scope and important choices are reviewed before installation so the work does not begin as a collection of guesses.",
+    },
+    {
+      title: "Coordinated installation",
+      copy:
+        "Planting, borders, paths, drainage considerations, irrigation needs and lighting can be sequenced as one connected project or a practical phased plan.",
+    },
+  ],
+  outcomeTitle: "See how the pieces work together before the first bed is built.",
+  outcomeCopy:
+    "The purpose of design is not to make the process feel complicated. It is to remove uncertainty, protect the investment and create a landscape that looks intentional from the street, the windows and the places your family uses most.",
+  outcomePoints: [
+    "Bed lines, pathways and focal points planned around the complete home",
+    "A planting palette chosen for exposure, mature size and realistic care",
+    "Stone, lighting, drainage and irrigation considered before installation",
+    "A clear scope that can be completed together or organized in phases",
+  ],
+  process: [
+    {
+      title: "Discover the property",
+      copy:
+        "We walk the site, discuss what is not working, identify what should remain and learn how you want the finished space to feel and function.",
+    },
+    {
+      title: "Build + review the direction",
+      copy:
+        "Landmark develops the layout, planting and material approach, then reviews the proposed scope and important decisions with you before work begins.",
+    },
+    {
+      title: "Install with continuity",
+      copy:
+        "The approved pieces are sequenced so drainage, irrigation, stone, planting and lighting support one another and the finished property feels complete.",
+    },
+  ],
+  faqs: [
+    {
+      question: "Do I need a landscape design before installation?",
+      answer:
+        "A design is especially valuable when a project includes several connected elements, changes the shape of major beds or needs to coordinate planting with stone, drainage, irrigation or lighting. Smaller improvements may require a simpler planning process.",
+    },
+    {
+      question: "Can Landmark redesign a builder-grade landscape?",
+      answer:
+        "Yes. Existing plants and materials can be evaluated, useful pieces can remain, and the areas that feel sparse, undersized or disconnected can be redesigned around the home.",
+    },
+    {
+      question: "Will I understand the plan before work starts?",
+      answer:
+        "Yes. The design direction, included work and important material or planting choices are reviewed before installation. The exact presentation depends on the size and scope of the project.",
+    },
+    {
+      question: "Can a landscape project be completed in phases?",
+      answer:
+        "Often, yes. A complete direction can help sequence front-yard work, backyard improvements, drainage, lighting or other elements without making each phase feel unrelated.",
+    },
+    {
+      question: "Where does Landmark provide landscape design and installation?",
+      answer:
+        "Landmark serves homeowners in Prosper and nearby North Texas communities including Celina, Frisco, McKinney and The Colony.",
+    },
+  ],
+  searchTerms: [
+    "Landscape design",
+    "Landscape installation",
+    "New-home landscaping",
+    "Prosper + North Dallas",
+  ],
+};
+
+export const prosperPage: ServicePageData = {
+  slug: "prosper-tx",
+  navLabel: "Residential landscaping in Prosper, TX",
+  shortLabel: "Prosper, TX",
+  eyebrow: "Landscaping company · Prosper, Texas",
+  title: "A Prosper yard designed to feel finished, welcoming and easier to live with.",
+  intro:
+    "Landmark helps Prosper homeowners improve the complete property with residential landscape design, planting, stonework, drainage solutions, landscape lighting and irrigation support.",
+  metaTitle: "Landscaping Company in Prosper, TX",
+  metaDescription:
+    "Residential landscaping in Prosper, TX including landscape design, planting, stone borders, drainage, outdoor lighting and irrigation support from Landmark.",
+  heroImage: "/images/front-yard-project.webp",
+  heroAlt:
+    "Completed residential front-yard landscaping project at a Prosper-area brick and stone home",
+  detailImage: "/images/flower-bed-front-entry.webp",
+  detailAlt:
+    "Layered North Texas planting and a finished landscape bed beside a residential entry",
+  imagePosition: "center",
+  detailPosition: "center",
+  problemTitle: "Prosper homes deserve more than a builder-basic landscape.",
+  problemCopy:
+    "Whether the house is newly built or the original landscape has simply stopped working, the strongest improvement begins by looking at the whole arrival. Scale, bed shape, mature planting, drainage, irrigation, stone and lighting all influence whether the property feels complete.",
+  features: [
+    {
+      title: "Landscape design + installation",
+      copy:
+        "Create one clear direction for the property, then coordinate the planting, materials and supporting work needed to bring it to life.",
+    },
+    {
+      title: "Front yards + planting beds",
+      copy:
+        "Upgrade thin builder beds, reshape established landscapes and add layers of shrubs, grasses, perennials and seasonal color around the home.",
+    },
+    {
+      title: "Drainage + irrigation support",
+      copy:
+        "Standing water, washout, dry zones and coverage concerns can be considered before new landscape work is installed over an unresolved problem.",
+    },
+    {
+      title: "Stone + landscape lighting",
+      copy:
+        "Natural stone borders, walkways and warm nighttime lighting can give the property structure, comfort and a more finished sense of arrival.",
+    },
+  ],
+  outcomeTitle: "One local team for the way the whole property should work.",
+  outcomeCopy:
+    "A successful landscape should feel connected to the home and realistic for the people living there. Landmark helps define the right priorities, combine related improvements and create a result that feels considered rather than pieced together.",
+  outcomePoints: [
+    "A clear landscape direction before disconnected work begins",
+    "Planting selected around sunlight, scale and preferred maintenance",
+    "Water movement and irrigation needs considered with the design",
+    "A finished result designed for both curb appeal and everyday life",
+  ],
+  process: [
+    {
+      title: "Walk the Prosper property",
+      copy:
+        "Start with what you see today, what feels unfinished and how you want the front yard, backyard or complete landscape to work better.",
+    },
+    {
+      title: "Define the right scope",
+      copy:
+        "Landmark organizes the design, planting, stone, drainage, irrigation and lighting needs into a practical recommendation instead of a list of unrelated add-ons.",
+    },
+    {
+      title: "Create the finished landscape",
+      copy:
+        "The approved work is installed in the proper sequence, then reviewed with you along with the care and next-step expectations for the property.",
+    },
+  ],
+  faqs: [
+    {
+      question: "What landscaping services does Landmark provide in Prosper?",
+      answer:
+        "Landmark provides residential landscape design and installation, front-yard improvements, flower-bed design, stone borders and walkways, drainage solutions, landscape lighting and irrigation troubleshooting based on project scope and availability.",
+    },
+    {
+      question: "Do you landscape newly built homes in Prosper?",
+      answer:
+        "Yes. Landmark can improve builder-grade beds, add planting layers and stone definition, address related drainage or irrigation concerns and create a more complete landscape direction for a new home.",
+    },
+    {
+      question: "Can drainage be addressed before new landscaping?",
+      answer:
+        "Yes. It is often helpful to understand recurring standing water, washout or concentrated roof runoff before installing new beds, turf or pathways that could be affected.",
+    },
+    {
+      question: "Can Landmark handle both design and installation?",
+      answer:
+        "Yes. Landmark can develop the landscape direction and coordinate the approved installation so the major elements support the same plan.",
+    },
+    {
+      question: "What communities near Prosper does Landmark serve?",
+      answer:
+        "In addition to Prosper, Landmark serves nearby homeowners in Celina, Frisco, McKinney and The Colony.",
+    },
+  ],
+  searchTerms: [
+    "Landscaping company",
+    "Residential landscaping",
+    "Design + installation",
+    "Prosper TX",
+  ],
+};
