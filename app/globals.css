@@ -1122,16 +1122,31 @@ main {
   border-top: 1px solid var(--line);
 }
 
-.process-list article {
+.process-list > a {
   display: grid;
   grid-template-columns: 45px 1fr auto;
   gap: 22px;
   align-items: start;
-  padding: 34px 0;
+  padding: 34px 8px;
   border-bottom: 1px solid var(--line);
+  color: inherit;
+  transition:
+    background-color 180ms ease,
+    padding 180ms ease;
 }
 
-.process-list > article > span {
+.process-list > a:hover {
+  padding-right: 16px;
+  padding-left: 16px;
+  background: var(--sage-light);
+}
+
+.process-list > a:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 4px;
+}
+
+.process-list > a > span {
   color: var(--clay);
   font-family: var(--serif);
 }
@@ -1160,6 +1175,18 @@ main {
   border-radius: 50%;
   color: var(--clay);
   font-style: normal;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.process-list > a:hover i {
+  border-color: var(--clay);
+  background: var(--clay);
+  color: var(--white);
+  transform: translateX(4px);
 }
 
 .trust-section {
@@ -2032,12 +2059,15 @@ footer {
     font-size: 47px;
   }
 
-  .process-list article {
-    grid-template-columns: 35px 1fr;
+  .process-list > a {
+    grid-template-columns: 35px 1fr auto;
+    gap: 14px;
+    padding: 28px 2px;
   }
 
   .process-list i {
-    display: none;
+    width: 34px;
+    height: 34px;
   }
 
   .trust-grid {

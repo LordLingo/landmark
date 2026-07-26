@@ -76,6 +76,33 @@ const goalOptions = [
 const feelOptions = ["Soft + organic", "Classic Texas", "Clean + modern", "Not sure yet"];
 const careOptions = ["Keep it simple", "Seasonal care is fine", "I enjoy the garden"];
 
+const processSteps = [
+  {
+    number: "01",
+    title: "Tell us what is not working",
+    copy: "A conversation about your home, routines and priorities.",
+    href: "#yard-plan",
+  },
+  {
+    number: "02",
+    title: "See what is possible",
+    copy: "A cohesive direction for planting, pathways, light and water.",
+    href: "#possibilities",
+  },
+  {
+    number: "03",
+    title: "Know what happens next",
+    copy: "A clear proposal, realistic timing and room for questions.",
+    href: "/landscape-design/#approach",
+  },
+  {
+    number: "04",
+    title: "Come home to the difference",
+    copy: "Professional installation and a plan for keeping it beautiful.",
+    href: "#transformation",
+  },
+];
+
 export default function Home() {
   const [slider, setSlider] = useState(52);
   const [cards, setCards] = useState(possibilities);
@@ -487,20 +514,15 @@ export default function Home() {
         </div>
 
         <div className="process-list">
-          {[
-            ["01", "Tell us what is not working", "A conversation about your home, routines and priorities."],
-            ["02", "See what is possible", "A cohesive direction for planting, pathways, light and water."],
-            ["03", "Know what happens next", "A clear proposal, realistic timing and room for questions."],
-            ["04", "Come home to the difference", "Professional installation and a plan for keeping it beautiful."],
-          ].map(([number, title, copy]) => (
-            <article key={number}>
-              <span>{number}</span>
+          {processSteps.map((step) => (
+            <Link href={step.href} key={step.number}>
+              <span>{step.number}</span>
               <div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
               </div>
               <i aria-hidden="true">→</i>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
