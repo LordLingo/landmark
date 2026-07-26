@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { serviceList } from "./service-data";
 
 const phoneDisplay = "469-492-8450";
@@ -171,6 +172,7 @@ export default function SiteNavigation({
           </div>
           <a href={transformationHref}>Our work</a>
           <a href={processHref}>How it works</a>
+          <Link href="/water-restrictions/">Water guide</Link>
           <a href="/contact/">Contact</a>
         </nav>
 
@@ -243,6 +245,9 @@ export default function SiteNavigation({
           <a href={processHref} onClick={closeMenus}>
             How it works
           </a>
+          <Link href="/water-restrictions/" onClick={closeMenus}>
+            Water guide
+          </Link>
           <a href="/contact/" onClick={closeMenus}>
             Contact Landmark
           </a>
