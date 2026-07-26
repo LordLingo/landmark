@@ -198,12 +198,78 @@ export default function Home() {
             />
           </figure>
           <div className="little-note note-one">
-            <span>01</span>
-            <strong>Warm welcomes</strong>
+            <svg
+              className="callout-accent callout-flowers"
+              viewBox="0 0 92 116"
+              aria-hidden="true"
+            >
+              <g className="accent-grass">
+                <path d="M38 110C40 77 32 41 15 8" />
+                <path d="M44 111C46 72 43 35 40 4" />
+                <path d="M48 111C50 75 58 38 70 12" />
+                <path d="M42 110C34 80 23 55 4 37" />
+                <path d="M51 111C58 82 70 59 88 42" />
+                <path d="M47 110C48 75 52 49 58 25" />
+                <path d="M40 110C35 82 34 60 33 27" />
+              </g>
+              <g className="accent-flowers">
+                <g transform="translate(20 79)">
+                  <circle cx="0" cy="-5" r="4" />
+                  <circle cx="5" cy="0" r="4" />
+                  <circle cx="0" cy="5" r="4" />
+                  <circle cx="-5" cy="0" r="4" />
+                  <circle className="flower-center" r="2.5" />
+                </g>
+                <g transform="translate(40 68) scale(.82)">
+                  <circle cx="0" cy="-5" r="4" />
+                  <circle cx="5" cy="0" r="4" />
+                  <circle cx="0" cy="5" r="4" />
+                  <circle cx="-5" cy="0" r="4" />
+                  <circle className="flower-center" r="2.5" />
+                </g>
+                <g transform="translate(53 88) scale(.68)">
+                  <circle cx="0" cy="-5" r="4" />
+                  <circle cx="5" cy="0" r="4" />
+                  <circle cx="0" cy="5" r="4" />
+                  <circle cx="-5" cy="0" r="4" />
+                  <circle className="flower-center" r="2.5" />
+                </g>
+              </g>
+            </svg>
+            <div className="callout-stone">
+              <span>01</span>
+              <strong>Warm welcomes</strong>
+            </div>
           </div>
           <div className="little-note note-two">
-            <span>02</span>
-            <strong>Easy evenings</strong>
+            <div className="callout-stone">
+              <span>02</span>
+              <strong>Easy evenings</strong>
+            </div>
+            <svg
+              className="callout-accent callout-planter"
+              viewBox="0 0 86 124"
+              aria-hidden="true"
+            >
+              <g className="accent-grass">
+                <path d="M42 72C38 46 27 21 10 5" />
+                <path d="M43 72C42 42 43 18 48 1" />
+                <path d="M46 72C52 42 65 20 80 9" />
+                <path d="M43 72C33 46 20 34 3 27" />
+                <path d="M46 72C58 48 69 38 84 33" />
+                <path d="M44 72C48 47 54 29 62 13" />
+                <path d="M42 72C39 47 35 29 29 13" />
+              </g>
+              <path
+                className="planter-rim"
+                d="M20 66C20 61 26 58 44 58C62 58 68 61 68 66L65 74H23Z"
+              />
+              <path
+                className="planter-pot"
+                d="M24 73H64L59 115C58 121 31 121 30 115Z"
+              />
+              <path className="planter-highlight" d="M32 78L35 111" />
+            </svg>
           </div>
           <div className="sun-stamp" aria-hidden="true">
             <span>Landmark · Landscapes ·</span>

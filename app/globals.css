@@ -393,42 +393,154 @@ main {
 .little-note {
   position: absolute;
   z-index: 4;
-  min-width: 154px;
-  padding: 15px 18px;
-  border: 1px solid rgba(23, 54, 44, 0.14);
-  background: rgba(255, 253, 248, 0.92);
-  box-shadow: 9px 9px 0 var(--forest);
-  backdrop-filter: blur(8px);
+  min-width: 190px;
+  filter: drop-shadow(8px 11px 8px rgba(28, 52, 39, 0.28));
 }
 
-.little-note span,
-.little-note strong {
+.callout-stone {
+  position: relative;
+  z-index: 2;
+  min-width: 190px;
+  padding: 20px 25px 20px 30px;
+  overflow: hidden;
+  border: 1px solid rgba(93, 83, 64, 0.24);
+  border-radius: 13px 17px 12px 15px;
+  background:
+    radial-gradient(circle at 15% 24%, rgba(92, 78, 55, 0.11) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 66%, rgba(92, 78, 55, 0.08) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 44% 78%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+    linear-gradient(145deg, #f6f1e6 0%, #e9e0cf 54%, #d8cbb6 100%);
+  background-size: 19px 17px, 31px 27px, 37px 34px, auto;
+  clip-path: polygon(
+    5% 5%,
+    17% 1%,
+    46% 3%,
+    70% 0,
+    94% 5%,
+    100% 17%,
+    97% 42%,
+    100% 69%,
+    94% 94%,
+    72% 100%,
+    48% 97%,
+    24% 100%,
+    3% 93%,
+    0 72%,
+    2% 46%,
+    0 20%
+  );
+}
+
+.callout-stone::before,
+.callout-stone::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+
+.callout-stone::before {
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 10px;
+  clip-path: inherit;
+}
+
+.callout-stone::after {
+  right: 16px;
+  bottom: 9px;
+  left: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(73, 61, 44, 0.16), transparent);
+}
+
+.callout-stone span,
+.callout-stone strong {
+  position: relative;
+  z-index: 1;
   display: block;
 }
 
-.little-note span {
-  margin-bottom: 7px;
+.callout-stone span {
+  margin-bottom: 8px;
   color: var(--clay);
   font-family: var(--serif);
-  font-size: 10px;
+  font-size: 11px;
 }
 
-.little-note strong {
+.callout-stone strong {
+  color: var(--ink);
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
+}
+
+.callout-accent {
+  position: absolute;
+  z-index: 1;
+  overflow: visible;
+}
+
+.callout-flowers {
+  bottom: -18px;
+  left: -42px;
+  width: 94px;
+  height: 118px;
+}
+
+.callout-planter {
+  right: -51px;
+  bottom: -13px;
+  width: 88px;
+  height: 126px;
+}
+
+.accent-grass {
+  fill: none;
+  stroke: #6f8150;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+}
+
+.accent-flowers {
+  fill: #fffdf6;
+  stroke: rgba(84, 101, 58, 0.2);
+  stroke-width: 0.7;
+}
+
+.accent-flowers .flower-center {
+  fill: #dba955;
+  stroke: none;
+}
+
+.planter-rim {
+  fill: #ad5833;
+  stroke: #7e3c25;
+  stroke-width: 1.4;
+}
+
+.planter-pot {
+  fill: #b9643c;
+  stroke: #7e3c25;
+  stroke-width: 1.4;
+}
+
+.planter-highlight {
+  fill: none;
+  stroke: rgba(245, 190, 135, 0.52);
+  stroke-linecap: round;
+  stroke-width: 3;
 }
 
 .note-one {
   top: 92px;
-  left: 0;
-  transform: rotate(-5deg);
+  left: -2%;
+  transform: rotate(-2.5deg);
 }
 
 .note-two {
-  right: 0;
-  bottom: 38px;
-  transform: rotate(4deg);
+  right: 2%;
+  bottom: 48px;
+  transform: rotate(2deg);
 }
 
 .sun-stamp {
@@ -1539,8 +1651,22 @@ footer {
   }
 
   .little-note {
-    min-width: 128px;
-    padding: 12px;
+    min-width: 154px;
+  }
+
+  .callout-stone {
+    min-width: 154px;
+    padding: 17px 18px 17px 23px;
+  }
+
+  .callout-flowers {
+    left: -36px;
+    width: 82px;
+  }
+
+  .callout-planter {
+    right: -44px;
+    width: 78px;
   }
 
   .note-one {
@@ -1704,7 +1830,11 @@ footer {
   }
 
   .little-note {
-    min-width: 118px;
+    min-width: 148px;
+  }
+
+  .callout-stone {
+    min-width: 148px;
   }
 
   .feeling-strip {
