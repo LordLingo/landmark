@@ -546,12 +546,14 @@ main {
 .sun-stamp {
   position: absolute;
   z-index: 4;
-  right: 23%;
+  right: auto;
   bottom: 0;
+  left: 50%;
   display: grid;
   place-items: center;
   width: 112px;
   height: 112px;
+  margin-left: -56px;
   border: 1px dashed rgba(189, 101, 61, 0.45);
   border-radius: 50%;
   background: rgba(247, 244, 236, 0.86);
@@ -1674,9 +1676,11 @@ footer {
   }
 
   .sun-stamp {
-    right: 18%;
+    right: auto;
+    left: 50%;
     width: 90px;
     height: 90px;
+    margin-left: -45px;
   }
 
   .scroll-cue {
