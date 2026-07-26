@@ -3,6 +3,7 @@ import { locationPageList } from "./location-page-data";
 import { serviceList } from "./service-data";
 import { landscapeDesignPage } from "./seo-page-data";
 import { absoluteUrl } from "./site-url";
+import { waterRestrictionCities } from "./water-restrictions/water-restriction-data";
 
 const prioritySeoPages = [
   {
@@ -36,6 +37,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(`/${service.slug}/`),
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    {
+      url: absoluteUrl("/water-restrictions/"),
+      changeFrequency: "weekly",
+      priority: 0.82,
+    },
+    ...waterRestrictionCities.map((city) => ({
+      url: absoluteUrl(`/water-restrictions/${city.slug}/`),
+      changeFrequency: "weekly" as const,
+      priority: 0.78,
     })),
   ];
 }
