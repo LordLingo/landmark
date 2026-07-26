@@ -220,8 +220,8 @@ export default function Home() {
           <div className="hero-blob" aria-hidden="true" />
           <figure className="hero-photo">
             <img
-              src="/images/texas-home-after.webp"
-              alt="Upscale Texas home with a softly layered front landscape"
+              src="/images/texas-home-after-stone.webp"
+              alt="Upscale Texas home with a richly layered front landscape, ornamental grasses, flowers and natural stone"
             />
           </figure>
           <div className="little-note note-one">
