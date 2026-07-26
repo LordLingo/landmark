@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import Link from "next/link";
 import { serviceList } from "./service-data";
 import SiteNavigation from "./site-navigation";
 
@@ -464,6 +465,29 @@ export default function Home() {
             <h3>Built around your care level</h3>
             <p>A beautiful result that still makes sense on an ordinary Tuesday.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="water-resource-callout">
+        <div className="water-callout-icon" aria-hidden="true">
+          <svg viewBox="0 0 80 98">
+            <path d="M40 4C35 18 9 46 9 66c0 18 14 28 31 28s31-10 31-28C71 46 45 18 40 4Z" />
+            <path d="M24 67c1 8 7 13 16 14" />
+          </svg>
+        </div>
+        <div className="water-callout-copy">
+          <p className="eyebrow">A Landmark community resource</p>
+          <h2>Know when to water. Protect what you&apos;ve planted.</h2>
+          <p>
+            Find local watering schedules and practical landscape-care advice
+            for Prosper, Frisco, McKinney, Celina and The Colony.
+          </p>
+        </div>
+        <div className="water-callout-action">
+          <span>City rules + official links</span>
+          <Link className="button button-light" href="/water-restrictions/">
+            Local watering guide <span>→</span>
+          </Link>
         </div>
       </section>
 
