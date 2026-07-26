@@ -3612,7 +3612,7 @@ footer {
 
   .mobile-secondary-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     margin-top: 12px;
   }
@@ -3696,5 +3696,1245 @@ footer {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* Community water resource */
+
+.water-resource-callout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(28px, 4vw, 65px);
+  align-items: center;
+  padding: 62px clamp(24px, 7vw, 118px);
+  background:
+    radial-gradient(circle at 8% 30%, rgba(224, 174, 81, 0.16), transparent 22%),
+    var(--forest);
+  color: var(--white);
+}
+
+.water-callout-icon {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.water-callout-icon svg {
+  width: 40px;
+}
+
+.water-callout-icon path:first-child {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: #efc574;
+  stroke-width: 3;
+}
+
+.water-callout-icon path:last-child {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.water-callout-copy .eyebrow {
+  color: #efc574;
+}
+
+.water-callout-copy h2 {
+  max-width: 820px;
+  margin: 12px 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(37px, 4.1vw, 61px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.water-callout-copy > p:not(.eyebrow) {
+  max-width: 750px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.water-callout-action {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.water-callout-action > span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.water-resource-page {
+  background: var(--paper);
+}
+
+.water-guide-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(360px, 0.78fr);
+  min-height: 690px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(224, 174, 81, 0.17), transparent 25%),
+    linear-gradient(110deg, var(--white) 0 62%, #dfe7dd 62% 100%);
+}
+
+.water-guide-hero::before {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(23, 54, 44, 0.12) 0.7px, transparent 0.7px);
+  background-size: 19px 19px;
+  opacity: 0.2;
+  content: "";
+  mask-image: linear-gradient(90deg, black, transparent 65%);
+}
+
+.water-guide-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px clamp(28px, 7vw, 118px) 86px;
+}
+
+.water-guide-copy .breadcrumbs,
+.city-water-hero-copy .breadcrumbs {
+  margin-bottom: 65px;
+}
+
+.water-guide-copy h1 {
+  max-width: 930px;
+  margin: 19px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(66px, 7.4vw, 112px);
+  font-weight: 400;
+  letter-spacing: -0.064em;
+  line-height: 0.89;
+}
+
+.water-guide-copy h1 em,
+.city-water-hero h1 em {
+  display: block;
+  color: var(--clay);
+  font-weight: 400;
+}
+
+.water-guide-intro {
+  max-width: 730px;
+  margin: 34px 0 0;
+  color: rgba(23, 54, 44, 0.68);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.62;
+}
+
+.water-guide-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 38px;
+}
+
+.water-guide-actions > span {
+  color: rgba(23, 54, 44, 0.54);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.water-guide-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 690px;
+  overflow: hidden;
+  color: var(--forest);
+}
+
+.water-guide-art::after {
+  position: absolute;
+  right: -20%;
+  bottom: -27%;
+  width: 105%;
+  height: 70%;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.72);
+  content: "";
+}
+
+.water-drop {
+  position: relative;
+  z-index: 3;
+  width: 138px;
+  filter: drop-shadow(0 28px 30px rgba(23, 54, 44, 0.16));
+}
+
+.water-drop path:first-child {
+  fill: var(--forest);
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+
+.water-drop path:last-child {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.65);
+  stroke-linecap: round;
+  stroke-width: 5;
+}
+
+.water-guide-art > p {
+  position: absolute;
+  z-index: 4;
+  top: calc(50% + 104px);
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 17px;
+  letter-spacing: 0.05em;
+}
+
+.water-ring {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid rgba(23, 54, 44, 0.18);
+  border-radius: 50%;
+}
+
+.water-ring-one {
+  width: 260px;
+  height: 260px;
+}
+
+.water-ring-two {
+  width: 410px;
+  height: 410px;
+}
+
+.water-ring-three {
+  width: 570px;
+  height: 570px;
+}
+
+.water-guide-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 25px clamp(24px, 7vw, 118px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+}
+
+.water-guide-note > span {
+  color: var(--sun);
+}
+
+.water-guide-note p {
+  max-width: 1030px;
+  margin: 0;
+  color: rgba(23, 54, 44, 0.67);
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.62;
+  text-align: center;
+}
+
+.city-guide-section,
+.water-care-section {
+  padding: 112px clamp(24px, 7vw, 118px);
+}
+
+.city-guide-section {
+  background: var(--paper);
+}
+
+.water-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.55fr);
+  gap: clamp(50px, 9vw, 145px);
+  align-items: end;
+  margin-bottom: 58px;
+}
+
+.water-section-heading h2 {
+  max-width: 840px;
+  margin: 12px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(48px, 5.7vw, 82px);
+  font-weight: 400;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+}
+
+.water-section-heading > p {
+  margin: 0 0 5px;
+  color: rgba(23, 54, 44, 0.66);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.city-water-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.city-water-grid > a {
+  position: relative;
+  grid-column: span 2;
+  min-height: 390px;
+  padding: 30px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.city-water-grid > a:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.city-water-grid > a:hover {
+  z-index: 2;
+  background: var(--forest);
+  color: var(--white);
+  transform: translateY(-5px);
+}
+
+.city-water-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.water-drop-small {
+  width: 23px;
+  filter: none;
+}
+
+.water-drop-small path:first-child {
+  fill: rgba(23, 54, 44, 0.1);
+  stroke: var(--forest);
+  stroke-width: 4;
+}
+
+.water-drop-small path:last-child {
+  display: none;
+}
+
+.city-water-grid > a:hover .water-drop-small path:first-child {
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: #efc574;
+}
+
+.city-water-grid h3 {
+  margin: 53px 0 14px;
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.city-water-grid strong {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--sage-light);
+  color: var(--forest);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.city-water-grid strong.is-watch,
+.city-status-row strong.is-watch {
+  background: #f5dfcb;
+  color: #874328;
+}
+
+.city-water-grid p {
+  max-width: 360px;
+  margin: 18px 0 0;
+  color: rgba(23, 54, 44, 0.62);
+  font-size: 11px;
+  line-height: 1.72;
+}
+
+.city-water-grid > a:hover p {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.city-water-grid i {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  left: 30px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--clay);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.city-water-grid > a:hover i {
+  color: #efc574;
+}
+
+.water-care-section {
+  background: var(--white);
+}
+
+.water-care-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.water-care-grid article {
+  min-height: 315px;
+  padding: 31px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.water-care-grid article > span {
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.water-care-grid h3 {
+  margin: 70px 0 16px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.07;
+}
+
+.water-care-grid p {
+  margin: 0;
+  color: rgba(23, 54, 44, 0.62);
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.cycle-soak-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
+  gap: clamp(55px, 8vw, 130px);
+  align-items: center;
+  padding: 112px clamp(24px, 7vw, 118px);
+  background:
+    radial-gradient(circle at 84% 16%, rgba(224, 174, 81, 0.13), transparent 25%),
+    var(--forest);
+  color: white;
+}
+
+.cycle-soak-section .eyebrow {
+  color: #efc574;
+}
+
+.cycle-soak-section h2 {
+  max-width: 720px;
+  margin: 14px 0 25px;
+  font-family: var(--serif);
+  font-size: clamp(48px, 5.5vw, 78px);
+  font-weight: 400;
+  letter-spacing: -0.052em;
+  line-height: 0.97;
+}
+
+.cycle-soak-section > div > p:not(.eyebrow) {
+  max-width: 690px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.cycle-soak-section ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  list-style: none;
+}
+
+.cycle-soak-section li {
+  min-height: 260px;
+  padding: 25px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cycle-soak-section li > span,
+.cycle-soak-section li > strong,
+.cycle-soak-section li > small {
+  display: block;
+}
+
+.cycle-soak-section li > span {
+  color: #efc574;
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.cycle-soak-section li > strong {
+  margin-top: 102px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.cycle-soak-section li > small {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 9px;
+}
+
+.new-landscape-note {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.75fr);
+  gap: clamp(55px, 9vw, 150px);
+  align-items: end;
+  padding: 102px clamp(24px, 7vw, 118px);
+  background: var(--sage-light);
+}
+
+.new-landscape-note h2 {
+  max-width: 800px;
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(46px, 5.4vw, 76px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.99;
+}
+
+.new-landscape-note > div:last-child > p {
+  margin: 0 0 25px;
+  color: rgba(23, 54, 44, 0.68);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.water-estimate {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Individual city water pages */
+
+.city-water-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.23fr) minmax(380px, 0.77fr);
+  min-height: 690px;
+  background: var(--white);
+}
+
+.city-water-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px clamp(28px, 7vw, 118px) 84px;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(224, 174, 81, 0.16), transparent 24%),
+    var(--white);
+}
+
+.city-water-hero h1 {
+  max-width: 930px;
+  margin: 18px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(62px, 7vw, 105px);
+  font-weight: 400;
+  letter-spacing: -0.064em;
+  line-height: 0.89;
+}
+
+.city-water-hero-copy > p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 32px 0 0;
+  color: rgba(23, 54, 44, 0.68);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.city-status-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.city-status-row strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: var(--sage-light);
+  color: var(--forest);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.city-status-row strong > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6f9a65;
+  box-shadow: 0 0 0 4px rgba(111, 154, 101, 0.14);
+}
+
+.city-status-row strong.is-watch > span {
+  background: var(--clay);
+  box-shadow: 0 0 0 4px rgba(189, 101, 61, 0.14);
+}
+
+.city-status-row small {
+  color: rgba(23, 54, 44, 0.52);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.city-water-source {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px clamp(36px, 5vw, 78px);
+  background:
+    radial-gradient(circle at 82% 12%, rgba(224, 174, 81, 0.15), transparent 24%),
+    var(--forest);
+  color: var(--white);
+}
+
+.city-water-source .water-drop {
+  width: 68px;
+  margin-bottom: 58px;
+  filter: none;
+}
+
+.city-water-source .water-drop path:first-child {
+  fill: rgba(255, 255, 255, 0.07);
+  stroke: #efc574;
+}
+
+.city-water-source > p {
+  margin: 0 0 13px;
+  color: #efc574;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.city-water-source h2 {
+  max-width: 520px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.city-water-source > span {
+  max-width: 520px;
+  margin: 25px 0 33px;
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.66;
+}
+
+.city-water-source > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  padding: 19px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.city-water-source > a i {
+  color: #efc574;
+  font-size: 19px;
+  font-style: normal;
+}
+
+.city-quick-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.city-quick-facts article {
+  min-height: 315px;
+  padding: 34px clamp(28px, 4vw, 60px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.city-quick-facts article > span {
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.city-quick-facts article > p {
+  margin: 42px 0 11px;
+  color: rgba(23, 54, 44, 0.5);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.city-quick-facts h2 {
+  margin: 0 0 15px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.6vw, 39px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.city-quick-facts small {
+  display: block;
+  max-width: 480px;
+  color: rgba(23, 54, 44, 0.62);
+  font-size: 10px;
+  line-height: 1.68;
+}
+
+.city-schedule-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(450px, 1.14fr);
+  gap: clamp(55px, 9vw, 145px);
+  padding: 116px clamp(24px, 7vw, 118px);
+  background: var(--white);
+}
+
+.city-rules-copy h2,
+.city-landscape-care h2 {
+  max-width: 760px;
+  margin: 14px 0 36px;
+  font-family: var(--serif);
+  font-size: clamp(48px, 5.5vw, 78px);
+  font-weight: 400;
+  letter-spacing: -0.052em;
+  line-height: 0.97;
+}
+
+.city-rules-copy ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.city-rules-copy li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: rgba(23, 54, 44, 0.7);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.city-rules-copy li span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(189, 101, 61, 0.35);
+  border-radius: 50%;
+  color: var(--clay);
+  font-size: 9px;
+}
+
+.city-schedule-card {
+  align-self: center;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 18px 18px 0 var(--sage);
+}
+
+.city-schedule-card > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 27px;
+  border-bottom: 1px solid var(--line);
+  background: var(--forest);
+  color: white;
+}
+
+.city-schedule-card > div:first-child p,
+.city-schedule-card > div:first-child span {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.city-schedule-card > div:first-child span {
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.city-schedule-card dl {
+  margin: 0;
+}
+
+.city-schedule-card dl > div {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 1.25fr);
+  gap: 30px;
+  padding: 22px 27px;
+  border-bottom: 1px solid var(--line);
+}
+
+.city-schedule-card dt {
+  color: rgba(23, 54, 44, 0.55);
+  font-size: 10px;
+}
+
+.city-schedule-card dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 17px;
+}
+
+.city-schedule-card > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 24px 27px;
+  color: var(--clay);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.city-landscape-care {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(420px, 1.16fr);
+  gap: clamp(60px, 10vw, 160px);
+  padding: 112px clamp(24px, 7vw, 118px);
+  background: var(--sage-light);
+}
+
+.city-landscape-care > div:first-child > p:last-child {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(23, 54, 44, 0.68);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.city-care-list {
+  border-top: 1px solid rgba(23, 54, 44, 0.18);
+}
+
+.city-care-list article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 25px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(23, 54, 44, 0.18);
+}
+
+.city-care-list article > span {
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.city-care-list p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+.city-cycle-note {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(0, 0.8fr);
+  gap: clamp(50px, 8vw, 125px);
+  align-items: center;
+  padding: 50px clamp(24px, 7vw, 118px);
+  background: var(--forest);
+  color: white;
+}
+
+.city-cycle-note > div {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 40px);
+}
+
+.city-cycle-note > div span {
+  font-family: var(--serif);
+  font-size: clamp(29px, 3.2vw, 48px);
+}
+
+.city-cycle-note > div i {
+  color: #efc574;
+  font-style: normal;
+}
+
+.city-cycle-note > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.other-city-guides {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 45px;
+  align-items: center;
+  padding: 30px clamp(24px, 7vw, 118px);
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.other-city-guides > p {
+  margin: 0;
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 17px;
+}
+
+.other-city-guides > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.other-city-guides a {
+  display: inline-flex;
+  gap: 14px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: var(--sage-light);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .water-resource-callout {
+    grid-template-columns: auto 1fr;
+  }
+
+  .water-callout-action {
+    grid-column: 2;
+  }
+
+  .water-guide-hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  }
+
+  .water-care-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .city-water-hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  }
+
+  .city-quick-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .city-quick-facts article {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 820px) {
+  .water-resource-callout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 58px 22px;
+  }
+
+  .water-callout-icon {
+    width: 78px;
+    height: 78px;
+  }
+
+  .water-callout-icon svg {
+    width: 29px;
+  }
+
+  .water-callout-action {
+    grid-column: auto;
+  }
+
+  .water-guide-hero,
+  .city-water-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .water-guide-copy,
+  .city-water-hero-copy {
+    padding: 68px 22px 78px;
+  }
+
+  .water-guide-copy .breadcrumbs,
+  .city-water-hero-copy .breadcrumbs {
+    margin-bottom: 46px;
+  }
+
+  .water-guide-copy h1,
+  .city-water-hero h1 {
+    font-size: clamp(56px, 13vw, 82px);
+  }
+
+  .water-guide-art {
+    min-height: 470px;
+  }
+
+  .water-ring-three {
+    width: 510px;
+    height: 510px;
+  }
+
+  .water-section-heading,
+  .new-landscape-note,
+  .cycle-soak-section,
+  .city-schedule-section,
+  .city-landscape-care,
+  .city-cycle-note {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .city-guide-section,
+  .water-care-section,
+  .cycle-soak-section,
+  .new-landscape-note,
+  .city-schedule-section,
+  .city-landscape-care {
+    padding: 82px 22px;
+  }
+
+  .water-section-heading {
+    margin-bottom: 42px;
+  }
+
+  .city-water-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .city-water-grid > a,
+  .city-water-grid > a:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .city-water-grid > a:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .cycle-soak-section {
+    grid-template-columns: 1fr;
+  }
+
+  .city-water-source {
+    min-height: 520px;
+    padding: 65px 36px;
+  }
+
+  .city-schedule-card {
+    margin-right: 18px;
+  }
+
+  .city-cycle-note {
+    padding: 50px 22px;
+  }
+
+  .other-city-guides {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 32px 22px;
+  }
+
+  .other-city-guides > div {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .water-callout-copy h2,
+  .water-section-heading h2,
+  .cycle-soak-section h2,
+  .new-landscape-note h2,
+  .city-rules-copy h2,
+  .city-landscape-care h2 {
+    font-size: 41px;
+  }
+
+  .water-guide-copy h1,
+  .city-water-hero h1 {
+    font-size: 51px;
+  }
+
+  .water-guide-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .water-guide-art {
+    min-height: 400px;
+  }
+
+  .water-guide-art .water-drop {
+    width: 105px;
+  }
+
+  .water-guide-art > p {
+    top: calc(50% + 80px);
+  }
+
+  .water-ring-one {
+    width: 210px;
+    height: 210px;
+  }
+
+  .water-ring-two {
+    width: 325px;
+    height: 325px;
+  }
+
+  .water-ring-three {
+    width: 430px;
+    height: 430px;
+  }
+
+  .water-guide-note {
+    align-items: flex-start;
+    padding: 23px 20px;
+  }
+
+  .water-guide-note p {
+    text-align: left;
+  }
+
+  .city-water-grid,
+  .water-care-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-water-grid > a,
+  .city-water-grid > a:last-child {
+    grid-column: auto;
+    min-height: 350px;
+  }
+
+  .water-care-grid article {
+    min-height: 275px;
+  }
+
+  .cycle-soak-section ol {
+    grid-template-columns: 1fr;
+  }
+
+  .cycle-soak-section li {
+    min-height: auto;
+  }
+
+  .cycle-soak-section li > strong {
+    margin-top: 46px;
+  }
+
+  .city-status-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .city-water-source {
+    min-height: 500px;
+    padding: 58px 25px;
+  }
+
+  .city-water-source .water-drop {
+    margin-bottom: 42px;
+  }
+
+  .city-quick-facts article {
+    padding: 30px 23px;
+  }
+
+  .city-schedule-card dl > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .city-schedule-card > div:first-child {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .city-care-list p {
+    font-size: 18px;
+  }
+
+  .city-cycle-note > div {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .city-cycle-note > div span {
+    font-size: 25px;
   }
 }
