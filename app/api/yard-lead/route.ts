@@ -8,6 +8,12 @@ function text(value: unknown, maxLength = 1500) {
     : "";
 }
 
+function list(value: unknown, maxItemLength = 100) {
+  return Array.isArray(value)
+    ? value.map((item) => text(item, maxItemLength)).filter(Boolean).join(", ")
+    : text(value, maxItemLength);
+}
+
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as Record<string, unknown>;
   const name = text(body.name, 160);
@@ -22,13 +28,13 @@ export async function POST(request: NextRequest) {
   }
 
   const payload = {
-    _subject: `Plan My Yard lead: ${text(body.city, 80)} · ${text(body.area, 100)}`,
+    _subject: `Plan My Yard lead: ${text(body.city, 80)} · ${list(body.area, 100)}`,
     _template: "table",
     Name: name,
     Email: email,
     Phone: phone,
     City: text(body.city, 80),
-    "Project area": text(body.area, 100),
+    "Project area": list(body.area, 100),
     Goals: Array.isArray(body.goals)
       ? body.goals.map((value) => text(value, 100)).join(", ")
       : "",
