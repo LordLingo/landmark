@@ -24,7 +24,7 @@ type Feature = Choice & {
 
 type PlannerState = {
   city: string;
-  area: string;
+  area: string[];
   goals: string[];
   features: string[];
   style: string;
@@ -216,7 +216,7 @@ const timingOptions: Choice[] = [
 
 const defaultState: PlannerState = {
   city: "",
-  area: "",
+  area: [],
   goals: [],
   features: [],
   style: "",
@@ -252,7 +252,7 @@ function toggleValue(values: string[], value: string) {
 
 function buildBrief(state: PlannerState) {
   return [
-    `${state.city || "North Texas"} · ${state.area}`,
+    `${state.city || "North Texas"} · ${state.area.join(", ")}`,
     `Goals: ${state.goals.join(", ")}`,
     `Features: ${state.features.join(", ")}`,
     `Style: ${state.style}`,
@@ -317,7 +317,18 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       try {
         const saved = window.localStorage.getItem("landmark-yard-plan");
         if (saved) {
-          setState({ ...defaultState, ...JSON.parse(saved) });
+          const parsed = JSON.parse(saved) as Partial<PlannerState> & {
+            area?: string | string[];
+          };
+          setState({
+            ...defaultState,
+            ...parsed,
+            area: Array.isArray(parsed.area)
+              ? parsed.area
+              : parsed.area
+                ? [parsed.area]
+                : [],
+          });
         }
       } catch {
         // A saved plan is a convenience; the planner remains usable without it.
@@ -346,10 +357,12 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     };
   }, [photoUrl]);
 
-  const selectedArea = areas.find((area) => area.value === state.area);
+  const selectedAreas = areas.filter((area) =>
+    state.area.includes(area.value),
+  );
 
   const planningRange = useMemo(() => {
-    if (!state.features.length || !selectedArea) {
+    if (!state.features.length || !selectedAreas.length) {
       return null;
     }
 
@@ -358,7 +371,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     );
     const subtotalLow = selected.reduce((sum, item) => sum + item.low, 0);
     const subtotalHigh = selected.reduce((sum, item) => sum + item.high, 0);
-    const multiplier = selectedArea.multiplier;
+    const multiplier = Math.max(...selectedAreas.map((area) => area.multiplier));
     const connectedProjectEfficiency = selected.length > 2 ? 0.88 : 1;
     const low = Math.round(
       (subtotalLow * multiplier * connectedProjectEfficiency) / 1000,
@@ -372,7 +385,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       low: Math.max(5000, low),
       high: Math.max(9000, high),
     };
-  }, [selectedArea, state.features]);
+  }, [selectedAreas, state.features]);
 
   const brief = useMemo(() => buildBrief(state), [state]);
 
@@ -385,7 +398,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
   }
 
   function stepIsComplete(step: number) {
-    if (step === 0) return Boolean(state.city && state.area);
+    if (step === 0) return Boolean(state.city && state.area.length);
     if (step === 1) return Boolean(state.goals.length && state.features.length);
     if (step === 2) return Boolean(state.style);
     if (step === 3) return Boolean(state.budget && state.timing);
@@ -478,7 +491,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       const formData = new FormData();
       formData.append("image", optimizedPhoto);
       formData.append("city", state.city);
-      formData.append("area", state.area);
+      formData.append("area", state.area.join(", "));
       formData.append("goals", state.goals.join(", "));
       formData.append("features", state.features.join(", "));
       formData.append("style", state.style);
@@ -561,7 +574,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
   const contactHref = useMemo(() => {
     const params = new URLSearchParams({
       service: "Landscape design + installation",
-      project: `${state.area} · ${state.goals.join(", ")}`,
+      project: `${state.area.join(", ")} · ${state.goals.join(", ")}`,
       style: state.style,
       care: state.budget,
       notes: brief,
@@ -644,15 +657,19 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
               <div className="planner-option-grid">
                 {areas.map((area) => (
                   <label
-                    className={state.area === area.value ? "is-selected" : ""}
+                    className={
+                      state.area.includes(area.value) ? "is-selected" : ""
+                    }
                     key={area.value}
                   >
                     <input
-                      type="radio"
+                      type="checkbox"
                       name="area"
                       value={area.value}
-                      checked={state.area === area.value}
-                      onChange={() => updateState("area", area.value)}
+                      checked={state.area.includes(area.value)}
+                      onChange={() =>
+                        updateState("area", toggleValue(state.area, area.value))
+                      }
                     />
                     <span>
                       <strong>{area.label}</strong>
@@ -941,7 +958,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   </button>
                 </div>
                 <h3>
-                  {state.area} in {state.city}
+                  {state.area.join(" · ")} in {state.city}
                 </h3>
                 <dl>
                   <div>
