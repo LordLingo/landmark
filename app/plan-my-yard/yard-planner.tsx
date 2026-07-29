@@ -28,8 +28,6 @@ type PlannerState = {
   goals: string[];
   features: string[];
   style: string;
-  budget: string;
-  timing: string;
   notes: string;
   preferredDate: string;
   preferredTime: string;
@@ -198,30 +196,12 @@ const styles: Choice[] = [
   },
 ];
 
-const budgets: Choice[] = [
-  { value: "Under $10,000", label: "Under $10,000", note: "One focused improvement" },
-  { value: "$10,000–$20,000", label: "$10,000–$20,000", note: "A meaningful transformation" },
-  { value: "$20,000–$35,000", label: "$20,000–$35,000", note: "Several connected elements" },
-  { value: "$35,000–$60,000", label: "$35,000–$60,000", note: "A larger, cohesive project" },
-  { value: "$60,000+", label: "$60,000+", note: "A full-property vision" },
-  { value: "Help me understand", label: "I need guidance", note: "Show me what different scopes require" },
-];
-
-const timingOptions: Choice[] = [
-  { value: "As soon as possible", label: "As soon as possible" },
-  { value: "Within 3 months", label: "Within 3 months" },
-  { value: "Later this year", label: "Later this year" },
-  { value: "Researching", label: "I&apos;m researching" },
-];
-
 const defaultState: PlannerState = {
   city: "",
   area: [],
   goals: [],
   features: [],
   style: "",
-  budget: "",
-  timing: "",
   notes: "",
   preferredDate: "",
   preferredTime: "Morning",
@@ -231,18 +211,9 @@ const steps = [
   { number: "01", label: "Your property" },
   { number: "02", label: "Your priorities" },
   { number: "03", label: "The look" },
-  { number: "04", label: "Investment" },
-  { number: "05", label: "Your photo" },
-  { number: "06", label: "Your result" },
+  { number: "04", label: "Your photo" },
+  { number: "05", label: "Your result" },
 ];
-
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 function toggleValue(values: string[], value: string) {
   return values.includes(value)
@@ -256,8 +227,6 @@ function buildBrief(state: PlannerState) {
     `Goals: ${state.goals.join(", ")}`,
     `Features: ${state.features.join(", ")}`,
     `Style: ${state.style}`,
-    `Investment comfort: ${state.budget}`,
-    `Timing: ${state.timing}`,
     state.notes ? `Notes: ${state.notes}` : "",
   ]
     .filter(Boolean)
@@ -357,36 +326,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     };
   }, [photoUrl]);
 
-  const selectedAreas = areas.filter((area) =>
-    state.area.includes(area.value),
-  );
-
-  const planningRange = useMemo(() => {
-    if (!state.features.length || !selectedAreas.length) {
-      return null;
-    }
-
-    const selected = features.filter((feature) =>
-      state.features.includes(feature.value),
-    );
-    const subtotalLow = selected.reduce((sum, item) => sum + item.low, 0);
-    const subtotalHigh = selected.reduce((sum, item) => sum + item.high, 0);
-    const multiplier = Math.max(...selectedAreas.map((area) => area.multiplier));
-    const connectedProjectEfficiency = selected.length > 2 ? 0.88 : 1;
-    const low = Math.round(
-      (subtotalLow * multiplier * connectedProjectEfficiency) / 1000,
-    ) * 1000;
-    const high = Math.round(
-      (subtotalHigh * multiplier * Math.max(0.95, connectedProjectEfficiency)) /
-        1000,
-    ) * 1000;
-
-    return {
-      low: Math.max(5000, low),
-      high: Math.max(9000, high),
-    };
-  }, [selectedAreas, state.features]);
-
   const brief = useMemo(() => buildBrief(state), [state]);
 
   function updateState<K extends keyof PlannerState>(
@@ -401,8 +340,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     if (step === 0) return Boolean(state.city && state.area.length);
     if (step === 1) return Boolean(state.goals.length && state.features.length);
     if (step === 2) return Boolean(state.style);
-    if (step === 3) return Boolean(state.budget && state.timing);
-    if (step === 4) return Boolean(photo);
+    if (step === 3) return Boolean(photo);
     return true;
   }
 
@@ -451,9 +389,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       body: JSON.stringify({
         ...contact,
         ...state,
-        estimatedRange: planningRange
-          ? `${formatCurrency(planningRange.low)}–${formatCurrency(planningRange.high)}`
-          : "",
         photoName: photo?.name ?? "",
       }),
     });
@@ -576,7 +511,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       service: "Landscape design + installation",
       project: `${state.area.join(", ")} · ${state.goals.join(", ")}`,
       style: state.style,
-      care: state.budget,
       notes: brief,
     });
     return `/contact/?${params.toString()}`;
@@ -802,71 +736,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
             <div className="planner-step-heading">
               <span>04</span>
               <div>
-                <p className="eyebrow">Make the scope useful</p>
-                <h2>What investment feels comfortable?</h2>
-                <p>
-                  An honest range helps Landmark recommend the right first
-                  phase instead of designing past the number that feels right.
-                </p>
-              </div>
-            </div>
-
-            <fieldset className="planner-fieldset">
-              <legend>Your investment comfort</legend>
-              <div className="planner-option-grid budget-grid">
-                {budgets.map((budget) => (
-                  <label
-                    className={state.budget === budget.value ? "is-selected" : ""}
-                    key={budget.value}
-                  >
-                    <input
-                      type="radio"
-                      name="budget"
-                      value={budget.value}
-                      checked={state.budget === budget.value}
-                      onChange={() => updateState("budget", budget.value)}
-                    />
-                    <span>
-                      <strong>{budget.label}</strong>
-                      <small>{budget.note}</small>
-                    </span>
-                    <i>✓</i>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-
-            <fieldset className="planner-fieldset">
-              <legend>When would you like to move?</legend>
-              <div className="planner-pill-grid">
-                {timingOptions.map((timing) => (
-                  <label
-                    className={
-                      state.timing === timing.value ? "is-selected" : ""
-                    }
-                    key={timing.value}
-                  >
-                    <input
-                      type="radio"
-                      name="timing"
-                      value={timing.value}
-                      checked={state.timing === timing.value}
-                      onChange={() => updateState("timing", timing.value)}
-                    />
-                    <span>{timing.value}</span>
-                    <i>✓</i>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-          </div>
-        )}
-
-        {currentStep === 4 && (
-          <div className="planner-step">
-            <div className="planner-step-heading">
-              <span>05</span>
-              <div>
                 <p className="eyebrow">See my yard reimagined</p>
                 <h2>Show us the view you want to change.</h2>
                 <p>
@@ -935,10 +804,10 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
           </div>
         )}
 
-        {currentStep === 5 && (
+        {currentStep === 4 && (
           <div className="planner-step planner-result-step">
             <div className="planner-step-heading">
-              <span>06</span>
+              <span>05</span>
               <div>
                 <p className="eyebrow">Your Landmark starting point</p>
                 <h2>Your project already has a clearer direction.</h2>
@@ -972,14 +841,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   <div>
                     <dt>Visual direction</dt>
                     <dd>{state.style}</dd>
-                  </div>
-                  <div>
-                    <dt>Investment comfort</dt>
-                    <dd>{state.budget}</dd>
-                  </div>
-                  <div>
-                    <dt>Timing</dt>
-                    <dd>{state.timing}</dd>
                   </div>
                 </dl>
               </div>
@@ -1177,7 +1038,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
           )}
           {currentStep < steps.length - 1 && (
             <button className="button" type="button" onClick={goNext}>
-              {currentStep === 4 ? "Build my result" : "Continue"} <span>→</span>
+              {currentStep === 3 ? "Build my result" : "Continue"} <span>→</span>
             </button>
           )}
         </div>
