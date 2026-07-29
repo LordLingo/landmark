@@ -794,21 +794,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
               </div>
             </div>
 
-            {planningRange && (
-              <div className="planning-range">
-                <span>Early planning range from your selected scope</span>
-                <strong>
-                  {formatCurrency(planningRange.low)}–
-                  {formatCurrency(planningRange.high)}
-                </strong>
-                <p>
-                  This is an educational range, not a Landmark quote. Property
-                  measurements, access, soil, drainage, materials, quantities
-                  and final design determine actual pricing.
-                </p>
-              </div>
-            )}
-
             <fieldset className="planner-fieldset">
               <legend>Your investment comfort</legend>
               <div className="planner-option-grid budget-grid">
@@ -980,16 +965,6 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                     <dd>{state.timing}</dd>
                   </div>
                 </dl>
-                {planningRange && (
-                  <div className="yard-brief-range">
-                    <span>Early planning range</span>
-                    <strong>
-                      {formatCurrency(planningRange.low)}–
-                      {formatCurrency(planningRange.high)}
-                    </strong>
-                    <small>Educational range · not a quote</small>
-                  </div>
-                )}
               </div>
 
               <div className="concept-card">
