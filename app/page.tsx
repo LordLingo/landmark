@@ -177,8 +177,8 @@ export default function Home() {
     <main>
       <SiteNavigation
         variant="home"
-        contactHref="/contact/"
-        actionLabel="Start your plan"
+        contactHref="/plan-my-yard/"
+        actionLabel="Plan my yard"
       />
 
       <section className="hero" id="top">
@@ -199,11 +199,11 @@ export default function Home() {
             you want to live—beautiful on day one, easier every day after.
           </p>
           <div className="hero-buttons">
-            <a className="button" href="#transformation">
-              See what your yard could become <span>→</span>
-            </a>
-            <a className="text-link" href="#yard-plan">
-              Tell us what you&apos;re imagining <span>→</span>
+            <Link className="button" href="/plan-my-yard/">
+              Plan my yard <span>✦</span>
+            </Link>
+            <a className="text-link" href="#transformation">
+              See a transformation <span>→</span>
             </a>
           </div>
           <div className="hero-proof" aria-label="Service areas">
@@ -483,6 +483,58 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="yard-tools-callout">
+        <div className="yard-tools-heading">
+          <div>
+            <p className="eyebrow">A smarter way to begin</p>
+            <h2>Don&apos;t just describe the yard. Show us where it could go.</h2>
+          </div>
+          <p>
+            Build a useful project brief, explore an early investment range and
+            turn a photo from your phone into a visual direction.
+          </p>
+        </div>
+        <div className="yard-tool-cards">
+          <Link className="yard-tool-card yard-planner-card" href="/plan-my-yard/">
+            <div>
+              <span>01 · Guided project builder</span>
+              <h3>Plan My Yard</h3>
+              <p>
+                Choose goals, features, style, investment comfort and timing in
+                one easy mobile experience.
+              </p>
+              <strong>
+                Start my two-minute plan <i>→</i>
+              </strong>
+            </div>
+            <img
+              src="/images/stone-walkway-project.webp"
+              alt="A finished North Texas stone walkway and landscape"
+            />
+          </Link>
+          <Link
+            className="yard-tool-card yard-visualizer-card"
+            href="/plan-my-yard/#yard-planner"
+          >
+            <div>
+              <span>02 · Built from your photo</span>
+              <h3>See My Yard Reimagined</h3>
+              <p>
+                Upload the view you want to change and create a personalized AI
+                inspiration concept.
+              </p>
+              <strong>
+                Reimagine my yard <i>✦</i>
+              </strong>
+            </div>
+            <img
+              src="/images/texas-home-after-stone.webp"
+              alt="A North Texas front yard reimagined with stone and layered planting"
+            />
+          </Link>
+        </div>
+      </section>
+
       <section className="evening-section">
         <img
           src="/images/uplighting-home.webp"
@@ -496,9 +548,9 @@ export default function Home() {
             Thoughtful uplighting makes arrivals feel warmer, walkways feel
             safer and the landscape feel alive long after dinner.
           </p>
-          <a className="button button-light" href="#yard-plan">
+          <Link className="button button-light" href="/plan-my-yard/">
             Plan an evening look <span>→</span>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -573,9 +625,17 @@ export default function Home() {
         </div>
         <div className="water-callout-action">
           <span>City rules + official links</span>
-          <Link className="button button-light" href="/water-restrictions/">
-            Local watering guide <span>→</span>
-          </Link>
+          <div className="water-callout-links">
+            <Link
+              className="button button-light"
+              href="/water-restrictions/#watering-day-checker"
+            >
+              Check my watering day <span>→</span>
+            </Link>
+            <Link href="/water-restrictions/#yard-health-check">
+              Why is my yard struggling? <span>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 

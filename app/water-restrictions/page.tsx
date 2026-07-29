@@ -10,6 +10,7 @@ import {
   WaterDrop,
   WaterResourceFooter,
 } from "./water-resource-shared";
+import WaterTools from "./water-tools";
 
 export const metadata: Metadata = {
   title: "North Texas Watering Restrictions & Landscape Care Guide",
@@ -144,6 +145,8 @@ export default function WaterRestrictionsPage() {
           official city source is always the final authority.
         </p>
       </section>
+
+      <WaterTools />
 
       <section className="city-guide-section" id="city-guides">
         <div className="water-section-heading">

@@ -172,6 +172,7 @@ export default function SiteNavigation({
           </div>
           <a href={transformationHref}>Our work</a>
           <a href={processHref}>How it works</a>
+          <Link href="/plan-my-yard/">Plan my yard</Link>
           <Link href="/water-restrictions/">Water guide</Link>
           <a href="/contact/">Contact</a>
         </nav>
@@ -239,6 +240,9 @@ export default function SiteNavigation({
         </div>
 
         <div className="mobile-secondary-links">
+          <Link href="/plan-my-yard/" onClick={closeMenus}>
+            Plan my yard
+          </Link>
           <a href={transformationHref} onClick={closeMenus}>
             See our work
           </a>

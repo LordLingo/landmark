@@ -28,6 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    {
+      url: absoluteUrl("/plan-my-yard/"),
+      changeFrequency: "monthly",
+      priority: 0.96,
+    },
     ...prioritySeoPages.map((page) => ({
       url: absoluteUrl(`/${page.slug}/`),
       changeFrequency: "monthly" as const,
