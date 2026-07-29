@@ -42,9 +42,6 @@ export async function POST(request: NextRequest) {
       ? body.features.map((value) => text(value, 100)).join(", ")
       : "",
     "Visual style": text(body.style, 100),
-    "Investment comfort": text(body.budget, 100),
-    "Early planning range": text(body.estimatedRange, 100),
-    Timing: text(body.timing, 100),
     "Preferred visit date": text(body.preferredDate, 40),
     "Preferred time": text(body.preferredTime, 40),
     Notes: text(body.notes, 1500),
