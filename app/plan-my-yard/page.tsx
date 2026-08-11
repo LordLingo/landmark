@@ -8,14 +8,14 @@ import YardPlanner from "./yard-planner";
 export const metadata: Metadata = {
   title: "Plan My Yard | North Texas Landscape Planner & AI Visualizer",
   description:
-    "Build a personalized North Texas landscaping brief, explore an early investment range, upload yard photos and see your yard reimagined.",
+    "Build a personalized North Texas landscaping brief, upload a yard photo and see your yard reimagined with native plants.",
   alternates: {
     canonical: "/plan-my-yard/",
   },
   openGraph: {
     title: "Plan My Yard | Landmark Landscapes",
     description:
-      "Get landscape ideas, an early planning range and an AI inspiration concept built around your North Texas yard.",
+      "Get landscape ideas and an AI inspiration concept built around your North Texas yard and native plants.",
     url: "/plan-my-yard/",
     type: "website",
     images: [
@@ -90,7 +90,7 @@ export default function PlanMyYardPage() {
             <span>›</span>
             <span>Plan my yard</span>
           </div>
-          <p className="eyebrow">Ideas + budget + your own yard photo</p>
+          <p className="eyebrow">Ideas + native plants + your own yard photo</p>
           <h1>
             Your yard has more
             <em> possibility</em> than you can see today.
@@ -98,8 +98,7 @@ export default function PlanMyYardPage() {
           <p>
             Tell us what you want, choose the look that feels like home and
             upload a photo. In a few minutes, you&apos;ll have a useful project
-            brief, an early planning range and the option to see your yard
-            reimagined.
+            brief and the option to see your yard reimagined.
           </p>
           <div className="planner-hero-actions">
             <a className="button" href="#yard-planner">
@@ -131,7 +130,7 @@ export default function PlanMyYardPage() {
 
       <section className="planner-promise">
         <span>01 · A useful yard brief</span>
-        <span>02 · Early investment guidance</span>
+        <span>02 · North Texas native plants</span>
         <span>03 · A concept made from your photo</span>
         <span>04 · A better first conversation</span>
       </section>
