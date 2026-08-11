@@ -28,10 +28,9 @@ export async function POST(request: NextRequest) {
   }
 
   const payload = {
-    _subject: `Plan My Yard lead: ${text(body.city, 80)} · ${list(body.area, 100)}`,
-    _template: "table",
+    subject: `Plan My Yard lead: ${text(body.city, 80)} · ${list(body.area, 100)}`,
     Name: name,
-    Email: email,
+    email,
     Phone: phone,
     City: text(body.city, 80),
     "Project area": list(body.area, 100),
@@ -51,7 +50,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const response = await fetch(
-      "https://formsubmit.co/ajax/landmarklandscapesllc@outlook.com",
+      "https://formspree.io/f/mljrbnbk",
       {
         method: "POST",
         headers: {
