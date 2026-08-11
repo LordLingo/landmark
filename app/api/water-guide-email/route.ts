@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const response = await fetch(
-      "https://formsubmit.co/ajax/landmarklandscapesllc@outlook.com",
+      "https://formspree.io/f/mgawkyyv",
       {
         method: "POST",
         headers: {
@@ -41,11 +41,9 @@ export async function POST(request: NextRequest) {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          _subject: `Watering schedule request: ${city}`,
-          _template: "table",
-          _autoresponse: autoResponse,
+          subject: `Your ${city} watering schedule from Landmark Landscapes`,
           email,
-          Email: email,
+          message: autoResponse,
           City: city,
           "Current schedule": schedule,
           "Restricted hours": timeRule,
