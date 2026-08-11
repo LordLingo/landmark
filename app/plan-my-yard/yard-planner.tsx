@@ -102,7 +102,7 @@ const features: Feature[] = [
   {
     value: "Layered planting",
     label: "Trees, grasses + flowers",
-    note: "Texas-ready layers with seasonal interest",
+    note: "North Texas native layers with seasonal interest",
     low: 5500,
     high: 13000,
   },
@@ -227,6 +227,7 @@ function buildBrief(state: PlannerState) {
     `Goals: ${state.goals.join(", ")}`,
     `Features: ${state.features.join(", ")}`,
     `Style: ${state.style}`,
+    "Plant standard: North Texas natives only",
     state.notes ? `Notes: ${state.notes}` : "",
   ]
     .filter(Boolean)
@@ -697,8 +698,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                 <p className="eyebrow">Choose a visual direction</p>
                 <h2>What feels most like home?</h2>
                 <p>
-                  The style guides the AI inspiration concept and gives
-                  Landmark a much better starting point.
+                  The style guides the AI inspiration concept. Every direction
+                  uses a curated North Texas native plant palette; the style
+                  changes the composition, not the plant standard.
                 </p>
               </div>
             </div>
@@ -841,6 +843,10 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   <div>
                     <dt>Visual direction</dt>
                     <dd>{state.style}</dd>
+                  </div>
+                  <div>
+                    <dt>Plant standard</dt>
+                    <dd>North Texas natives only</dd>
                   </div>
                 </dl>
               </div>

@@ -8,6 +8,15 @@ const requestWindow = 6 * 60 * 60 * 1000;
 const requestLimit = 3;
 const requestsByVisitor = new Map<string, number[]>();
 
+const northTexasNativePlantPalette = [
+  "Canopy trees: cedar elm (Ulmus crassifolia), bur oak (Quercus macrocarpa), chinkapin oak (Quercus muehlenbergii), escarpment live oak (Quercus fusiformis), Shumard oak (Quercus shumardii), Texas red oak (Quercus buckleyi), and pecan (Carya illinoinensis).",
+  "Small trees: Eve's necklace (Styphnolobium affine), Mexican plum (Prunus mexicana), eastern or Texas redbud (Cercis canadensis), and rusty blackhaw viburnum (Viburnum rufidulum).",
+  "Shrubs: American beautyberry (Callicarpa americana) and coralberry (Symphoricarpos orbiculatus).",
+  "Flowering perennials: black-eyed Susan (Rudbeckia hirta), butterfly milkweed (Asclepias tuberosa), fall aster (Symphyotrichum oblongifolium), four-nerve daisy (Tetraneuris scaposa), Indian blanket (Gaillardia pulchella), blue mistflower (Conoclinium coelestinum), mealy blue sage (Salvia farinacea), beebalm (Monarda fistulosa), Engelmann's daisy (Engelmannia peristenia), frostweed (Verbesina virginica), Mexican hat (Ratibida columnifera), prairie penstemon (Penstemon cobaea), prairie verbena (Glandularia bipinnatifida), rattlesnake master (Eryngium yuccifolium), and Texas blazing star (Liatris punctata).",
+  "Grasses and sedges: little bluestem (Schizachyrium scoparium), buffalograss (Bouteloua dactyloides), Indiangrass (Sorghastrum nutans), eastern gamagrass (Tripsacum dactyloides), Texas bluegrass (Poa arachnifera), sideoats grama (Bouteloua curtipendula), inland sea oats (Chasmanthium latifolium), and switchgrass (Panicum virgatum).",
+  "Groundcovers and vines: frogfruit (Phyla nodiflora), golden groundsel (Packera obovata), horseherb (Calyptocarpus vialis), coral honeysuckle (Lonicera sempervirens), and Virginia creeper (Parthenocissus quinquefolia).",
+].join("\n");
+
 function clean(value: FormDataEntryValue | null, maxLength = 500) {
   return typeof value === "string"
     ? value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, maxLength)
@@ -91,7 +100,11 @@ export async function POST(request: NextRequest) {
     `Homeowner priorities: ${goals || "a more beautiful, practical yard"}.`,
     `Requested features: ${features || "layered planting and a finished landscape"}.`,
     `Visual direction: ${style || "refined North Texas residential landscape"}.`,
-    "Use plant forms and materials appropriate for North Texas: regionally sensible shade trees, ornamental grasses, flowering perennials, evergreen structure, mulch or stone, and restrained water-conscious planting where compatible with the request.",
+    "PLANT STANDARD: Every newly added plant must be native to the Dallas-Fort Worth area's Blackland Prairie or Cross Timbers ecoregions. This applies to every visual style, including traditional, modern, colorful, and resort-inspired concepts.",
+    "Use only species from this approved North Texas native palette:",
+    northTexasNativePlantPalette,
+    "Choose from the palette according to the visible sun exposure, available mature space, drainage clues, and requested function. Use natural groupings and believable mature sizes. If the requested look normally relies on a non-native ornamental, reproduce its color, texture, or structure with the closest plant from the approved palette instead.",
+    "Do not introduce crape myrtle, Bradford pear, boxwood, privet or Ligustrum, Nandina, loropetalum, Japanese holly, Japanese barberry, Japanese honeysuckle, Asian jasmine, liriope or monkey grass, pampas grass, Mexican feathergrass, palms, elephant ears, or other non-native ornamentals.",
     "Make the transformation substantial but buildable, upscale, cohesive, well maintained, and believable for a professional residential landscape installation.",
     "Do not add a swimming pool. Do not add text, logos, labels, people, vehicles, fantasy architecture, impossible grading, or plants blocking doors and windows.",
     "Return one wide landscape-oriented concept image.",
@@ -101,7 +114,6 @@ export async function POST(request: NextRequest) {
   openAiForm.append("model", "gpt-image-2");
   openAiForm.append("image", image, image.name || "yard.jpg");
   openAiForm.append("prompt", prompt);
-  openAiForm.append("input_fidelity", "high");
   openAiForm.append("quality", "medium");
   openAiForm.append("size", "1536x1024");
   openAiForm.append("output_format", "webp");
