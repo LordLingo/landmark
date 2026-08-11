@@ -4,12 +4,9 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { serviceList } from "../service-data";
 
 const formEndpoint =
-  "https://formsubmit.co/landmarklandscapesllc@outlook.com";
+  "https://formspree.io/f/xppadrdq";
 
 export default function ContactForm() {
-  const [nextUrl, setNextUrl] = useState(
-    "https://landmarklandscapestx.com/thank-you/",
-  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [brief, setBrief] = useState({
@@ -22,7 +19,6 @@ export default function ContactForm() {
 
   useEffect(() => {
     const updateFromUrl = window.setTimeout(() => {
-      setNextUrl(`${window.location.origin}/thank-you/`);
       const params = new URLSearchParams(window.location.search);
       setBrief({
         service: params.get("service") ?? "",
@@ -41,18 +37,38 @@ export default function ContactForm() {
     [brief],
   );
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     const form = event.currentTarget;
     setFormError("");
 
     if (!form.checkValidity()) {
-      event.preventDefault();
       form.reportValidity();
       setFormError("Please complete the required contact information.");
       return;
     }
 
     setIsSubmitting(true);
+
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Contact form returned ${response.status}`);
+      }
+
+      window.location.assign("/thank-you/");
+    } catch (error) {
+      console.error("Contact form submission failed", error);
+      setFormError(
+        "We could not send your request. Please try again or call 469-492-8450.",
+      );
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -91,12 +107,18 @@ export default function ContactForm() {
       >
         <input
           type="hidden"
-          name="_subject"
+          name="subject"
           value="New estimate request from the Landmark website"
         />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value={nextUrl} />
-        <input type="text" name="_honey" className="form-honey" tabIndex={-1} />
+        <input type="hidden" name="Source" value="Landmark contact form" />
+        <input
+          type="text"
+          name="_gotcha"
+          className="form-honey"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
         <input type="hidden" name="Yard brief priority" value={brief.project} />
         <input type="hidden" name="Preferred style" value={brief.style} />
         <input type="hidden" name="Care preference" value={brief.care} />
@@ -130,7 +152,7 @@ export default function ContactForm() {
           </label>
           <label>
             <span>Email *</span>
-            <input name="Email" type="email" autoComplete="email" required />
+            <input name="email" type="email" autoComplete="email" required />
           </label>
           <label>
             <span>Phone *</span>
