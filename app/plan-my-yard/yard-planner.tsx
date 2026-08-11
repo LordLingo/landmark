@@ -367,11 +367,13 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
 
     if (!["image/jpeg", "image/png", "image/webp"].includes(nextPhoto.type)) {
       setFieldError("Please upload a JPG, PNG or WebP yard photo.");
+      event.target.value = "";
       return;
     }
 
     if (nextPhoto.size > 15 * 1024 * 1024) {
       setFieldError("Please choose an image smaller than 15 MB.");
+      event.target.value = "";
       return;
     }
 
@@ -381,6 +383,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     setGeneratedImage("");
     setStatusMessage("");
     setFieldError("");
+    event.target.value = "";
   }
 
   async function deliverLead() {
@@ -748,31 +751,63 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             <div className="photo-step-grid">
-              <label
+              <div
                 className={`yard-photo-upload${photoUrl ? " has-photo" : ""}`}
               >
-                <input
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  capture="environment"
-                  onChange={handlePhoto}
-                />
                 {photoUrl ? (
                   <>
                     <img src={photoUrl} alt="Your uploaded yard" />
-                    <span>
-                      <strong>Use a different photo</strong>
+                    <div className="photo-selected-controls">
+                      <strong>Photo ready</strong>
                       <small>{photo?.name}</small>
-                    </span>
+                      <div className="photo-choice-actions">
+                        <label className="photo-choice-button">
+                          <input
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            capture="environment"
+                            onChange={handlePhoto}
+                          />
+                          <span>Take a new photo</span>
+                        </label>
+                        <label className="photo-choice-button is-secondary">
+                          <input
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            onChange={handlePhoto}
+                          />
+                          <span>Upload a different photo</span>
+                        </label>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <>
                     <i aria-hidden="true">＋</i>
-                    <strong>Take or upload a yard photo</strong>
+                    <strong>Add a yard photo</strong>
                     <span>JPG, PNG or WebP · up to 15 MB</span>
+                    <div className="photo-choice-actions">
+                      <label className="photo-choice-button">
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          capture="environment"
+                          onChange={handlePhoto}
+                        />
+                        <span>Take a photo</span>
+                      </label>
+                      <label className="photo-choice-button is-secondary">
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          onChange={handlePhoto}
+                        />
+                        <span>Upload from device</span>
+                      </label>
+                    </div>
                   </>
                 )}
-              </label>
+              </div>
 
               <div className="photo-guidance">
                 <p className="eyebrow">For a stronger concept</p>
