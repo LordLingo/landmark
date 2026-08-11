@@ -5843,13 +5843,13 @@ footer {
   place-items: center;
   align-content: center;
   min-height: 500px;
+  padding: 32px;
   overflow: hidden;
   border: 1px dashed rgba(23, 54, 44, 0.35);
   background:
     radial-gradient(circle at center, rgba(102, 132, 102, 0.15), transparent 45%),
     var(--sage-light);
   text-align: center;
-  cursor: pointer;
 }
 
 .yard-photo-upload > i {
@@ -5878,8 +5878,54 @@ footer {
   font-size: 9px;
 }
 
+.photo-choice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.photo-choice-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--forest);
+  border-radius: 999px;
+  background: var(--forest);
+  color: #fffdf8;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.photo-choice-button:hover {
+  transform: translateY(-1px);
+}
+
+.photo-choice-button.is-secondary {
+  background: rgba(255, 253, 248, 0.9);
+  color: var(--forest);
+}
+
+.photo-choice-button:focus-within {
+  outline: 3px solid rgba(239, 197, 116, 0.58);
+  outline-offset: 3px;
+}
+
 .yard-photo-upload.has-photo {
   display: block;
+  padding: 0;
   border-style: solid;
 }
 
@@ -5889,7 +5935,7 @@ footer {
   object-fit: cover;
 }
 
-.yard-photo-upload.has-photo > span {
+.yard-photo-upload.has-photo > .photo-selected-controls {
   position: absolute;
   right: 18px;
   bottom: 18px;
@@ -5904,16 +5950,27 @@ footer {
   backdrop-filter: blur(10px);
 }
 
-.yard-photo-upload.has-photo > span strong {
+.yard-photo-upload.has-photo > .photo-selected-controls strong {
   font-size: 11px;
 }
 
-.yard-photo-upload.has-photo > span small {
+.yard-photo-upload.has-photo > .photo-selected-controls small {
   overflow: hidden;
   color: rgba(23, 54, 44, 0.52);
   font-size: 9px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.photo-selected-controls .photo-choice-actions {
+  justify-content: flex-start;
+  margin-top: 11px;
+}
+
+.photo-selected-controls .photo-choice-button {
+  min-height: 40px;
+  padding: 0 15px;
+  font-size: 9px;
 }
 
 .photo-guidance {
@@ -7051,8 +7108,16 @@ footer {
 
   .yard-photo-upload,
   .yard-photo-upload.has-photo > img {
-    min-height: 330px;
-    height: 330px;
+    min-height: 390px;
+    height: 390px;
+  }
+
+  .photo-choice-actions {
+    flex-direction: column;
+  }
+
+  .photo-choice-button {
+    width: 100%;
   }
 
   .yard-brief-card {
