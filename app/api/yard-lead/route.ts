@@ -41,6 +41,7 @@ export async function POST(request: NextRequest) {
       ? body.features.map((value) => text(value, 100)).join(", ")
       : "",
     "Visual style": text(body.style, 100),
+    "Plant standard": "North Texas natives only",
     "Preferred visit date": text(body.preferredDate, 40),
     "Preferred time": text(body.preferredTime, 40),
     Notes: text(body.notes, 1500),
