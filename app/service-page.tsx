@@ -307,7 +307,7 @@ export default function ServicePage({
             <a href={`/${item.slug}`} key={item.slug}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{item.navLabel}</h3>
-              <p>{item.metaDescription}</p>
+              <p>{item.relatedDescription ?? item.metaDescription}</p>
               <i aria-hidden="true">→</i>
             </a>
           ))}

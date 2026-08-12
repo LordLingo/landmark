@@ -8,6 +8,7 @@ import SiteImage from "./site-image";
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
 const locationLinks = [
+  { slug: "north-dallas-landscaping", navLabel: "Landscaping in North Dallas" },
   { slug: "prosper-tx", navLabel: "Landscaping in Prosper, TX" },
   { slug: "frisco-tx", navLabel: "Landscaping in Frisco, TX" },
   { slug: "mckinney-tx", navLabel: "Landscaping in McKinney, TX" },

@@ -19,6 +19,7 @@ export type ServicePageData = {
   intro: string;
   metaTitle: string;
   metaDescription: string;
+  relatedDescription?: string;
   heroImage: string;
   heroAlt: string;
   detailImage: string;
@@ -55,6 +56,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Front Yard Landscaping Prosper, TX",
     metaDescription:
       "Front-yard landscaping in Prosper, TX. Upgrade builder-grade beds with layered planting, stone borders, walkways and a cohesive curb-appeal design.",
+    relatedDescription:
+      "Transform builder-grade or dated front yards with layered planting, stone borders, walkways and cohesive curb appeal across North Dallas.",
     heroImage: "/images/front-yard-project.webp",
     heroAlt:
       "Completed Landmark front-yard landscaping project at a brick and stone North Texas home",
@@ -175,6 +178,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Flower Bed Installation Prosper, TX",
     metaDescription:
       "Flower-bed design and installation in Prosper, TX with shrubs, seasonal color, stone borders and low-maintenance North Texas planting options.",
+    relatedDescription:
+      "Add layered shrubs, ornamental grasses, perennials and seasonal color selected for North Dallas homes and North Texas conditions.",
     heroImage: "/images/flower-bed-stacked-stone.webp",
     heroAlt:
       "Colorful Landmark planting bed with a stacked natural stone border",
@@ -295,6 +300,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Yard Drainage Prosper, TX",
     metaDescription:
       "Yard drainage in Prosper, TX for standing water, soggy side yards and washout. Explore French drains, surface drains, downspout routing and grading.",
+    relatedDescription:
+      "Solve standing water, soggy side yards and runoff with grading, French drains, surface drains and downspout routing across North Dallas.",
     heroImage: "/images/drainage-rock-bed.webp",
     heroAlt:
       "Landmark side-yard landscape using decorative rock and planting around a North Texas home",
@@ -416,6 +423,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Stone Borders & Walkways Prosper, TX",
     metaDescription:
       "Stone flower-bed borders, flagstone walkways and garden paths in Prosper, TX. Create cleaner beds and more beautiful transitions around your home.",
+    relatedDescription:
+      "Give beds and entries a finished edge with natural stone borders, flagstone walkways and garden paths designed for North Dallas homes.",
     heroImage: "/images/stone-walkway-project.webp",
     heroAlt:
       "Landmark patio and walkway project at a North Texas brick home",
@@ -536,6 +545,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Landscape Lighting Prosper, TX",
     metaDescription:
       "Residential landscape lighting in Prosper, TX including house uplighting, walkway lighting and tree lighting designed for a warm, elegant nighttime look.",
+    relatedDescription:
+      "Add warm architectural, tree and walkway lighting that gives North Dallas homes depth, visibility and curb appeal after sunset.",
     heroImage: "/images/lighting-warm-home.webp",
     heroAlt:
       "Warm landscape uplighting installed at a North Texas brick home",
@@ -656,6 +667,8 @@ export const services: Record<string, ServicePageData> = {
     metaTitle: "Sprinkler Repair Prosper, TX",
     metaDescription:
       "Sprinkler repair troubleshooting in Prosper, TX for leaks, broken heads, dry zones, controller problems and uneven lawn coverage. Check service availability.",
+    relatedDescription:
+      "Troubleshoot leaks, broken heads, controller issues, dry zones and uneven irrigation coverage for homeowners across North Dallas.",
     heroImage: "/images/irrigation-turf-project.webp",
     heroAlt:
       "Completed Landmark backyard with healthy green turf and landscape beds",

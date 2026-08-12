@@ -1,5 +1,5 @@
 import type { ServicePageData } from "./service-data";
-import { prosperPage } from "./seo-page-data";
+import { northDallasPage, prosperPage } from "./seo-page-data";
 
 export const friscoPage: ServicePageData = {
   slug: "frisco-tx",
@@ -514,6 +514,7 @@ export const theColonyPage: ServicePageData = {
 };
 
 export const locationPageList = [
+  northDallasPage,
   prosperPage,
   friscoPage,
   mckinneyPage,

@@ -12,6 +12,7 @@ export default function LandscapeDesignPage() {
       faqTitle="Questions homeowners ask before a landscape design project."
       relatedEyebrow="Designed as one landscape"
       relatedTitle="Services that can be planned together."
+      projectCaption="North Dallas landscape design"
     />
   );
 }

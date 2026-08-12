@@ -14,7 +14,12 @@ const prioritySeoPages = [
   },
   ...locationPageList.map((page) => ({
     slug: page.slug,
-    priority: page.slug === "prosper-tx" ? 0.95 : 0.92,
+    priority:
+      page.slug === "north-dallas-landscaping"
+        ? 0.96
+        : page.slug === "prosper-tx"
+          ? 0.95
+          : 0.92,
   })),
 ];
 

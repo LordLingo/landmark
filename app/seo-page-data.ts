@@ -4,13 +4,13 @@ export const landscapeDesignPage: ServicePageData = {
   slug: "landscape-design",
   navLabel: "Landscape design + installation",
   shortLabel: "Landscape design",
-  eyebrow: "Residential landscape design · Prosper + North Dallas",
-  title: "A complete landscape starts with one clear direction.",
+  eyebrow: "Residential landscape design · North Dallas",
+  title: "North Dallas landscape design starts with one clear direction.",
   intro:
-    "Landmark plans and installs cohesive residential landscapes for North Texas homes—bringing planting, stone, lighting, drainage and irrigation decisions together before the work begins.",
-  metaTitle: "Landscape Design Prosper, TX",
+    "Landmark plans and installs cohesive residential landscapes for North Dallas homes—bringing planting, stone, lighting, drainage and irrigation decisions together before the work begins.",
+  metaTitle: "Landscape Design North Dallas, TX",
   metaDescription:
-    "Landscape design and installation in Prosper, TX. Plan planting, stone, lighting, drainage and irrigation as one cohesive outdoor transformation.",
+    "Residential landscape design and installation across North Dallas. Coordinate planting, stone, lighting, drainage and irrigation in one cohesive plan.",
   heroImage: "/images/texas-home-after-stone.webp",
   heroAlt:
     "Completed North Texas front-yard landscape with layered planting and natural stone around a mature tree",
@@ -55,7 +55,7 @@ export const landscapeDesignPage: ServicePageData = {
     "A clear scope that can be completed together or organized in phases",
   ],
   localSection: {
-    eyebrow: "Landscape design in Prosper + North Dallas",
+    eyebrow: "Landscape design in North Dallas",
     title: "One plan can prevent years of disconnected improvements.",
     intro:
       "A residential landscape design is most valuable when the project includes several moving parts. Landmark studies the home, lot, water movement and daily use together so planting, stone, lighting, drainage and irrigation support the same finished direction.",
@@ -118,14 +118,143 @@ export const landscapeDesignPage: ServicePageData = {
     {
       question: "Where does Landmark provide landscape design and installation?",
       answer:
-        "Landmark serves homeowners in Prosper and nearby North Texas communities including Celina, Frisco, McKinney and The Colony.",
+        "Landmark provides landscape design and installation across North Dallas, including Prosper, Celina, Frisco, McKinney and The Colony.",
     },
   ],
   searchTerms: [
     "Landscape design",
     "Landscape installation",
     "New-home landscaping",
-    "Prosper + North Dallas",
+    "North Dallas, TX",
+  ],
+};
+
+export const northDallasPage: ServicePageData = {
+  slug: "north-dallas-landscaping",
+  navLabel: "North Dallas landscaping",
+  shortLabel: "North Dallas",
+  eyebrow: "Residential landscaping · North Dallas",
+  title: "A North Dallas landscape designed around the whole home.",
+  intro:
+    "Landmark is a Prosper-based residential landscaping company serving North Dallas homeowners with coordinated design, planting, stonework, drainage solutions, landscape lighting and irrigation support.",
+  metaTitle: "North Dallas Landscaping Company",
+  metaDescription:
+    "Residential landscaping across North Dallas, including Prosper, Frisco, McKinney, Celina and The Colony. Design, planting, stone, drainage and lighting.",
+  heroImage: "/images/texas-home-after-stone.webp",
+  heroAlt:
+    "Completed North Dallas residential landscape with layered planting and natural stone",
+  detailImage: "/images/stone-walkway-project.webp",
+  detailAlt:
+    "Finished North Dallas home landscape with a natural stone walkway and planting beds",
+  imagePosition: "center",
+  detailPosition: "center",
+  problemTitle:
+    "North Dallas yards need more than a collection of one-off fixes.",
+  problemCopy:
+    "Builder-basic planting, intense sun, clay soil, concentrated roof runoff and upgrades completed years apart can leave a property looking unfinished or difficult to use. Landmark looks at the complete home and lot first, then organizes the right combination of landscape design, planting, stone, drainage, irrigation and lighting.",
+  features: [
+    {
+      title: "Landscape design + installation",
+      copy:
+        "Create one clear direction for the property, then coordinate the approved planting, materials and supporting work needed to build it well.",
+    },
+    {
+      title: "Front yards + planting beds",
+      copy:
+        "Reshape thin or overgrown beds and add shrubs, grasses, perennials and seasonal color selected for the home, exposure and care level.",
+    },
+    {
+      title: "Drainage + irrigation support",
+      copy:
+        "Standing water, runoff, dry zones and coverage problems can be considered before visible landscape improvements are installed over them.",
+    },
+    {
+      title: "Natural stone + landscape lighting",
+      copy:
+        "Stone borders, walkways and warm nighttime lighting can give the property stronger structure, safer movement and a more finished arrival.",
+    },
+  ],
+  outcomeTitle: "One residential landscaping company for a connected result.",
+  outcomeCopy:
+    "The strongest North Dallas landscapes do not feel like a series of unrelated purchases. They connect the architecture, planting, pathways, water movement and evening view so the property feels intentional from the curb to the backyard.",
+  outcomePoints: [
+    "A complete landscape direction before disconnected work begins",
+    "Planting selected for North Texas exposure and mature scale",
+    "Drainage and irrigation considered before finish work",
+    "Stone and lighting coordinated with the home and landscape",
+  ],
+  localSection: {
+    eyebrow: "Landscaping across North Dallas",
+    title: "Local conditions change from lot to lot. The need for a complete plan does not.",
+    intro:
+      "Landmark serves homeowners in Prosper, Frisco, McKinney, Celina and The Colony. Each community has different architecture and lot patterns, but North Dallas landscapes share the need for heat-aware planting, realistic water planning and materials that belong with the home.",
+    items: [
+      {
+        title: "New homes + builder landscapes",
+        copy:
+          "Fast-growing communities often begin with shallow beds, young trees and limited variety. A coordinated redesign can add scale, structure and character while leaving room for the landscape to mature.",
+      },
+      {
+        title: "Clay soil + concentrated runoff",
+        copy:
+          "Slow-draining clay, narrow side yards and water from multiple rooflines can create standing water or washout. Those conditions should shape the plan before new turf, beds or paths are installed.",
+      },
+      {
+        title: "Heat-aware, lower-maintenance planting",
+        copy:
+          "Direct sun, reflected heat, watering limits and mature plant size all matter. Landmark builds a resilient palette around the property and the amount of care the homeowner realistically wants.",
+      },
+    ],
+  },
+  process: [
+    {
+      title: "Walk the North Dallas property",
+      copy:
+        "We start with what feels unfinished, where the yard is difficult to use and which existing plants or materials are worth keeping.",
+    },
+    {
+      title: "Define the connected scope",
+      copy:
+        "Landmark organizes design, planting, stone, drainage, irrigation and lighting into a practical recommendation instead of unrelated add-ons.",
+    },
+    {
+      title: "Install in the right sequence",
+      copy:
+        "Supporting work is addressed before finish work so the visible landscape has a stronger foundation and the completed property feels cohesive.",
+    },
+  ],
+  faqs: [
+    {
+      question: "What landscaping services does Landmark provide in North Dallas?",
+      answer:
+        "Landmark provides residential landscape design and installation, front-yard improvements, planting beds, natural stone borders and walkways, drainage solutions, landscape lighting and irrigation troubleshooting based on project scope and availability.",
+    },
+    {
+      question: "What North Dallas communities does Landmark serve?",
+      answer:
+        "Landmark serves homeowners in Prosper, Frisco, McKinney, Celina and The Colony, subject to project scope and scheduling.",
+    },
+    {
+      question: "Can Landmark improve a builder-grade landscape?",
+      answer:
+        "Yes. Useful existing plants and materials can remain while sparse beds, weak focal points and disconnected upgrades are redesigned around the home and lot.",
+    },
+    {
+      question: "Can drainage and landscaping be planned together?",
+      answer:
+        "Yes. Understanding standing water, roof runoff, grading and discharge options before installing new beds, turf or pathways can protect the larger landscape investment.",
+    },
+    {
+      question: "Can the planting plan be designed for lower maintenance?",
+      answer:
+        "Yes. Plant selection, spacing, irrigation, bed materials and seasonal color can be planned around North Texas conditions and the level of care that fits your household.",
+    },
+  ],
+  searchTerms: [
+    "North Dallas landscaping",
+    "Residential landscaping",
+    "Design + installation",
+    "Prosper · Frisco · McKinney",
   ],
 };
 
