@@ -2424,6 +2424,15 @@ footer {
   line-height: 1.72;
 }
 
+.service-local-intro {
+  background: var(--sage-light);
+}
+
+.service-local-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 0;
+}
+
 .service-outcome {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -3155,6 +3164,10 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .service-local-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .service-footer .footer-main {
     grid-template-columns: 0.85fr 1.15fr;
   }
@@ -3216,6 +3229,10 @@ footer {
 
   .service-feature-grid {
     margin: 0 22px 85px;
+  }
+
+  .service-local-grid {
+    grid-template-columns: 1fr;
   }
 
   .service-outcome {

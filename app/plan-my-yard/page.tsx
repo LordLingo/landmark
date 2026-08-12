@@ -2,21 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteNavigation from "../site-navigation";
 import { absoluteUrl } from "../site-url";
+import SiteImage from "../site-image";
 import { WaterResourceFooter } from "../water-restrictions/water-resource-shared";
 import YardPlanner from "./yard-planner";
 
 export const metadata: Metadata = {
-  title: "Plan My Yard | North Texas Landscape Planner & AI Visualizer",
+  title: {
+    absolute: "Plan My Yard: AI Landscape Visualizer | Landmark Landscapes",
+  },
   description:
     "Build a personalized North Texas landscaping brief, upload a yard photo and see your yard reimagined with native plants.",
   alternates: {
-    canonical: "/plan-my-yard/",
+    canonical: "/plan-my-yard",
   },
   openGraph: {
     title: "Plan My Yard | Landmark Landscapes",
     description:
       "Get landscape ideas and an AI inspiration concept built around your North Texas yard and native plants.",
-    url: "/plan-my-yard/",
+    url: "/plan-my-yard",
     type: "website",
     images: [
       {
@@ -25,10 +28,17 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plan My Yard: AI Landscape Visualizer | Landmark Landscapes",
+    description:
+      "Build a North Texas landscaping brief, upload a yard photo and explore a native-plant inspiration concept.",
+    images: ["/images/texas-home-after-stone.webp"],
+  },
 };
 
 export default function PlanMyYardPage() {
-  const pageUrl = absoluteUrl("/plan-my-yard/");
+  const pageUrl = absoluteUrl("/plan-my-yard");
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL ?? "";
   const jsonLd = {
     "@context": "https://schema.org",
@@ -42,11 +52,6 @@ export default function PlanMyYardPage() {
         applicationCategory: "DesignApplication",
         operatingSystem: "Web",
         url: pageUrl,
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
-        },
         provider: {
           "@id": absoluteUrl("/#business"),
         },
@@ -79,7 +84,7 @@ export default function PlanMyYardPage() {
       />
       <SiteNavigation
         variant="inner"
-        contactHref="/plan-my-yard/"
+        contactHref="/plan-my-yard"
         actionLabel="Plan my yard"
       />
 
@@ -109,16 +114,19 @@ export default function PlanMyYardPage() {
         </div>
         <div className="planner-hero-visual">
           <figure className="planner-before-card">
-            <img
+            <SiteImage
               src="/images/texas-home-before.jpg"
               alt="A North Texas home before a landscape redesign"
+              sizes="(max-width: 820px) 75vw, 30vw"
+              preload
             />
             <figcaption>What you see today</figcaption>
           </figure>
           <figure className="planner-after-card">
-            <img
+            <SiteImage
               src="/images/texas-home-after-stone.webp"
               alt="The same North Texas home after a landscape redesign"
+              sizes="(max-width: 820px) 75vw, 30vw"
             />
             <figcaption>What could be possible</figcaption>
           </figure>

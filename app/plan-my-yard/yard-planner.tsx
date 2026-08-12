@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import SiteImage from "../site-image";
 
 type Choice = {
   value: string;
@@ -517,7 +518,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       style: state.style,
       notes: brief,
     });
-    return `/contact/?${params.toString()}`;
+    return `/contact?${params.toString()}`;
   }, [brief, state]);
 
   return (
@@ -723,7 +724,11 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                       checked={state.style === style.value}
                       onChange={() => updateState("style", style.value)}
                     />
-                    <img src={style.image} alt="" />
+                    <SiteImage
+                      src={style.image ?? "/images/texas-home-after-stone.webp"}
+                      alt=""
+                      sizes="(max-width: 720px) 50vw, 24vw"
+                    />
                     <span>
                       <strong>{style.label}</strong>
                       <small>{style.note}</small>

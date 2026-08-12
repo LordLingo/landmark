@@ -1,8 +1,11 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
+import SiteImage from "../site-image";
 
 export const metadata: Metadata = {
-  title: "Thank You",
+  title: {
+    absolute: "Thank You | Landmark Landscapes",
+  },
   description: "Your Landmark Landscapes estimate request has been sent.",
   robots: {
     index: false,
@@ -15,7 +18,11 @@ export default function ThankYouPage() {
     <main className="thank-you-page">
       <section>
         <a className="thank-you-logo" href="/">
-          <img src="/images/landmark-logo.webp" alt="Landmark Landscapes" />
+          <SiteImage
+            src="/images/landmark-logo.webp"
+            alt="Landmark Landscapes"
+            sizes="170px"
+          />
         </a>
         <p className="eyebrow">Your request is on its way</p>
         <h1>Thank you for inviting Landmark into the conversation.</h1>

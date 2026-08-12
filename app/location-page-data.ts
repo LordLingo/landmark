@@ -9,9 +9,9 @@ export const friscoPage: ServicePageData = {
   title: "Make the whole Frisco property feel considered—from the curb to the backyard.",
   intro:
     "Landmark helps Frisco homeowners plan and install residential landscapes with stronger planting, cleaner transitions, practical drainage, natural stone and warm outdoor lighting.",
-  metaTitle: "Landscaping Company in Frisco, TX",
+  metaTitle: "Landscaping Company Frisco, TX",
   metaDescription:
-    "Residential landscaping in Frisco, TX including landscape design, planting, stone borders, drainage, landscape lighting and irrigation support from Landmark.",
+    "Residential landscaping in Frisco, TX including landscape design, planting, stone borders, drainage, landscape lighting and irrigation support.",
   heroImage: "/images/stone-walkway-project.webp",
   heroAlt:
     "Finished residential stone walkway and landscape project for a North Texas home",
@@ -54,6 +54,29 @@ export const friscoPage: ServicePageData = {
     "Drainage and irrigation concerns considered before finish work",
     "Stone and lighting details coordinated with the complete property",
   ],
+  localSection: {
+    eyebrow: "Local landscaping in Frisco",
+    title: "Plan around the lot conditions Frisco homeowners see every day.",
+    intro:
+      "Landmark serves residential properties across Frisco, including areas near Phillips Creek Ranch, Newman Village, Starwood, The Trails and Hollyhock. Each neighborhood has its own architecture and lot pattern, so the landscape plan is built from the property—not a repeated template.",
+    items: [
+      {
+        title: "Tight side yards + roof runoff",
+        copy:
+          "Narrow spaces between homes can collect water from two rooflines and remain shaded after storms. Drainage routes, surface materials and planting should be planned together before the area is refinished.",
+      },
+      {
+        title: "Builder-grade front-yard upgrades",
+        copy:
+          "Newer homes often benefit from deeper beds, stronger plant scale, clearer focal points and natural stone details that connect the landscape to the full width of the elevation.",
+      },
+      {
+        title: "Established landscape renovation",
+        copy:
+          "In mature Frisco neighborhoods, useful trees and shrubs can remain while crowded beds, outdated plant choices and disconnected walkways or lighting are reorganized around a cleaner direction.",
+      },
+    ],
+  },
   process: [
     {
       title: "Walk the Frisco property",
@@ -114,7 +137,7 @@ export const mckinneyPage: ServicePageData = {
   title: "Bring new life to a McKinney landscape without losing what makes it feel established.",
   intro:
     "Landmark helps McKinney homeowners redesign aging beds, improve new-home landscapes and coordinate planting, stone, drainage, lighting and irrigation around the character of the property.",
-  metaTitle: "Landscaping Company in McKinney, TX",
+  metaTitle: "Landscaping Company McKinney, TX",
   metaDescription:
     "Residential landscaping in McKinney, TX including landscape renovation, planting, stone borders, drainage, outdoor lighting and irrigation support.",
   heroImage: "/images/flower-bed-stacked-stone.webp",
@@ -159,6 +182,29 @@ export const mckinneyPage: ServicePageData = {
     "Sun, shade, drainage and irrigation considered together",
     "A cleaner landscape that still feels natural to the property",
   ],
+  localSection: {
+    eyebrow: "Local landscaping in McKinney",
+    title: "Work with the maturity and character already on the property.",
+    intro:
+      "McKinney includes newer communities and deeply established neighborhoods, from areas near Trinity Falls and Craig Ranch to Stonebridge Ranch and Adriatica. Landmark evaluates what is already valuable, then designs the improvement around the home’s actual age, shade and lot conditions.",
+    items: [
+      {
+        title: "Mature trees + changing shade",
+        copy:
+          "A canopy that has grown for years changes sunlight, root competition and irrigation needs. Renovation planting should respond to the conditions that exist now, not the exposure the yard had when it was built.",
+      },
+      {
+        title: "Aging beds + crowded foundations",
+        copy:
+          "Shrubs that have outgrown windows, faded bed lines and scattered replacements can be edited into a clearer hierarchy while retaining healthy material that still fits the design.",
+      },
+      {
+        title: "Drainage before renovation finishes",
+        copy:
+          "Standing water, settled grades and concentrated downspout flow should be understood before new mulch, stone, turf or planting covers the same unresolved route.",
+      },
+    ],
+  },
   process: [
     {
       title: "Read the existing landscape",
@@ -219,9 +265,9 @@ export const celinaPage: ServicePageData = {
   title: "Give a new Celina home the landscape it was always meant to have.",
   intro:
     "Landmark helps Celina homeowners move beyond builder-basic landscaping with a complete plan for planting, natural stone, drainage, irrigation, lighting and long-term growth.",
-  metaTitle: "Landscaping Company in Celina, TX",
+  metaTitle: "Landscaping Company Celina, TX",
   metaDescription:
-    "Residential landscaping in Celina, TX for new homes and established properties, including design, planting, stone, drainage, lighting and irrigation support.",
+    "Residential landscaping in Celina, TX for new and established homes, including design, planting, stone, drainage, lighting and irrigation support.",
   heroImage: "/images/texas-home-after-stone.webp",
   heroAlt:
     "Completed North Texas front-yard landscape with layered planting and natural stone around a tree",
@@ -264,6 +310,29 @@ export const celinaPage: ServicePageData = {
     "Drainage and irrigation considered before finish materials",
     "A phased roadmap that keeps future work visually connected",
   ],
+  localSection: {
+    eyebrow: "Local landscaping in Celina",
+    title: "Build structure now, then give the landscape room to mature.",
+    intro:
+      "Landmark serves Celina homeowners in growing communities such as Light Farms, Mustang Lakes, Cambridge Crossing and Lilyana. Newer lots can look open and unfinished at first, making mature scale, exposure, drainage and future phases especially important.",
+    items: [
+      {
+        title: "Open exposure + North Texas heat",
+        copy:
+          "Young neighborhoods may offer less established shade and more wind. Trees, shrubs and grasses should be selected for the actual exposure and spaced around the size they will reach later.",
+      },
+      {
+        title: "Construction grades + drainage",
+        copy:
+          "Water can collect where finish grades, fences, neighboring lots and roof runoff meet. Those patterns should be evaluated before new beds, turf and walkways make changes more disruptive.",
+      },
+      {
+        title: "A practical phased landscape",
+        copy:
+          "Front-yard curb appeal can come first while a complete design reserves logical connections for future backyard planting, drainage, lighting or stonework.",
+      },
+    ],
+  },
   process: [
     {
       title: "Start with the new property",
@@ -324,9 +393,9 @@ export const theColonyPage: ServicePageData = {
   title: "Turn a well-used The Colony yard into a space that feels easier, greener and more connected.",
   intro:
     "Landmark helps homeowners in The Colony refresh front yards, improve backyard living, solve difficult side-yard conditions and coordinate planting, stone, drainage, lighting and irrigation.",
-  metaTitle: "Landscaping Company in The Colony, TX",
+  metaTitle: "Landscaping Company The Colony, TX",
   metaDescription:
-    "Residential landscaping in The Colony, TX including front-yard updates, backyard planting, drainage, stone walkways, landscape lighting and irrigation support.",
+    "Residential landscaping in The Colony, TX with front-yard updates, backyard planting, drainage, stone walkways, lighting and irrigation support.",
   heroImage: "/images/backyard-life.webp",
   heroAlt:
     "Comfortable landscaped North Texas backyard designed for everyday outdoor living",
@@ -369,6 +438,29 @@ export const theColonyPage: ServicePageData = {
     "Side-yard water and surface problems considered together",
     "Lighting placed for comfort, depth and nighttime visibility",
   ],
+  localSection: {
+    eyebrow: "Local landscaping in The Colony",
+    title: "Make established yards and overlooked spaces work harder.",
+    intro:
+      "From homes near The Tribute and Stewart Peninsula to established areas around Legend Crest and the Cascades, The Colony properties can include mature planting, active backyards, narrow side routes and varied exposure. Landmark brings those conditions into one residential landscape plan.",
+    items: [
+      {
+        title: "Backyards connected to the patio",
+        copy:
+          "Planting beds, focal points and paths can soften hard edges and make an existing patio feel like part of a complete outdoor space rather than an isolated slab.",
+      },
+      {
+        title: "Side-yard drainage + durable surfaces",
+        copy:
+          "Where light, access and drainage are limited, the right combination of water management, stone or rock and selective planting can make a difficult route cleaner and easier to use.",
+      },
+      {
+        title: "Front-yard landscape refreshes",
+        copy:
+          "Healthy mature plants can remain while overgrown shrubs, uneven bed lines and tired transitions are edited into a landscape that feels renewed without losing the home’s established character.",
+      },
+    ],
+  },
   process: [
     {
       title: "Follow how the yard is used",

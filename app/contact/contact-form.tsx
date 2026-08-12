@@ -61,7 +61,7 @@ export default function ContactForm() {
         throw new Error(`Contact form returned ${response.status}`);
       }
 
-      window.location.assign("/thank-you/");
+      window.location.assign("/thank-you");
     } catch (error) {
       console.error("Contact form submission failed", error);
       setFormError(

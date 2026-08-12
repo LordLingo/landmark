@@ -31,6 +31,12 @@ export type ServicePageData = {
   outcomeTitle: string;
   outcomeCopy: string;
   outcomePoints: string[];
+  localSection?: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: ServiceFeature[];
+  };
   process: ServiceFeature[];
   faqs: ServiceFaq[];
   searchTerms: string[];
@@ -46,9 +52,9 @@ export const services: Record<string, ServicePageData> = {
     title: "Come home to a house that finally feels finished.",
     intro:
       "Landmark designs and installs welcoming front landscapes for Prosper homes—from builder-basic beds to a complete curb-appeal renovation that feels connected to the architecture.",
-    metaTitle: "Front Yard Landscaping in Prosper, TX",
+    metaTitle: "Front Yard Landscaping Prosper, TX",
     metaDescription:
-      "Front-yard landscape design and installation in Prosper, TX. Upgrade builder-basic beds with layered planting, stone borders, pathways and a cohesive curb-appeal plan.",
+      "Front-yard landscaping in Prosper, TX. Upgrade builder-grade beds with layered planting, stone borders, walkways and a cohesive curb-appeal design.",
     heroImage: "/images/front-yard-project.webp",
     heroAlt:
       "Completed Landmark front-yard landscaping project at a brick and stone North Texas home",
@@ -89,6 +95,29 @@ export const services: Record<string, ServicePageData> = {
       "A clear connection between the home, walkway and landscape",
       "A maintenance approach discussed before installation",
     ],
+    localSection: {
+      eyebrow: "Front-yard projects in Prosper",
+      title: "Designed for the way Prosper homes are built and lived in.",
+      intro:
+        "From newer homes in Windsong Ranch and Star Trail to established properties near Gentle Creek and Whitley Place, a strong front-yard plan responds to the home’s scale, North Texas exposure and the way the landscape will mature.",
+      items: [
+        {
+          title: "Builder-grade landscape upgrades",
+          copy:
+            "Shallow beds and undersized foundation plants can be reshaped into a layered front-yard landscape with stronger focal points, better mature scale and a clearer connection to the entrance.",
+        },
+        {
+          title: "Curb appeal with year-round structure",
+          copy:
+            "Evergreen shrubs, ornamental grasses, perennials and concentrated seasonal color can keep the front elevation composed even when individual plants are not in bloom.",
+        },
+        {
+          title: "Water, sun + maintenance considered early",
+          copy:
+            "Planting beds work better when direct sun, reflected heat, irrigation coverage, drainage and the homeowner’s realistic care level shape the design before installation.",
+        },
+      ],
+    },
     process: [
       {
         title: "Walk the property",
@@ -129,9 +158,9 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     searchTerms: [
-      "Front-yard design",
-      "Curb-appeal landscaping",
-      "Builder landscape upgrades",
+      "Front-yard landscaping",
+      "Curb-appeal design",
+      "Builder-grade upgrades",
       "Prosper TX",
     ],
   },
@@ -143,7 +172,7 @@ export const services: Record<string, ServicePageData> = {
     title: "Color that looks composed, not complicated.",
     intro:
       "Landmark creates planting beds with shape, rhythm and North Texas staying power—bringing together shrubs, ornamental grasses, perennials, seasonal color and finished edging.",
-    metaTitle: "Flower Bed Installation in Prosper, TX",
+    metaTitle: "Flower Bed Installation Prosper, TX",
     metaDescription:
       "Flower-bed design and installation in Prosper, TX with shrubs, seasonal color, stone borders and low-maintenance North Texas planting options.",
     heroImage: "/images/flower-bed-stacked-stone.webp",
@@ -186,6 +215,29 @@ export const services: Record<string, ServicePageData> = {
       "A mix of dependable structure and softer seasonal interest",
       "Spacing and care expectations explained before installation",
     ],
+    localSection: {
+      eyebrow: "Planting beds for North Texas",
+      title: "The right flower bed begins with conditions—not a plant list.",
+      intro:
+        "Prosper flower-bed installation has to account for clay soil, intense afternoon sun, reflected heat, irrigation coverage and sudden winter weather. Landmark builds the palette around the actual exposure and the level of care you want.",
+      items: [
+        {
+          title: "Native + adapted plant options",
+          copy:
+            "Texas sage, salvia, lantana, dwarf yaupon holly and ornamental grasses are examples of useful North Texas plants, but final choices depend on sunlight, mature size, drainage and design style.",
+        },
+        {
+          title: "Existing flower-bed makeovers",
+          copy:
+            "Healthy plants can remain while crowded shrubs, weak bed lines and empty focal areas are reorganized into a planting composition that looks intentional instead of patched together.",
+        },
+        {
+          title: "Stone edging, mulch + irrigation",
+          copy:
+            "A finished border, appropriate bed material and dependable water delivery support the planting after installation and help the entire front or backyard feel complete.",
+        },
+      ],
+    },
     process: [
       {
         title: "Read the conditions",
@@ -226,9 +278,9 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     searchTerms: [
+      "Flower-bed installation",
       "Planting-bed design",
-      "Flower-bed makeovers",
-      "Shrubs + seasonal color",
+      "Native + adapted plants",
       "Prosper TX",
     ],
   },
@@ -240,9 +292,9 @@ export const services: Record<string, ServicePageData> = {
     title: "Give rain somewhere better to go.",
     intro:
       "Standing water, soggy side yards and washed-out beds can keep a beautiful property from feeling usable. Landmark evaluates how water moves, then builds the drainage solution into the landscape.",
-    metaTitle: "Yard Drainage & Standing Water Solutions in Prosper, TX",
+    metaTitle: "Yard Drainage Prosper, TX",
     metaDescription:
-      "Yard drainage solutions in Prosper, TX for standing water, soggy side yards and landscape washout. Explore French drains, surface drainage and downspout routing.",
+      "Yard drainage in Prosper, TX for standing water, soggy side yards and washout. Explore French drains, surface drains, downspout routing and grading.",
     heroImage: "/images/drainage-rock-bed.webp",
     heroAlt:
       "Landmark side-yard landscape using decorative rock and planting around a North Texas home",
@@ -284,6 +336,29 @@ export const services: Record<string, ServicePageData> = {
       "A cleaner relationship between downspouts and the landscape",
       "Restored surfaces that make the completed work feel intentional",
     ],
+    localSection: {
+      eyebrow: "Drainage solutions in Prosper",
+      title: "French drains are one option. The water path decides the answer.",
+      intro:
+        "Prosper’s clay-heavy soil, concentrated roof runoff and narrow spaces between newer homes can leave soggy side yards and standing water after storms. A site-specific drainage plan starts by identifying where the water enters, collects and can discharge safely.",
+      items: [
+        {
+          title: "French drains + area drains",
+          copy:
+            "Subsurface French drains and surface catch basins solve different problems. The right system depends on soil saturation, low points, runoff volume and the available route to an appropriate outlet.",
+        },
+        {
+          title: "Downspout drainage",
+          copy:
+            "Roof runoff can overwhelm a small planting bed or side yard. Underground downspout connections may help carry that concentrated water away from recurring problem areas.",
+        },
+        {
+          title: "Grading + landscape restoration",
+          copy:
+            "Selective grading, rock channels, turf repair and planting-bed restoration can be coordinated with drainage components so the completed solution works without leaving the yard looking excavated.",
+        },
+      ],
+    },
     process: [
       {
         title: "Trace the water",
@@ -324,9 +399,9 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     searchTerms: [
+      "Yard drainage",
+      "French drain installation",
       "Standing-water solutions",
-      "French-drain options",
-      "Soggy side yards",
       "Prosper TX",
     ],
   },
@@ -338,9 +413,9 @@ export const services: Record<string, ServicePageData> = {
     title: "Make every step feel intentional.",
     intro:
       "Natural stone borders, pathways and transitions give a landscape structure. Landmark uses them to connect entrances, beds and outdoor spaces—not simply fill the gaps between them.",
-    metaTitle: "Stone Borders & Walkways in Prosper, TX",
+    metaTitle: "Stone Borders & Walkways Prosper, TX",
     metaDescription:
-      "Stone flower-bed borders, flagstone walkways and garden pathways in Prosper, TX. Create cleaner beds and more beautiful transitions with Landmark Landscapes.",
+      "Stone flower-bed borders, flagstone walkways and garden paths in Prosper, TX. Create cleaner beds and more beautiful transitions around your home.",
     heroImage: "/images/stone-walkway-project.webp",
     heroAlt:
       "Landmark patio and walkway project at a North Texas brick home",
@@ -381,6 +456,29 @@ export const services: Record<string, ServicePageData> = {
       "Path widths and spacing based on comfortable everyday use",
       "Planting and stonework designed as one connected result",
     ],
+    localSection: {
+      eyebrow: "Stonework for Prosper landscapes",
+      title: "Material, proportion and preparation make stonework feel permanent.",
+      intro:
+        "Stone edging and walkways are highly visible against Prosper’s brick-and-stone homes. Landmark considers color, thickness, grade, drainage and everyday foot traffic so the hardscape belongs to the architecture and the planting around it.",
+      items: [
+        {
+          title: "Stone flower-bed borders",
+          copy:
+            "Natural stone edging can define bed lines, retain finished material and give foundation planting enough visual weight to match a larger North Texas home.",
+        },
+        {
+          title: "Flagstone + garden walkways",
+          copy:
+            "Comfortable spacing, a stable prepared base and a route that follows how people actually move help a flagstone path feel useful instead of decorative only.",
+        },
+        {
+          title: "Drainage-aware transitions",
+          copy:
+            "Borders and pathways can change how water moves. Existing low spots, downspouts and bed drainage should be understood before masonry creates a new barrier or collection point.",
+        },
+      ],
+    },
     process: [
       {
         title: "Study the connection",
@@ -423,7 +521,7 @@ export const services: Record<string, ServicePageData> = {
     searchTerms: [
       "Stone flower-bed edging",
       "Flagstone walkways",
-      "Garden pathways",
+      "Landscape borders",
       "Prosper TX",
     ],
   },
@@ -435,7 +533,7 @@ export const services: Record<string, ServicePageData> = {
     title: "Your home deserves a second first impression.",
     intro:
       "Landmark designs warm, restrained outdoor lighting that reveals the home’s architecture, gives pathways a comfortable glow and keeps the landscape alive after sunset.",
-    metaTitle: "Landscape Lighting & House Uplighting in Prosper, TX",
+    metaTitle: "Landscape Lighting Prosper, TX",
     metaDescription:
       "Residential landscape lighting in Prosper, TX including house uplighting, walkway lighting and tree lighting designed for a warm, elegant nighttime look.",
     heroImage: "/images/lighting-warm-home.webp",
@@ -478,6 +576,29 @@ export const services: Record<string, ServicePageData> = {
       "Selected trees and beds used as nighttime focal points",
       "Fixture placement refined around the actual property",
     ],
+    localSection: {
+      eyebrow: "Outdoor lighting in Prosper",
+      title: "Layer the house, paths and landscape instead of lighting everything.",
+      intro:
+        "A low-voltage landscape-lighting plan can improve curb appeal, nighttime visibility and the feeling of arrival. The strongest result uses restraint—placing light where architecture, trees, walkways and planting create useful depth.",
+      items: [
+        {
+          title: "Architectural uplighting",
+          copy:
+            "Controlled beams can emphasize stone, brick, columns and rooflines while avoiding the flat, over-bright look created when every surface receives equal light.",
+        },
+        {
+          title: "Path + step lighting",
+          copy:
+            "Low fixtures near important routes help reveal grade changes and walkway edges while keeping the source of the light quieter than the landscape itself.",
+        },
+        {
+          title: "Tree + planting accents",
+          copy:
+            "Selected canopy trees, ornamental forms and layered beds can become nighttime focal points that connect the home to the complete front or backyard.",
+        },
+      ],
+    },
     process: [
       {
         title: "See the night view",
@@ -518,8 +639,8 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     searchTerms: [
+      "Low-voltage lighting",
       "House uplighting",
-      "Walkway lighting",
       "Tree lighting",
       "Prosper TX",
     ],
@@ -532,9 +653,9 @@ export const services: Record<string, ServicePageData> = {
     title: "A healthier lawn starts with water landing where it should.",
     intro:
       "From a broken head to a dry zone or controller problem, Landmark helps homeowners identify irrigation issues and define the right next step for reliable, efficient coverage.",
-    metaTitle: "Sprinkler Repair & Troubleshooting in Prosper, TX",
+    metaTitle: "Sprinkler Repair Prosper, TX",
     metaDescription:
-      "Sprinkler troubleshooting in Prosper, TX for leaks, broken heads, dry zones, controller problems and uneven lawn coverage. Ask Landmark about irrigation service availability.",
+      "Sprinkler repair troubleshooting in Prosper, TX for leaks, broken heads, dry zones, controller problems and uneven lawn coverage. Check service availability.",
     heroImage: "/images/irrigation-turf-project.webp",
     heroAlt:
       "Completed Landmark backyard with healthy green turf and landscape beds",
@@ -575,6 +696,29 @@ export const services: Record<string, ServicePageData> = {
       "Schedules aligned with current local watering guidelines",
       "Clear explanation of the problem and recommended next step",
     ],
+    localSection: {
+      eyebrow: "Sprinkler troubleshooting in Prosper",
+      title: "Start with the symptom, then inspect the complete zone.",
+      intro:
+        "Dry patches, constantly wet turf, runoff and sudden water-use changes can have several causes. A useful sprinkler evaluation looks beyond the first broken head to coverage, pressure, valves, controller settings and current Prosper watering rules.",
+      items: [
+        {
+          title: "Broken heads + poor coverage",
+          copy:
+            "Clogged nozzles, shifted spray patterns, sunken heads and plant growth can leave part of a zone dry while another area receives too much water.",
+        },
+        {
+          title: "Valves, leaks + controller issues",
+          copy:
+            "A zone that will not start or stop, water surfacing between cycles and confusing schedules can point to different components that require systematic diagnosis.",
+        },
+        {
+          title: "Licensed irrigation scope",
+          copy:
+            "Texas regulates irrigation work. Landmark confirms the applicable licensed professional, the service scope and the current local watering framework before regulated repair or installation proceeds.",
+        },
+      ],
+    },
     process: [
       {
         title: "Describe the symptom",
@@ -615,8 +759,8 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     searchTerms: [
-      "Broken sprinkler heads",
-      "Dry-zone diagnosis",
+      "Sprinkler repair",
+      "Broken heads + leaks",
       "Controller programming",
       "Prosper TX",
     ],
@@ -635,10 +779,13 @@ export const serviceList = [
 ];
 
 export function buildServiceMetadata(service: ServicePageData): Metadata {
-  const path = `/${service.slug}/`;
+  const path = `/${service.slug}`;
+  const title = `${service.metaTitle} | Landmark Landscapes`;
 
   return {
-    title: service.metaTitle,
+    title: {
+      absolute: title,
+    },
     description: service.metaDescription,
     alternates: {
       canonical: path,
@@ -654,6 +801,12 @@ export function buildServiceMetadata(service: ServicePageData): Metadata {
           alt: service.heroAlt,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: service.metaDescription,
+      images: [service.heroImage],
     },
   };
 }

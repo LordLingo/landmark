@@ -385,7 +385,7 @@ export default function WaterTools() {
               <h4>{result.title}</h4>
               <p>{result.copy}</p>
               <a
-                href={`/contact/?service=${encodeURIComponent(
+                href={`/contact?service=${encodeURIComponent(
                   result.service,
                 )}&project=${encodeURIComponent(symptom)}&notes=${encodeURIComponent(
                   `Yard Health Check: ${symptom}. Soil: ${soil}. Watering: ${system}.`,

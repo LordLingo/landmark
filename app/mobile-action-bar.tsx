@@ -1,7 +1,7 @@
 export default function MobileActionBar() {
   return (
     <nav className="mobile-action-bar" aria-label="Quick actions">
-      <a href="/plan-my-yard/">
+      <a href="/plan-my-yard">
         <span>✦</span>
         Plan my yard
       </a>

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import SiteImage from "../site-image";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -22,7 +23,11 @@ export function WaterResourceFooter() {
     <footer className="service-footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <img src="/images/landmark-logo.webp" alt="Landmark Landscapes" />
+          <SiteImage
+            src="/images/landmark-logo.webp"
+            alt="Landmark Landscapes"
+            sizes="174px"
+          />
           <p>
             Thoughtful outdoor spaces for the way North Texas families actually
             live.
@@ -36,11 +41,11 @@ export function WaterResourceFooter() {
         </div>
         <div className="footer-service-links">
           <p className="eyebrow">Helpful next steps</p>
-          <a href="/water-restrictions/">Local watering guide</a>
-          <a href="/landscape-design/">Landscape design</a>
-          <a href="/sprinkler-repair-prosper-tx/">Sprinkler repair</a>
-          <a href="/yard-drainage-prosper-tx/">Yard drainage</a>
-          <a href="/contact/">Request an estimate</a>
+          <a href="/water-restrictions">Local watering guide</a>
+          <a href="/landscape-design">Landscape design</a>
+          <a href="/sprinkler-repair-prosper-tx">Sprinkler repair</a>
+          <a href="/yard-drainage-prosper-tx">Yard drainage</a>
+          <a href="/contact">Request an estimate</a>
         </div>
       </div>
       <div className="footer-bottom">

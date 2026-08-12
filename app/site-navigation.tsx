@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { serviceList } from "./service-data";
+import SiteImage from "./site-image";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -30,7 +31,7 @@ type SiteNavigationProps = {
 
 export default function SiteNavigation({
   variant = "inner",
-  contactHref = "/contact/",
+  contactHref = "/contact",
   actionLabel = "Request an estimate",
 }: SiteNavigationProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -121,7 +122,11 @@ export default function SiteNavigation({
           onClick={closeMenus}
         >
           <span className="brand-mark">
-            <img src="/images/landmark-logo.webp" alt="Landmark Landscapes" />
+            <SiteImage
+              src="/images/landmark-logo.webp"
+              alt="Landmark Landscapes"
+              sizes="174px"
+            />
           </span>
         </a>
 
@@ -158,7 +163,7 @@ export default function SiteNavigation({
               <div className="services-menu-links">
                 {navigationServices.map((service, index) => (
                   <a
-                    href={`/${service.slug}/`}
+                    href={`/${service.slug}`}
                     key={service.slug}
                     onClick={closeMenus}
                   >
@@ -172,9 +177,9 @@ export default function SiteNavigation({
           </div>
           <a href={transformationHref}>Our work</a>
           <a href={processHref}>How it works</a>
-          <Link href="/plan-my-yard/">Plan my yard</Link>
-          <Link href="/water-restrictions/">Water guide</Link>
-          <a href="/contact/">Contact</a>
+          <Link href="/plan-my-yard">Plan my yard</Link>
+          <Link href="/water-restrictions">Water guide</Link>
+          <a href="/contact">Contact</a>
         </nav>
 
         <div className="header-actions global-header-actions">
@@ -228,7 +233,7 @@ export default function SiteNavigation({
           <p>Explore services + locations</p>
           {navigationServices.map((service, index) => (
             <a
-              href={`/${service.slug}/`}
+              href={`/${service.slug}`}
               key={service.slug}
               onClick={closeMenus}
             >
@@ -240,7 +245,7 @@ export default function SiteNavigation({
         </div>
 
         <div className="mobile-secondary-links">
-          <Link href="/plan-my-yard/" onClick={closeMenus}>
+          <Link href="/plan-my-yard" onClick={closeMenus}>
             Plan my yard
           </Link>
           <a href={transformationHref} onClick={closeMenus}>
@@ -249,10 +254,10 @@ export default function SiteNavigation({
           <a href={processHref} onClick={closeMenus}>
             How it works
           </a>
-          <Link href="/water-restrictions/" onClick={closeMenus}>
+          <Link href="/water-restrictions" onClick={closeMenus}>
             Water guide
           </Link>
-          <a href="/contact/" onClick={closeMenus}>
+          <a href="/contact" onClick={closeMenus}>
             Contact Landmark
           </a>
         </div>

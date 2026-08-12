@@ -3,7 +3,9 @@
 import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
 import { serviceList } from "./service-data";
+import { locationPageList } from "./location-page-data";
 import SiteNavigation from "./site-navigation";
+import SiteImage from "./site-image";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -130,7 +132,7 @@ export default function Home() {
     if (note.trim()) {
       params.set("notes", note.trim());
     }
-    return `/contact/?${params.toString()}`;
+    return `/contact?${params.toString()}`;
   }, [care, feel, goal, note]);
 
   function chooseCard(index: number) {
@@ -177,15 +179,15 @@ export default function Home() {
     <main>
       <SiteNavigation
         variant="home"
-        contactHref="/plan-my-yard/"
+        contactHref="/plan-my-yard"
         actionLabel="Plan my yard"
       />
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Landmark Landscapes · North Dallas</p>
+          <p className="eyebrow">Residential landscaping · Prosper + North Dallas</p>
           <h1>
-            A yard that feels like the{" "}
+            North Texas landscaping that feels like the{" "}
             <em>
               best part
               <svg viewBox="0 0 240 18" aria-hidden="true">
@@ -195,11 +197,13 @@ export default function Home() {
             of home.
           </h1>
           <p className="hero-intro">
-            Thoughtful landscapes, lighting and irrigation designed around how
-            you want to live—beautiful on day one, easier every day after.
+            Landmark is a Prosper-based landscaping company designing and
+            installing planting, stone, lighting, drainage and irrigation
+            around how you want to live—beautiful on day one, easier every day
+            after.
           </p>
           <div className="hero-buttons">
-            <Link className="button" href="/plan-my-yard/">
+            <Link className="button" href="/plan-my-yard">
               Plan my yard <span>✦</span>
             </Link>
             <a className="text-link" href="#transformation">
@@ -219,9 +223,11 @@ export default function Home() {
         <div className="hero-visual">
           <div className="hero-blob" aria-hidden="true" />
           <figure className="hero-photo">
-            <img
+            <SiteImage
               src="/images/texas-home-after-stone.webp"
               alt="Upscale Texas home with a richly layered front landscape, ornamental grasses, flowers and natural stone"
+              sizes="(max-width: 820px) 100vw, 50vw"
+              preload
             />
           </figure>
           <div className="little-note note-one">
@@ -339,9 +345,10 @@ export default function Home() {
         </div>
 
         <figure className="life-photo reveal">
-          <img
+          <SiteImage
             src="/images/backyard-life.webp"
             alt="A family enjoying an elegant landscaped backyard in North Texas"
+            sizes="(max-width: 820px) 100vw, 50vw"
           />
           <figcaption>
             <strong>Just a place everyone wants to be.</strong>
@@ -374,9 +381,10 @@ export default function Home() {
               onClick={() => chooseCard(index)}
               aria-label={`Show ${card.title}`}
             >
-              <img
+              <SiteImage
                 src={card.image}
                 alt=""
+                sizes="(max-width: 820px) 82vw, 25vw"
                 style={{ objectPosition: card.position }}
               />
               <span className="card-wash" />
@@ -434,18 +442,20 @@ export default function Home() {
         </div>
 
         <div className="before-after">
-          <img
+          <SiteImage
             className="before-image"
             src="/images/texas-home-before.jpg"
             alt="Texas home before a full front landscape design"
+            sizes="(max-width: 820px) 100vw, 86vw"
           />
           <div
             className="after-image"
             style={{ clipPath: `inset(0 ${100 - slider}% 0 0)` }}
           >
-            <img
+            <SiteImage
               src="/images/texas-home-after-stone.webp"
               alt="The same Texas home with a finished front landscape design"
+              sizes="(max-width: 820px) 100vw, 86vw"
             />
           </div>
           <div className="image-label before-label">Before</div>
@@ -490,31 +500,32 @@ export default function Home() {
             <h2>Don&apos;t just describe the yard. Show us where it could go.</h2>
           </div>
           <p>
-            Build a useful project brief, explore an early investment range and
-            turn a photo from your phone into a visual direction.
+            Build a useful project brief and turn a photo from your phone into
+            a visual direction for your landscape.
           </p>
         </div>
         <div className="yard-tool-cards">
-          <Link className="yard-tool-card yard-planner-card" href="/plan-my-yard/">
+          <Link className="yard-tool-card yard-planner-card" href="/plan-my-yard">
             <div>
               <span>01 · Guided project builder</span>
               <h3>Plan My Yard</h3>
               <p>
-                Choose goals, features, style, investment comfort and timing in
-                one easy mobile experience.
+                Choose the areas, features and style you want in one easy
+                mobile experience, then share the result with Landmark.
               </p>
               <strong>
                 Start my two-minute plan <i>→</i>
               </strong>
             </div>
-            <img
+            <SiteImage
               src="/images/stone-walkway-project.webp"
               alt="A finished North Texas stone walkway and landscape"
+              sizes="(max-width: 820px) 100vw, 50vw"
             />
           </Link>
           <Link
             className="yard-tool-card yard-visualizer-card"
-            href="/plan-my-yard/#yard-planner"
+            href="/plan-my-yard#yard-planner"
           >
             <div>
               <span>02 · Built from your photo</span>
@@ -527,18 +538,20 @@ export default function Home() {
                 Reimagine my yard <i>✦</i>
               </strong>
             </div>
-            <img
+            <SiteImage
               src="/images/texas-home-after-stone.webp"
               alt="A North Texas front yard reimagined with stone and layered planting"
+              sizes="(max-width: 820px) 100vw, 50vw"
             />
           </Link>
         </div>
       </section>
 
       <section className="evening-section">
-        <img
+        <SiteImage
           src="/images/uplighting-home.webp"
           alt="Texas home with warm, subtle landscape uplighting"
+          sizes="100vw"
         />
         <div className="evening-wash" />
         <div className="evening-copy">
@@ -548,7 +561,7 @@ export default function Home() {
             Thoughtful uplighting makes arrivals feel warmer, walkways feel
             safer and the landscape feel alive long after dinner.
           </p>
-          <Link className="button button-light" href="/plan-my-yard/">
+          <Link className="button button-light" href="/plan-my-yard">
             Plan an evening look <span>→</span>
           </Link>
         </div>
@@ -628,11 +641,11 @@ export default function Home() {
           <div className="water-callout-links">
             <Link
               className="button button-light"
-              href="/water-restrictions/#watering-day-checker"
+              href="/water-restrictions#watering-day-checker"
             >
               Check my watering day <span>→</span>
             </Link>
-            <Link href="/water-restrictions/#yard-health-check">
+            <Link href="/water-restrictions#yard-health-check">
               Why is my yard struggling? <span>→</span>
             </Link>
           </div>
@@ -759,20 +772,26 @@ export default function Home() {
         <p>Already know what you need?</p>
         <div>
           {serviceList.map((service) => (
-            <a href={`/${service.slug}/`} key={service.slug}>
+            <a href={`/${service.slug}`} key={service.slug}>
               {service.navLabel}
             </a>
           ))}
+          {locationPageList.map((location) => (
+            <a href={`/${location.slug}`} key={location.slug}>
+              Landscaping in {location.shortLabel}
+            </a>
+          ))}
         </div>
-        <a href="/contact/">Request an estimate →</a>
+        <a href="/contact">Request an estimate →</a>
       </section>
 
       <footer>
         <div className="footer-main">
           <div className="footer-brand">
-            <img
+            <SiteImage
               src="/images/landmark-logo.webp"
               alt="Landmark Landscapes"
+              sizes="174px"
             />
             <p>
               Thoughtful outdoor spaces for the way North Texas families
@@ -787,7 +806,7 @@ export default function Home() {
           </div>
           <div className="footer-cta">
             <h2>Ready to love the view from home?</h2>
-            <a className="button button-light" href="/contact/">
+            <a className="button button-light" href="/contact">
               Request an estimate <span>→</span>
             </a>
           </div>

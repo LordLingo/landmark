@@ -8,9 +8,9 @@ export const landscapeDesignPage: ServicePageData = {
   title: "A complete landscape starts with one clear direction.",
   intro:
     "Landmark plans and installs cohesive residential landscapes for North Texas homes—bringing planting, stone, lighting, drainage and irrigation decisions together before the work begins.",
-  metaTitle: "Landscape Design & Installation in Prosper, TX",
+  metaTitle: "Landscape Design Prosper, TX",
   metaDescription:
-    "Residential landscape design and installation in Prosper, TX. Plan planting, stone, lighting, drainage and irrigation as one cohesive outdoor transformation.",
+    "Landscape design and installation in Prosper, TX. Plan planting, stone, lighting, drainage and irrigation as one cohesive outdoor transformation.",
   heroImage: "/images/texas-home-after-stone.webp",
   heroAlt:
     "Completed North Texas front-yard landscape with layered planting and natural stone around a mature tree",
@@ -54,6 +54,29 @@ export const landscapeDesignPage: ServicePageData = {
     "Stone, lighting, drainage and irrigation considered before installation",
     "A clear scope that can be completed together or organized in phases",
   ],
+  localSection: {
+    eyebrow: "Landscape design in Prosper + North Dallas",
+    title: "One plan can prevent years of disconnected improvements.",
+    intro:
+      "A residential landscape design is most valuable when the project includes several moving parts. Landmark studies the home, lot, water movement and daily use together so planting, stone, lighting, drainage and irrigation support the same finished direction.",
+    items: [
+      {
+        title: "New-home landscape design",
+        copy:
+          "Builder-grade planting can be evaluated before adding more material. Bed proportions, focal points and mature plant scale are organized around the complete home instead of filling isolated gaps.",
+      },
+      {
+        title: "Landscape renovation",
+        copy:
+          "Established trees, shrubs and stone can remain when they support the plan. Overgrown, struggling or disconnected areas can then be reshaped without automatically replacing everything.",
+      },
+      {
+        title: "Phased installation planning",
+        copy:
+          "A complete direction can identify what needs to happen first—often drainage, irrigation or major hardscape—then preserve logical future phases for planting, lighting and backyard improvements.",
+      },
+    ],
+  },
   process: [
     {
       title: "Discover the property",
@@ -114,9 +137,9 @@ export const prosperPage: ServicePageData = {
   title: "A Prosper yard designed to feel finished, welcoming and easier to live with.",
   intro:
     "Landmark helps Prosper homeowners improve the complete property with residential landscape design, planting, stonework, drainage solutions, landscape lighting and irrigation support.",
-  metaTitle: "Landscaping Company in Prosper, TX",
+  metaTitle: "Landscaping Company Prosper, TX",
   metaDescription:
-    "Residential landscaping in Prosper, TX including landscape design, planting, stone borders, drainage, outdoor lighting and irrigation support from Landmark.",
+    "Residential landscaping in Prosper, TX including landscape design, planting, stone borders, drainage, outdoor lighting and irrigation support.",
   heroImage: "/images/front-yard-project.webp",
   heroAlt:
     "Completed residential front-yard landscaping project at a Prosper-area brick and stone home",
@@ -159,6 +182,29 @@ export const prosperPage: ServicePageData = {
     "Water movement and irrigation needs considered with the design",
     "A finished result designed for both curb appeal and everyday life",
   ],
+  localSection: {
+    eyebrow: "Local landscaping knowledge",
+    title: "Prosper properties share challenges—but no two yards need the same plan.",
+    intro:
+      "Landmark serves homes throughout Prosper, including areas near Windsong Ranch, Star Trail, Whitley Place, Gentle Creek and Lakes of La Cima. Neighborhood context matters, but the recommendation still begins with the actual lot, architecture and priorities in front of us.",
+    items: [
+      {
+        title: "New construction + builder landscapes",
+        copy:
+          "Fast-growing areas often start with shallow planting beds, young trees and limited variety. A redesign can establish better scale now while leaving enough room for the landscape to mature naturally.",
+      },
+      {
+        title: "Clay soil + concentrated runoff",
+        copy:
+          "North Texas clay absorbs water slowly, and narrow side yards can receive runoff from two rooflines. Drainage and irrigation conditions should be understood before new beds, turf or walkways are installed.",
+      },
+      {
+        title: "Heat-aware, lower-maintenance planting",
+        copy:
+          "Direct sun, reflected heat, wind exposure and watering limits all influence plant selection. A resilient palette balances dependable structure with color at the level of care the homeowner actually wants.",
+      },
+    ],
+  },
   process: [
     {
       title: "Walk the Prosper property",

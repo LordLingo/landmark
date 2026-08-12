@@ -34,16 +34,30 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${city.city}, TX Watering Restrictions & Schedule`,
+    title: {
+      absolute: `${city.city} Watering Restrictions | Landmark Landscapes`,
+    },
     description: `${city.city}, Texas watering days, restricted hours, new-landscape guidance and practical tips, with a direct link to the official city source.`,
     alternates: {
-      canonical: `/water-restrictions/${city.slug}/`,
+      canonical: `/water-restrictions/${city.slug}`,
     },
     openGraph: {
       title: `${city.city}, TX Watering Restrictions & Schedule`,
       description: city.intro,
-      url: `/water-restrictions/${city.slug}/`,
+      url: `/water-restrictions/${city.slug}`,
       type: "article",
+      images: [
+        {
+          url: "/images/irrigation-turf-project.webp",
+          alt: `Healthy residential landscape in ${city.city}, Texas`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${city.city} Watering Restrictions | Landmark Landscapes`,
+      description: city.intro,
+      images: ["/images/irrigation-turf-project.webp"],
     },
   };
 }
@@ -58,7 +72,7 @@ export default async function CityWaterRestrictionPage({
     notFound();
   }
 
-  const pageUrl = absoluteUrl(`/water-restrictions/${city.slug}/`);
+  const pageUrl = absoluteUrl(`/water-restrictions/${city.slug}`);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -67,8 +81,13 @@ export default async function CityWaterRestrictionPage({
         "@id": `${pageUrl}#article`,
         headline: `${city.city}, TX Watering Restrictions & Schedule`,
         description: city.intro,
-        dateModified: "2026-07-26",
+        datePublished: "2026-07-26",
+        dateModified: "2026-08-12",
+        image: absoluteUrl("/images/irrigation-turf-project.webp"),
         mainEntityOfPage: pageUrl,
+        isPartOf: {
+          "@id": absoluteUrl("/#website"),
+        },
         author: {
           "@id": absoluteUrl("/#business"),
         },
@@ -93,7 +112,7 @@ export default async function CityWaterRestrictionPage({
             "@type": "ListItem",
             position: 2,
             name: "Watering Restrictions",
-            item: absoluteUrl("/water-restrictions/"),
+            item: absoluteUrl("/water-restrictions"),
           },
           {
             "@type": "ListItem",
@@ -114,7 +133,7 @@ export default async function CityWaterRestrictionPage({
       />
       <SiteNavigation
         variant="inner"
-        contactHref={`/contact/?service=${encodeURIComponent(
+        contactHref={`/contact?service=${encodeURIComponent(
           `Water-conscious landscaping in ${city.city}`,
         )}`}
       />
@@ -124,7 +143,7 @@ export default async function CityWaterRestrictionPage({
           <div className="breadcrumbs">
             <a href="/">Home</a>
             <span>›</span>
-            <a href="/water-restrictions/">Watering guide</a>
+            <a href="/water-restrictions">Watering guide</a>
             <span>›</span>
             <span>{city.city}</span>
           </div>
@@ -256,7 +275,7 @@ export default async function CityWaterRestrictionPage({
         <div className="estimate-actions">
           <a
             className="button button-light"
-            href={`/contact/?service=${encodeURIComponent(
+            href={`/contact?service=${encodeURIComponent(
               `Landscaping in ${city.city}`,
             )}`}
           >
@@ -276,7 +295,7 @@ export default async function CityWaterRestrictionPage({
             .filter((item) => item.slug !== city.slug)
             .map((item) => (
               <a
-                href={`/water-restrictions/${item.slug}/`}
+                href={`/water-restrictions/${item.slug}`}
                 key={item.slug}
               >
                 {item.city} <span>→</span>

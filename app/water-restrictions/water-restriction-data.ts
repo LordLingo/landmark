@@ -19,7 +19,7 @@ export type WaterRestrictionCity = {
   serviceUrl: string;
 };
 
-export const lastVerified = "July 26, 2026";
+export const lastVerified = "August 12, 2026";
 
 export const waterRestrictionCities: WaterRestrictionCity[] = [
   {
@@ -61,7 +61,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
     ],
     officialUrl: "https://www.celina-tx.gov/1304/Water-Conservation",
     officialLabel: "City of Celina Water Conservation",
-    serviceUrl: "/celina-tx/",
+    serviceUrl: "/celina-tx",
   },
   {
     slug: "mckinney-tx",
@@ -95,7 +95,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
     ],
     officialUrl: "https://www.mckinneytexas.org/511/Outdoor-Water-Use",
     officialLabel: "City of McKinney Outdoor Water Use",
-    serviceUrl: "/mckinney-tx/",
+    serviceUrl: "/mckinney-tx",
   },
   {
     slug: "frisco-tx",
@@ -129,7 +129,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
     ],
     officialUrl: "https://www.friscotexas.gov/378/Water-Management-Plan",
     officialLabel: "City of Frisco Water Management Plan",
-    serviceUrl: "/frisco-tx/",
+    serviceUrl: "/frisco-tx",
   },
   {
     slug: "prosper-tx",
@@ -165,7 +165,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
     ],
     officialUrl: "https://www.prospertx.gov/295/Water-Conservation",
     officialLabel: "Town of Prosper Water Conservation",
-    serviceUrl: "/prosper-tx/",
+    serviceUrl: "/prosper-tx",
   },
   {
     slug: "the-colony-tx",
@@ -203,7 +203,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
     officialUrl:
       "https://www.thecolonytx.gov/DocumentCenter/View/11641/Drought-Contingencies-Chart",
     officialLabel: "City of The Colony Drought Contingency Guide",
-    serviceUrl: "/the-colony-tx/",
+    serviceUrl: "/the-colony-tx",
   },
 ];
 

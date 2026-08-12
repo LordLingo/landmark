@@ -1,4 +1,4 @@
-const fallbackSiteUrl = "http://localhost:3000";
+const productionSiteUrl = "https://golandmarktx.com";
 
 function normalizeSiteUrl(value: string): string {
   const trimmed = value.trim().replace(/\/+$/, "");
@@ -10,13 +10,11 @@ function normalizeSiteUrl(value: string): string {
   return `https://${trimmed}`;
 }
 
-const configuredSiteUrl = [
-  process.env.NEXT_PUBLIC_SITE_URL,
-  process.env.VERCEL_PROJECT_PRODUCTION_URL,
-  process.env.VERCEL_URL,
-].find((value) => value?.trim());
+// Canonicals must never switch to a Vercel preview hostname. Set
+// NEXT_PUBLIC_SITE_URL only when the production domain itself changes.
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
-export const siteUrl = normalizeSiteUrl(configuredSiteUrl ?? fallbackSiteUrl);
+export const siteUrl = normalizeSiteUrl(configuredSiteUrl ?? productionSiteUrl);
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, `${siteUrl}/`).toString();

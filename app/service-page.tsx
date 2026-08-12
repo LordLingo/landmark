@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { serviceList, type ServicePageData } from "./service-data";
+import { locationPageList } from "./location-page-data";
 import SiteNavigation from "./site-navigation";
 import { absoluteUrl } from "./site-url";
+import SiteImage from "./site-image";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -39,8 +41,8 @@ export default function ServicePage({
   const related = relatedServices
     ? relatedServices.filter((item) => item.slug !== service.slug)
     : serviceList.filter((item) => item.slug !== service.slug).slice(0, 3);
-  const contactHref = `/contact/?service=${encodeURIComponent(service.navLabel)}`;
-  const pageUrl = absoluteUrl(`/${service.slug}/`);
+  const contactHref = `/contact?service=${encodeURIComponent(service.navLabel)}`;
+  const pageUrl = absoluteUrl(`/${service.slug}`);
   const breadcrumbId = `${pageUrl}#breadcrumb`;
 
   const jsonLd = {
@@ -52,6 +54,14 @@ export default function ServicePage({
         url: pageUrl,
         name: service.metaTitle,
         description: service.metaDescription,
+        isPartOf: {
+          "@id": absoluteUrl("/#website"),
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: absoluteUrl(service.heroImage),
+        },
+        inLanguage: "en-US",
         breadcrumb: {
           "@id": breadcrumbId,
         },
@@ -141,9 +151,11 @@ export default function ServicePage({
 
         <div className="service-hero-media">
           <figure>
-            <img
+            <SiteImage
               src={service.heroImage}
               alt={service.heroAlt}
+              sizes="(max-width: 820px) 100vw, 50vw"
+              preload
               style={{ objectPosition: service.imagePosition ?? "center" }}
             />
             <figcaption>
@@ -192,9 +204,10 @@ export default function ServicePage({
 
       <section className="service-outcome">
         <figure>
-          <img
+          <SiteImage
             src={service.detailImage}
             alt={service.detailAlt}
+            sizes="(max-width: 820px) 100vw, 52vw"
             style={{ objectPosition: service.detailPosition ?? "center" }}
           />
           <figcaption>Real work from Landmark Landscapes</figcaption>
@@ -214,6 +227,30 @@ export default function ServicePage({
           {service.note && <small className="compliance-note">{service.note}</small>}
         </div>
       </section>
+
+      {service.localSection && (
+        <>
+          <section className="service-problem service-local-intro">
+            <div>
+              <p className="eyebrow">{service.localSection.eyebrow}</p>
+              <h2>{service.localSection.title}</h2>
+            </div>
+            <p>{service.localSection.intro}</p>
+          </section>
+          <section
+            className="service-feature-grid service-local-grid"
+            aria-label={`${service.shortLabel} local project guidance`}
+          >
+            {service.localSection.items.map((item, index) => (
+              <article key={item.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </section>
+        </>
+      )}
 
       <section className="service-process" id="approach">
         <div className="service-process-heading">
@@ -267,7 +304,7 @@ export default function ServicePage({
         </div>
         <div className="related-grid">
           {related.map((item, index) => (
-            <a href={`/${item.slug}/`} key={item.slug}>
+            <a href={`/${item.slug}`} key={item.slug}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{item.navLabel}</h3>
               <p>{item.metaDescription}</p>
@@ -299,7 +336,11 @@ export default function ServicePage({
       <footer className="service-footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <img src="/images/landmark-logo.webp" alt="Landmark Landscapes" />
+            <SiteImage
+              src="/images/landmark-logo.webp"
+              alt="Landmark Landscapes"
+              sizes="174px"
+            />
             <p>
               Thoughtful outdoor spaces for the way North Texas families
               actually live.
@@ -314,8 +355,14 @@ export default function ServicePage({
           <div className="footer-service-links">
             <p className="eyebrow">Residential services</p>
             {navigationServices.map((item) => (
-              <a href={`/${item.slug}/`} key={item.slug}>
+              <a href={`/${item.slug}`} key={item.slug}>
                 {item.navLabel}
+              </a>
+            ))}
+            <p className="eyebrow">Landscaping service areas</p>
+            {locationPageList.map((location) => (
+              <a href={`/${location.slug}`} key={location.slug}>
+                Landscaping in {location.shortLabel}
               </a>
             ))}
           </div>

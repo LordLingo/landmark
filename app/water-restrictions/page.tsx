@@ -13,18 +13,33 @@ import {
 import WaterTools from "./water-tools";
 
 export const metadata: Metadata = {
-  title: "North Texas Watering Restrictions & Landscape Care Guide",
+  title: {
+    absolute: "North Texas Watering Restrictions | Landmark Landscapes",
+  },
   description:
     "Plain-English watering schedules, official city links and practical landscape care for Prosper, Frisco, McKinney, Celina and The Colony, Texas.",
   alternates: {
-    canonical: "/water-restrictions/",
+    canonical: "/water-restrictions",
   },
   openGraph: {
     title: "North Texas Watering Restrictions & Landscape Care Guide",
     description:
       "Local watering schedules and practical advice to protect North Texas lawns, trees and landscaping.",
-    url: "/water-restrictions/",
+    url: "/water-restrictions",
     type: "website",
+    images: [
+      {
+        url: "/images/irrigation-turf-project.webp",
+        alt: "Healthy North Texas landscape supported by efficient irrigation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "North Texas Watering Restrictions | Landmark Landscapes",
+    description:
+      "Current watering schedules and practical landscape-care guidance for five North Texas cities.",
+    images: ["/images/irrigation-turf-project.webp"],
   },
 };
 
@@ -56,7 +71,7 @@ const careTips = [
 ];
 
 export default function WaterRestrictionsPage() {
-  const pageUrl = absoluteUrl("/water-restrictions/");
+  const pageUrl = absoluteUrl("/water-restrictions");
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -67,7 +82,15 @@ export default function WaterRestrictionsPage() {
         name: "North Texas Watering Restrictions & Landscape Care Guide",
         description:
           "A community guide to watering schedules and water-conscious landscape care in five North Texas cities.",
-        dateModified: "2026-07-26",
+        datePublished: "2026-07-26",
+        dateModified: "2026-08-12",
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/images/irrigation-turf-project.webp"),
+        },
+        isPartOf: {
+          "@id": absoluteUrl("/#website"),
+        },
         about: waterRestrictionCities.map((city) => ({
           "@type": "City",
           name: `${city.city}, Texas`,
@@ -101,7 +124,7 @@ export default function WaterRestrictionsPage() {
       />
       <SiteNavigation
         variant="inner"
-        contactHref="/contact/?service=Water-conscious%20landscape%20design"
+        contactHref="/contact?service=Water-conscious%20landscape%20design"
       />
 
       <section className="water-guide-hero">
@@ -162,7 +185,7 @@ export default function WaterRestrictionsPage() {
 
         <div className="city-water-grid">
           {waterRestrictionCities.map((city, index) => (
-            <a href={`/water-restrictions/${city.slug}/`} key={city.slug}>
+            <a href={`/water-restrictions/${city.slug}`} key={city.slug}>
               <div className="city-water-top">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <WaterDrop small />
@@ -263,11 +286,11 @@ export default function WaterRestrictionsPage() {
         <div className="estimate-actions">
           <a
             className="button button-light"
-            href="/contact/?service=Water-conscious%20landscape%20design"
+            href="/contact?service=Water-conscious%20landscape%20design"
           >
             Start a conversation <span>→</span>
           </a>
-          <a className="estimate-email" href="/landscape-design/">
+          <a className="estimate-email" href="/landscape-design">
             Explore the approach
             <strong>Landscape design + installation →</strong>
           </a>
