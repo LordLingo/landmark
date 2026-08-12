@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { serviceList } from "./service-data";
 import { locationPageList } from "./location-page-data";
@@ -68,6 +68,93 @@ const possibilities = [
   },
 ];
 
+const workGallery = [
+  {
+    image: "/images/front-yard-project.webp",
+    alt: "Landmark Landscapes front yard installation with layered planting and stone borders",
+    title: "Finished front-yard landscape",
+    category: "Front yards",
+    layout: "wide",
+  },
+  {
+    image: "/images/flower-bed-stacked-stone.webp",
+    alt: "Raised flower bed with stacked stone and colorful North Texas planting",
+    title: "Stacked-stone planting bed",
+    category: "Flower beds",
+    layout: "standard",
+  },
+  {
+    image: "/images/drainage-landscape-bed.webp",
+    alt: "Front landscape bed with decorative river rock drainage",
+    title: "Drainage worked into the design",
+    category: "Drainage",
+    layout: "standard",
+  },
+  {
+    image: "/images/stone-walkway-project.webp",
+    alt: "Stone backyard walkway installed beside a covered patio",
+    title: "Backyard stone walkway",
+    category: "Walkways",
+    layout: "wide",
+  },
+  {
+    image: "/images/lighting-warm-home.webp",
+    alt: "North Texas home with warm architectural and landscape lighting",
+    title: "Warm evening curb appeal",
+    category: "Lighting",
+    layout: "standard",
+  },
+  {
+    image: "/images/front-yard-stone.webp",
+    alt: "Front yard tree and landscape beds finished with natural stone edging",
+    title: "Natural-stone borders",
+    category: "Front yards",
+    layout: "standard",
+  },
+  {
+    image: "/images/drainage-rock-bed.webp",
+    alt: "Decorative rock drainage bed installed in a North Texas side yard",
+    title: "Decorative rock drainage",
+    category: "Drainage",
+    layout: "tall",
+  },
+  {
+    image: "/images/irrigation-turf-project.webp",
+    alt: "Geometric backyard turf and paver installation with seating",
+    title: "Turf and paver courtyard",
+    category: "Turf + irrigation",
+    layout: "wide",
+  },
+  {
+    image: "/images/lighting-landscape-bed.webp",
+    alt: "Backyard raised landscape bed illuminated at night",
+    title: "Garden lighting after dark",
+    category: "Lighting",
+    layout: "standard",
+  },
+  {
+    image: "/images/flower-bed-front-entry.webp",
+    alt: "Colorful low-maintenance flower bed beside a stone home entry",
+    title: "Layered front-entry planting",
+    category: "Flower beds",
+    layout: "standard",
+  },
+  {
+    image: "/images/lighting-blue-home.webp",
+    alt: "Home exterior accented by blue landscape lighting",
+    title: "Statement landscape lighting",
+    category: "Lighting",
+    layout: "standard",
+  },
+  {
+    image: "/images/stone-border-entry.webp",
+    alt: "Curved natural-stone flower bed with palms and seasonal color",
+    title: "Curved stone flower bed",
+    category: "Stone borders",
+    layout: "standard",
+  },
+];
+
 const goalOptions = [
   "A welcoming front yard",
   "More life in the backyard",
@@ -106,14 +193,41 @@ const processSteps = [
 ];
 
 export default function Home() {
-  const [slider, setSlider] = useState(52);
   const [cards, setCards] = useState(possibilities);
+  const [activeWorkIndex, setActiveWorkIndex] = useState<number | null>(null);
   const [goal, setGoal] = useState(goalOptions[0]);
   const [feel, setFeel] = useState(feelOptions[0]);
   const [care, setCare] = useState(careOptions[0]);
   const [note, setNote] = useState("");
   const [planReady, setPlanReady] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (activeWorkIndex === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleGalleryKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setActiveWorkIndex(null);
+      if (event.key === "ArrowLeft") {
+        setActiveWorkIndex((current) =>
+          current === null ? null : (current - 1 + workGallery.length) % workGallery.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        setActiveWorkIndex((current) =>
+          current === null ? null : (current + 1) % workGallery.length,
+        );
+      }
+    }
+
+    window.addEventListener("keydown", handleGalleryKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleGalleryKey);
+    };
+  }, [activeWorkIndex]);
 
   const planText = useMemo(
     () =>
@@ -433,64 +547,104 @@ export default function Home() {
       <section className="transformation-section" id="transformation">
         <div className="section-heading transformation-heading">
           <div>
-            <p className="eyebrow">A Texas home, reimagined</p>
-            <h2>Drag the line. Imagine pulling into this.</h2>
+            <p className="eyebrow">Our work across North Dallas</p>
+            <h2>Real yards. Thoughtful transformations.</h2>
           </div>
           <p className="section-note">
-            One home. The same architecture. A completely different arrival.
+            Explore Landmark projects spanning planting, stonework, drainage,
+            turf and outdoor lighting.
           </p>
         </div>
 
-        <div className="before-after">
-          <SiteImage
-            className="before-image"
-            src="/images/texas-home-before.jpg"
-            alt="Texas home before a full front landscape design"
-            sizes="(max-width: 820px) 100vw, 86vw"
-          />
-          <div
-            className="after-image"
-            style={{ clipPath: `inset(0 ${100 - slider}% 0 0)` }}
-          >
-            <SiteImage
-              src="/images/texas-home-after-stone.webp"
-              alt="The same Texas home with a finished front landscape design"
-              sizes="(max-width: 820px) 100vw, 86vw"
-            />
-          </div>
-          <div className="image-label before-label">Before</div>
-          <div className="image-label after-label">After</div>
-          <div className="slider-line" style={{ left: `${slider}%` }}>
-            <span aria-hidden="true">↔</span>
-          </div>
-          <input
-            className="slider-input"
-            type="range"
-            min="0"
-            max="100"
-            value={slider}
-            onChange={(event) => setSlider(Number(event.target.value))}
-            aria-label="Reveal the completed landscape"
-          />
+        <div className="work-gallery">
+          {workGallery.map((project, index) => (
+            <button
+              className={`work-gallery-item work-gallery-item-${project.layout}`}
+              type="button"
+              key={project.image}
+              onClick={() => setActiveWorkIndex(index)}
+              aria-label={`View ${project.title}`}
+            >
+              <SiteImage
+                src={project.image}
+                alt={project.alt}
+                sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 25vw"
+              />
+              <span className="work-gallery-wash" />
+              <span className="work-gallery-copy">
+                <small>{project.category}</small>
+                <strong>{project.title}</strong>
+              </span>
+              <span className="work-gallery-open" aria-hidden="true">↗</span>
+            </button>
+          ))}
         </div>
 
-        <div className="transformation-points">
-          <article>
-            <span>01</span>
-            <h3>See the whole picture</h3>
-            <p>We design the welcome, not just separate beds and borders.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Choose with confidence</h3>
-            <p>Materials and planting are explained before the work begins.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Love it after day one</h3>
-            <p>Every choice considers North Texas weather and ongoing care.</p>
-          </article>
+        <div className="work-gallery-footer">
+          <p>Tap any project to see the details up close.</p>
+          <Link className="text-link" href="/contact">
+            Start your own transformation <span>→</span>
+          </Link>
         </div>
+
+        {activeWorkIndex !== null && (
+          <div
+            className="work-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Landmark project gallery"
+            onClick={(event) => {
+              if (event.currentTarget === event.target) setActiveWorkIndex(null);
+            }}
+          >
+            <button
+              className="work-lightbox-close"
+              type="button"
+              onClick={() => setActiveWorkIndex(null)}
+              aria-label="Close project gallery"
+              autoFocus
+            >
+              ×
+            </button>
+            <button
+              className="work-lightbox-arrow work-lightbox-previous"
+              type="button"
+              onClick={() =>
+                setActiveWorkIndex(
+                  (activeWorkIndex - 1 + workGallery.length) % workGallery.length,
+                )
+              }
+              aria-label="View previous project"
+            >
+              ←
+            </button>
+            <figure>
+              <div className="work-lightbox-image">
+                <SiteImage
+                  src={workGallery[activeWorkIndex].image}
+                  alt={workGallery[activeWorkIndex].alt}
+                  sizes="(max-width: 820px) 94vw, 84vw"
+                  priority
+                />
+              </div>
+              <figcaption>
+                <span>{workGallery[activeWorkIndex].category}</span>
+                <strong>{workGallery[activeWorkIndex].title}</strong>
+                <small>{activeWorkIndex + 1} / {workGallery.length}</small>
+              </figcaption>
+            </figure>
+            <button
+              className="work-lightbox-arrow work-lightbox-next"
+              type="button"
+              onClick={() =>
+                setActiveWorkIndex((activeWorkIndex + 1) % workGallery.length)
+              }
+              aria-label="View next project"
+            >
+              →
+            </button>
+          </div>
+        )}
       </section>
 
       <section className="yard-tools-callout">
