@@ -11,11 +11,16 @@ import {
 } from "react";
 import SiteImage from "../site-image";
 import YardDesignStudio from "./yard-design-studio";
+import YardLayoutPlanner from "./yard-layout-planner";
 import {
   describePlants,
   plantPreferenceOptions,
   yardPlants,
 } from "./plant-library";
+import {
+  defaultYardLayoutPlan,
+  YardLayoutPlan,
+} from "./yard-layout-types";
 
 type Choice = {
   value: string;
@@ -232,7 +237,7 @@ function toggleValue(values: string[], value: string) {
     : [...values, value];
 }
 
-function buildBrief(state: PlannerState) {
+function buildBrief(state: PlannerState, layout?: YardLayoutPlan) {
   return [
     `${state.city || "North Texas"} · ${state.area.join(", ")}`,
     `Goals: ${state.goals.join(", ")}`,
@@ -245,10 +250,46 @@ function buildBrief(state: PlannerState) {
       ? `Plants requested: ${describePlants(state.selectedPlantIds)}`
       : "",
     "Plant standard: North Texas natives only",
+    layout
+      ? `Layout control: ${layout.density} planting · ${layout.flowerLevel} flowers · ${layout.bedLineStyle} bed lines`
+      : "",
+    layout?.placements.length
+      ? `Exact plants placed: ${layout.placements.length}`
+      : "",
     state.notes ? `Notes: ${state.notes}` : "",
   ]
     .filter(Boolean)
     .join("\n");
+}
+
+function summarizeLayout(layout: YardLayoutPlan) {
+  return {
+    density: layout.density,
+    flowerLevel: layout.flowerLevel,
+    bedLineStyle: layout.bedLineStyle,
+    plantingZones: layout.plantZones.map(({ x, y, size }) => ({
+      x: Math.round(x),
+      y: Math.round(y),
+      size: Math.round(size),
+    })),
+    protectedZones: layout.keepZones.map(({ x, y, size }) => ({
+      x: Math.round(x),
+      y: Math.round(y),
+      size: Math.round(size),
+    })),
+    exactPlants: layout.placements.map((placement) => {
+      const plant = yardPlants.find((item) => item.id === placement.plantId);
+      return {
+        name: plant?.name ?? "North Texas native plant",
+        category: plant?.category ?? "Plant",
+        matureHeight: plant?.height ?? "",
+        matureSpread: plant?.spread ?? "",
+        x: Math.round(placement.x),
+        y: Math.round(placement.y),
+        scale: Number(placement.scale.toFixed(2)),
+      };
+    }),
+  };
 }
 
 async function optimizeYardPhoto(file: File) {
@@ -280,6 +321,96 @@ async function optimizeYardPhoto(file: File) {
   return file;
 }
 
+async function prepareControlledLayout(
+  file: File,
+  layout: YardLayoutPlan,
+) {
+  if (!layout.plantZones.length && !layout.placements.length) {
+    return { image: file, mask: null as File | null };
+  }
+
+  const bitmap = await createImageBitmap(file);
+  const imageCanvas = document.createElement("canvas");
+  imageCanvas.width = bitmap.width;
+  imageCanvas.height = bitmap.height;
+  const imageContext = imageCanvas.getContext("2d");
+  imageContext?.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height);
+  bitmap.close();
+
+  const maskCanvas = document.createElement("canvas");
+  maskCanvas.width = imageCanvas.width;
+  maskCanvas.height = imageCanvas.height;
+  const maskContext = maskCanvas.getContext("2d");
+  if (!maskContext) throw new Error("The planting layout could not be prepared.");
+  maskContext.fillStyle = "rgba(255,255,255,1)";
+  maskContext.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+
+  const openArea = (x: number, y: number, size: number) => {
+    maskContext.globalCompositeOperation = "destination-out";
+    maskContext.beginPath();
+    maskContext.ellipse(
+      (x / 100) * maskCanvas.width,
+      (y / 100) * maskCanvas.height,
+      (size / 200) * maskCanvas.width,
+      (size / 200) * maskCanvas.height,
+      0,
+      0,
+      Math.PI * 2,
+    );
+    maskContext.fill();
+  };
+
+  layout.plantZones.forEach((mark) => openArea(mark.x, mark.y, mark.size));
+  layout.placements.forEach((placement) => {
+    const plant = yardPlants.find((item) => item.id === placement.plantId);
+    const size =
+      plant?.category === "Small tree"
+        ? 24
+        : plant?.category === "Shrub"
+          ? 17
+          : plant?.category === "Grass"
+            ? 14
+            : 11;
+    openArea(placement.x, placement.y, size * placement.scale);
+  });
+
+  maskContext.globalCompositeOperation = "source-over";
+  maskContext.fillStyle = "rgba(255,255,255,1)";
+  layout.keepZones.forEach((mark) => {
+    maskContext.beginPath();
+    maskContext.ellipse(
+      (mark.x / 100) * maskCanvas.width,
+      (mark.y / 100) * maskCanvas.height,
+      (mark.size / 200) * maskCanvas.width,
+      (mark.size / 200) * maskCanvas.height,
+      0,
+      0,
+      Math.PI * 2,
+    );
+    maskContext.fill();
+  });
+
+  const canvasToPng = (canvas: HTMLCanvasElement) =>
+    new Promise<Blob>((resolve, reject) =>
+      canvas.toBlob(
+        (blob) =>
+          blob
+            ? resolve(blob)
+            : reject(new Error("The controlled layout could not be prepared.")),
+        "image/png",
+      ),
+    );
+
+  return {
+    image: new File([await canvasToPng(imageCanvas)], "yard-layout.png", {
+      type: "image/png",
+    }),
+    mask: new File([await canvasToPng(maskCanvas)], "yard-layout-mask.png", {
+      type: "image/png",
+    }),
+  };
+}
+
 export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [state, setState] = useState<PlannerState>(defaultState);
@@ -290,6 +421,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
   });
   const [photo, setPhoto] = useState<File | null>(null);
   const [photoUrl, setPhotoUrl] = useState("");
+  const [layoutPlan, setLayoutPlan] = useState<YardLayoutPlan>(
+    defaultYardLayoutPlan,
+  );
   const [generatedImage, setGeneratedImage] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -345,7 +479,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     };
   }, [photoUrl]);
 
-  const brief = useMemo(() => buildBrief(state), [state]);
+  const brief = useMemo(() => buildBrief(state, layoutPlan), [layoutPlan, state]);
 
   function updateState<K extends keyof PlannerState>(
     key: K,
@@ -398,6 +532,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
     if (photoUrl) URL.revokeObjectURL(photoUrl);
     setPhoto(nextPhoto);
     setPhotoUrl(URL.createObjectURL(nextPhoto));
+    setLayoutPlan(defaultYardLayoutPlan);
     setGeneratedImage("");
     setStatusMessage("");
     setFieldError("");
@@ -412,6 +547,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
         ...contact,
         ...state,
         selectedPlants: describePlants(state.selectedPlantIds),
+        yardLayout: summarizeLayout(layoutPlan),
         photoName: photo?.name ?? "",
       }),
     });
@@ -446,8 +582,16 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
 
     try {
       const optimizedPhoto = await optimizeYardPhoto(photo);
+      const controlledLayout = await prepareControlledLayout(
+        optimizedPhoto,
+        layoutPlan,
+      );
       const formData = new FormData();
-      formData.append("image", optimizedPhoto);
+      formData.append("image", controlledLayout.image);
+      if (controlledLayout.mask) {
+        formData.append("mask", controlledLayout.mask);
+      }
+      formData.append("mode", "initial");
       formData.append("city", state.city);
       formData.append("area", state.area.join(", "));
       formData.append("goals", state.goals.join(", "));
@@ -455,6 +599,10 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       formData.append("style", state.style);
       formData.append("preferences", state.plantPreferences.join(", "));
       formData.append("plantSelections", describePlants(state.selectedPlantIds));
+      formData.append("layout", JSON.stringify(summarizeLayout(layoutPlan)));
+      formData.append("density", layoutPlan.density);
+      formData.append("flowerLevel", layoutPlan.flowerLevel);
+      formData.append("bedLineStyle", layoutPlan.bedLineStyle);
       formData.append("notes", state.notes);
       formData.append("name", contact.name);
       formData.append("email", contact.email);
@@ -946,6 +1094,15 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                 </p>
               </div>
             </div>
+
+            {photoUrl && (
+              <YardLayoutPlanner
+                photoUrl={photoUrl}
+                plan={layoutPlan}
+                preferredPlantIds={state.selectedPlantIds}
+                onChange={setLayoutPlan}
+              />
+            )}
           </div>
         )}
 
@@ -1003,6 +1160,17 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                     <dt>Plant standard</dt>
                     <dd>North Texas natives only</dd>
                   </div>
+                  <div>
+                    <dt>Homeowner layout</dt>
+                    <dd>
+                      {layoutPlan.density} planting · {layoutPlan.flowerLevel}{" "}
+                      flowers · {layoutPlan.bedLineStyle.replace(/-/g, " ")} bed
+                      lines
+                      {layoutPlan.placements.length
+                        ? ` · ${layoutPlan.placements.length} exact plant marker${layoutPlan.placements.length === 1 ? "" : "s"}`
+                        : ""}
+                    </dd>
+                  </div>
                 </dl>
               </div>
 
@@ -1033,8 +1201,8 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                         />
                       </div>
                       <span className="concept-compare-line" aria-hidden="true" />
-                      <span className="concept-compare-label is-before">Before</span>
-                      <span className="concept-compare-label is-after">Current design</span>
+                      <span className="concept-compare-label is-before">After</span>
+                      <span className="concept-compare-label is-after">Before</span>
                       <label className="concept-compare-control">
                         <span>Slide to compare before and after</span>
                         <input
@@ -1197,6 +1365,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   notes: state.notes,
                   plantPreferences: state.plantPreferences,
                   selectedPlantIds: state.selectedPlantIds,
+                  density: layoutPlan.density,
+                  flowerLevel: layoutPlan.flowerLevel,
+                  bedLineStyle: layoutPlan.bedLineStyle,
                 }}
                 contact={contact}
                 onImageChange={setGeneratedImage}

@@ -44,7 +44,17 @@ export async function POST(request: NextRequest) {
     "Plant priorities": list(body.plantPreferences, 100),
     "Requested plants": text(body.selectedPlants, 1500),
     "Plant standard": "North Texas natives only",
+    "Homeowner layout controls": text(
+      typeof body.yardLayout === "object"
+        ? JSON.stringify(body.yardLayout)
+        : body.yardLayout,
+      5000,
+    ),
+    "Planting density": text(body.density, 40),
+    "Flower level": text(body.flowerLevel, 40),
+    "Bed line style": text(body.bedLineStyle, 60),
     "Placed plant plan": list(body.designPlants, 240),
+    "Move/remove adjustments": list(body.designAdjustments, 300),
     "Latest design instruction": text(body.designInstruction, 1000),
     "Selected design version": text(String(body.designVersion ?? ""), 20),
     "Preferred visit date": text(body.preferredDate, 40),

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { describePlants, yardPlants } from "./plant-library";
 
-type StudioMode = "plants" | "change" | "keep";
+type StudioMode = "plants" | "move" | "remove" | "change" | "keep";
 
 type Placement = {
   id: string;
@@ -30,6 +30,12 @@ type BrushMark = {
   size: number;
 };
 
+type MoveRequest = {
+  id: string;
+  from: BrushMark;
+  to: { x: number; y: number };
+};
+
 type StudioContext = {
   city: string;
   area: string[];
@@ -39,6 +45,9 @@ type StudioContext = {
   notes: string;
   plantPreferences: string[];
   selectedPlantIds: string[];
+  density: string;
+  flowerLevel: string;
+  bedLineStyle: string;
 };
 
 type StudioContact = {
@@ -56,8 +65,9 @@ type Props = {
 
 const quickChanges = [
   "Use lower-maintenance native planting",
-  "Add more seasonal color",
-  "Remove what is inside the marked area",
+  "Reduce the flowers and replace excess color with green native shrubs, grasses and open mulch",
+  "Keep flowers to only a few small repeated accents",
+  "Remove everything inside the marked area and continue the lawn or mulch naturally",
   "Create cleaner, more graceful bed lines",
   "Add warm, subtle landscape lighting",
   "Show the marked planting at realistic 3–5 year maturity",
@@ -95,6 +105,11 @@ export default function YardDesignStudio({
   const [selectedPlacementId, setSelectedPlacementId] = useState("");
   const [editMarks, setEditMarks] = useState<BrushMark[]>([]);
   const [keepMarks, setKeepMarks] = useState<BrushMark[]>([]);
+  const [removeMarks, setRemoveMarks] = useState<BrushMark[]>([]);
+  const [moveRequests, setMoveRequests] = useState<MoveRequest[]>([]);
+  const [pendingMoveSource, setPendingMoveSource] = useState<BrushMark | null>(
+    null,
+  );
   const [brushSize, setBrushSize] = useState(12);
   const [instruction, setInstruction] = useState(quickChanges[0]);
   const [category, setCategory] = useState("All");
@@ -153,6 +168,8 @@ export default function YardDesignStudio({
   }, [placements]);
   const hasPendingChanges =
     editMarks.length > 0 ||
+    removeMarks.length > 0 ||
+    moveRequests.length > 0 ||
     removedPlacements.length > 0 ||
     placements.some(moved);
 
@@ -225,7 +242,7 @@ export default function YardDesignStudio({
   }
 
   function drawMark(event: ReactPointerEvent<HTMLElement>) {
-    if (mode === "plants") return;
+    if (mode === "plants" || mode === "move") return;
     const point = pointFromEvent(event);
     const mark: BrushMark = {
       id: uniqueId(mode),
@@ -234,6 +251,8 @@ export default function YardDesignStudio({
     };
     if (mode === "change") {
       setEditMarks((current) => [...current, mark]);
+    } else if (mode === "remove") {
+      setRemoveMarks((current) => [...current, mark]);
     } else {
       setKeepMarks((current) => [...current, mark]);
     }
@@ -241,6 +260,27 @@ export default function YardDesignStudio({
 
   function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (mode === "plants") return;
+
+    if (mode === "move") {
+      const point = pointFromEvent(event);
+      if (!pendingMoveSource) {
+        setPendingMoveSource({
+          id: uniqueId("move-source"),
+          ...point,
+          size: brushSize,
+        });
+        setStatus("Move tool: now tap the destination where this item should go.");
+      } else {
+        setMoveRequests((current) => [
+          ...current,
+          { id: uniqueId("move"), from: pendingMoveSource, to: point },
+        ]);
+        setPendingMoveSource(null);
+        setStatus("Move recorded. Add another move or make the changes realistic.");
+      }
+      return;
+    }
+
     event.currentTarget.setPointerCapture(event.pointerId);
     drawing.current = true;
     drawMark(event);
@@ -338,6 +378,11 @@ export default function YardDesignStudio({
       );
     }
     for (const mark of editMarks) eraseCircle(mark.x, mark.y, mark.size);
+    for (const mark of removeMarks) eraseCircle(mark.x, mark.y, mark.size);
+    for (const request of moveRequests) {
+      eraseCircle(request.from.x, request.from.y, request.from.size);
+      eraseCircle(request.to.x, request.to.y, request.from.size);
+    }
 
     mask.globalCompositeOperation = "source-over";
     mask.fillStyle = "rgba(255,255,255,1)";
@@ -413,6 +458,24 @@ export default function YardDesignStudio({
           y: Math.round(placement.renderedY ?? placement.y),
         };
       });
+      const movedExistingPlan = moveRequests.map((request) => ({
+        action: "move-existing",
+        from: {
+          x: Math.round(request.from.x),
+          y: Math.round(request.from.y),
+          size: Math.round(request.from.size),
+        },
+        to: {
+          x: Math.round(request.to.x),
+          y: Math.round(request.to.y),
+        },
+      }));
+      const removedAreaPlan = removeMarks.map((mark) => ({
+        action: "remove-area",
+        x: Math.round(mark.x),
+        y: Math.round(mark.y),
+        size: Math.round(mark.size),
+      }));
 
       const formData = new FormData();
       formData.append("image", files.base);
@@ -426,7 +489,18 @@ export default function YardDesignStudio({
       formData.append("notes", context.notes);
       formData.append("preferences", context.plantPreferences.join(", "));
       formData.append("plantSelections", describePlants(context.selectedPlantIds));
-      formData.append("placements", JSON.stringify([...placementPlan, ...removedPlan]));
+      formData.append("density", context.density);
+      formData.append("flowerLevel", context.flowerLevel);
+      formData.append("bedLineStyle", context.bedLineStyle);
+      formData.append(
+        "placements",
+        JSON.stringify([
+          ...placementPlan,
+          ...removedPlan,
+          ...movedExistingPlan,
+          ...removedAreaPlan,
+        ]),
+      );
       formData.append("instruction", instruction);
       formData.append("name", contact.name);
       formData.append("email", contact.email);
@@ -453,6 +527,9 @@ export default function YardDesignStudio({
       setRemovedPlacements([]);
       setEditMarks([]);
       setKeepMarks([]);
+      setRemoveMarks([]);
+      setMoveRequests([]);
+      setPendingMoveSource(null);
       setRenderCount((count) => count + 1);
       onImageChange(nextImage);
       setStatus("Your placements are blended into a new realistic version. You can keep editing.");
@@ -480,6 +557,16 @@ export default function YardDesignStudio({
             const plant = yardPlants.find((item) => item.id === placement.plantId);
             return `${plant?.name ?? "Native plant"} at ${Math.round(placement.x)}% across / ${Math.round(placement.y)}% down`;
           }),
+          designAdjustments: [
+            ...moveRequests.map(
+              (request) =>
+                `Move existing item from ${Math.round(request.from.x)}% across / ${Math.round(request.from.y)}% down to ${Math.round(request.to.x)}% across / ${Math.round(request.to.y)}% down`,
+            ),
+            ...removeMarks.map(
+              (mark) =>
+                `Remove landscaping around ${Math.round(mark.x)}% across / ${Math.round(mark.y)}% down`,
+            ),
+          ],
           selectedPlants: describePlants(context.selectedPlantIds),
           designInstruction: instruction,
           designVersion: versionIndex + 1,
@@ -513,8 +600,9 @@ export default function YardDesignStudio({
           <p className="eyebrow">Your interactive design studio</p>
           <h3 id="design-studio-title">Now make the yard feel like yours.</h3>
           <p>
-            Add real North Texas plants, drag them into position, mark areas to
-            change or protect, then ask AI to blend your decisions naturally.
+            Place exact plants, move or remove anything in the concept, and
+            protect what already feels right. Your decisions—not randomness—
+            guide every new version.
           </p>
         </div>
         <div className="design-version-controls" aria-label="Design versions">
@@ -543,6 +631,8 @@ export default function YardDesignStudio({
           <div className="design-mode-tabs" role="tablist" aria-label="Design tools">
             {([
               ["plants", "Place plants"],
+              ["move", "Move existing"],
+              ["remove", "Remove"],
               ["change", "Change an area"],
               ["keep", "Protect an area"],
             ] as Array<[StudioMode, string]>).map(([value, label]) => (
@@ -551,7 +641,10 @@ export default function YardDesignStudio({
                 role="tab"
                 aria-selected={mode === value}
                 className={mode === value ? "is-active" : ""}
-                onClick={() => setMode(value)}
+                onClick={() => {
+                  setMode(value);
+                  if (value !== "move") setPendingMoveSource(null);
+                }}
                 key={value}
               >
                 {label}
@@ -608,13 +701,20 @@ export default function YardDesignStudio({
           ) : (
             <div className="brush-controls">
               <strong>
-                {mode === "change"
-                  ? "Brush over what should change"
-                  : "Brush over what must stay untouched"}
+                {mode === "move"
+                  ? pendingMoveSource
+                    ? "Now tap the destination"
+                    : "Tap what you want to move"
+                  : mode === "remove"
+                    ? "Brush over what should disappear"
+                    : mode === "change"
+                      ? "Brush over what should change"
+                      : "Brush over what must stay untouched"}
               </strong>
               <p>
-                Use your mouse or finger directly on the image. Multiple strokes
-                can cover a larger area.
+                {mode === "move"
+                  ? "First tap the plant or feature. Then tap its new location. The next version removes it from the first spot and rebuilds it at the second."
+                  : "Use your mouse or finger directly on the image. Multiple strokes can cover a larger area."}
               </p>
               <label>
                 Brush size
@@ -628,11 +728,17 @@ export default function YardDesignStudio({
               </label>
               <button
                 type="button"
-                onClick={() =>
-                  mode === "change" ? setEditMarks([]) : setKeepMarks([])
-                }
+                onClick={() => {
+                  if (mode === "change") setEditMarks([]);
+                  if (mode === "remove") setRemoveMarks([]);
+                  if (mode === "keep") setKeepMarks([]);
+                  if (mode === "move") {
+                    setMoveRequests([]);
+                    setPendingMoveSource(null);
+                  }
+                }}
               >
-                Clear {mode === "change" ? "change" : "protected"} marks
+                Clear {mode === "move" ? "moves" : `${mode} marks`}
               </button>
             </div>
           )}
@@ -739,6 +845,67 @@ export default function YardDesignStudio({
                 aria-hidden="true"
               />
             ))}
+            {removeMarks.map((mark) => (
+              <span
+                className="design-brush-mark is-remove"
+                style={{
+                  left: `${mark.x}%`,
+                  top: `${mark.y}%`,
+                  width: `${mark.size}%`,
+                  aspectRatio: "1",
+                }}
+                key={mark.id}
+                aria-hidden="true"
+              />
+            ))}
+            {moveRequests.map((request) => (
+              <div className="design-move-request" key={request.id} aria-hidden="true">
+                <span
+                  className="is-from"
+                  style={{
+                    left: `${request.from.x}%`,
+                    top: `${request.from.y}%`,
+                    width: `${request.from.size}%`,
+                    aspectRatio: "1",
+                  }}
+                >
+                  From
+                </span>
+                <span
+                  className="is-to"
+                  style={{
+                    left: `${request.to.x}%`,
+                    top: `${request.to.y}%`,
+                    width: `${request.from.size}%`,
+                    aspectRatio: "1",
+                  }}
+                >
+                  To
+                </span>
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <line
+                    x1={request.from.x}
+                    y1={request.from.y}
+                    x2={request.to.x}
+                    y2={request.to.y}
+                  />
+                </svg>
+              </div>
+            ))}
+            {pendingMoveSource && (
+              <span
+                className="design-move-pending"
+                style={{
+                  left: `${pendingMoveSource.x}%`,
+                  top: `${pendingMoveSource.y}%`,
+                  width: `${pendingMoveSource.size}%`,
+                  aspectRatio: "1",
+                }}
+                aria-hidden="true"
+              >
+                From · tap destination
+              </span>
+            )}
             {placements.map((placement) => {
               const plant = yardPlants.find((item) => item.id === placement.plantId);
               if (!plant) return null;
@@ -776,6 +943,8 @@ export default function YardDesignStudio({
               </div>
             )}
             <div className="design-canvas-legend" aria-hidden="true">
+              <span><i className="is-move" /> Move</span>
+              <span><i className="is-remove" /> Remove</span>
               <span><i className="is-change" /> Change</span>
               <span><i className="is-keep" /> Keep</span>
             </div>

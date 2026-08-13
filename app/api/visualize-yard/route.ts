@@ -73,9 +73,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (mode === "refine" && !(mask instanceof File)) {
+    return NextResponse.json(
+      { error: "The selected edit areas could not be read. Please mark them again." },
+      { status: 400 },
+    );
+  }
+
   if (
-    mode === "refine" &&
-    (!(mask instanceof File) || mask.type !== "image/png" || mask.size > 12 * 1024 * 1024)
+    mask instanceof File &&
+    (mask.type !== "image/png" || mask.size > 12 * 1024 * 1024)
   ) {
     return NextResponse.json(
       { error: "The selected edit areas could not be read. Please mark them again." },
@@ -108,15 +115,34 @@ export async function POST(request: NextRequest) {
   const preferences = clean(formData.get("preferences"), 500);
   const plantSelections = clean(formData.get("plantSelections"), 1000);
   const notes = clean(formData.get("notes"), 1200);
-  const placements = clean(formData.get("placements"), 6000);
+  const layout = clean(formData.get("layout"), 8000);
+  const density = clean(formData.get("density"), 30) || "restrained";
+  const flowerLevel = clean(formData.get("flowerLevel"), 30) || "accents";
+  const bedLineStyle = clean(formData.get("bedLineStyle"), 40) || "soft-curves";
+  const placements = clean(formData.get("placements"), 8000);
   const instruction = clean(formData.get("instruction"), 1200);
+  const densityRule =
+    density === "lush"
+      ? "PLANTING DENSITY: Full and layered, but organized into a few intentional masses with visible mulch or breathing room between groups. Never create a random wildflower meadow."
+      : density === "balanced"
+        ? "PLANTING DENSITY: Balanced and edited. Use clear shrub and grass structure, controlled repetition, and roughly 30–40% visible open lawn, mulch, or negative space in editable landscape areas."
+        : "PLANTING DENSITY: Clean and restrained. Prioritize green shrubs and grasses, use fewer larger masses, and retain roughly 45–55% visible open lawn, mulch, or negative space in editable landscape areas. Do not fill every gap with a plant.";
+  const flowerRule =
+    flowerLevel === "none"
+      ? "FLOWER LIMIT: Add no new flowering plants. Use green native shrubs, grasses, groundcovers, stone, lawn, and mulch for interest."
+      : flowerLevel === "colorful"
+        ? "FLOWER LIMIT: Seasonal flowers may occupy at most 25–30% of the new plant mass. Keep them in a few repeated, intentional groups; do not create ribbons of mixed flowers or wall-to-wall blooms."
+        : "FLOWER LIMIT: Flowers are accents only—at most 10–15% of the new plant mass and no more than 3–5 small repeated groups in the entire view. The design must read primarily as green structure, lawn, mulch, shrubs, and grasses.";
   const plantRules = [
     "PLANT STANDARD: Every newly added plant must be native to the Dallas-Fort Worth area's Blackland Prairie or Cross Timbers ecoregions. This applies to every visual style, including traditional, modern, colorful, and resort-inspired concepts.",
     "Use only species from this approved North Texas native palette:",
     northTexasNativePlantPalette,
     "Choose from the palette according to the visible sun exposure, available mature space, drainage clues, and requested function. Use natural groupings and believable mature sizes. If the requested look normally relies on a non-native ornamental, reproduce its color, texture, or structure with the closest plant from the approved palette instead.",
     "Do not introduce crape myrtle, Bradford pear, boxwood, privet or Ligustrum, Nandina, loropetalum, Japanese holly, Japanese barberry, Japanese honeysuckle, Asian jasmine, liriope or monkey grass, pampas grass, Mexican feathergrass, palms, elephant ears, or other non-native ornamentals.",
-    "Make the transformation substantial but buildable, upscale, cohesive, well maintained, and believable for a professional residential landscape installation.",
+    densityRule,
+    flowerRule,
+    `BED EDGE: Use ${bedLineStyle.replace(/-/g, " ")} bed lines where new beds are requested.`,
+    "Make the transformation appropriate to the homeowner's chosen density, buildable, upscale, cohesive, well maintained, and believable for a professional residential landscape installation.",
     "Do not add a swimming pool. Do not add text, logos, labels, people, vehicles, fantasy architecture, impossible grading, or plants blocking doors and windows.",
   ];
   const prompt =
@@ -128,6 +154,7 @@ export async function POST(request: NextRequest) {
           "For a move or resize action, remove the plant from its old coordinates and render it at the new coordinates. For a remove action, restore a natural continuation of the bed, lawn or background at that location.",
           `Homeowner instruction: ${instruction || "Blend the marked native plants naturally into the selected areas."}`,
           `Placement plan: ${placements || "No named placement plan supplied; follow the edit mask."}`,
+          "If the placement plan contains an action named move-existing, remove the visible plant or landscape object at FROM and recreate that same kind of item at TO. If it contains remove-area, remove landscaping inside that marked circle and continue the surrounding lawn, mulch, or bed naturally. Do not replace removed flowers with more flowers unless explicitly requested.",
           `Property context: ${city || "North Texas"}. Project area: ${area || "yard"}.`,
           `Visual direction: ${style || "refined North Texas residential landscape"}.`,
           preferences ? `Plant priorities: ${preferences}.` : "",
@@ -141,13 +168,19 @@ export async function POST(request: NextRequest) {
       : [
           "Create a photorealistic residential landscape design inspiration concept by editing this exact homeowner photo.",
           "Preserve the house architecture, roof, windows, doors, driveway, street, camera position, perspective, lighting direction, neighboring structures, and all hardscape that was not specifically requested.",
+          mask instanceof File
+            ? "A homeowner layout mask is supplied. Transparent mask regions are the only areas where planting or bed changes are allowed. Preserve opaque areas as closely as possible. Do not extend landscaping beyond the marked planting zones."
+            : "No planting-zone mask was supplied, so propose a modest, clean arrangement that leaves generous lawn and visual breathing room.",
+          layout
+            ? `HOMEOWNER-CONTROLLED LAYOUT (coordinates are percentages from left and top): ${layout}. Treat every exactPlants marker as one deliberately placed plant and do not add extra plants of those named species beyond the number of markers. Protected zones must remain visibly unchanged.`
+            : "No exact plant markers were supplied.",
           `Property context: ${city || "North Texas"}. Project area: ${area || "yard"}.`,
           `Homeowner priorities: ${goals || "a more beautiful, practical yard"}.`,
           `Requested features: ${features || "layered planting and a finished landscape"}.`,
           `Visual direction: ${style || "refined North Texas residential landscape"}.`,
           preferences ? `Plant priorities: ${preferences}.` : "",
           plantSelections
-            ? `Deliberately include these homeowner-selected plants where site conditions and mature space allow: ${plantSelections}.`
+            ? `Use these homeowner-selected plants only where site conditions, marked zones, chosen flower limit, and mature space allow: ${plantSelections}. If exact plant markers are supplied, their marked count and positions take priority.`
             : "",
           notes ? `Homeowner keep/avoid notes: ${notes}.` : "",
           ...plantRules,
@@ -159,7 +192,7 @@ export async function POST(request: NextRequest) {
   const openAiForm = new FormData();
   openAiForm.append("model", "gpt-image-2");
   openAiForm.append("image", image, image.name || "yard.jpg");
-  if (mode === "refine" && mask instanceof File) {
+  if (mask instanceof File) {
     openAiForm.append("mask", mask, mask.name || "yard-mask.png");
   }
   openAiForm.append("prompt", prompt);
