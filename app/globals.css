@@ -6539,6 +6539,25 @@ footer {
   line-height: 1.6;
 }
 
+.concept-required-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.concept-required-label em {
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: rgba(23, 54, 44, 0.1);
+  color: var(--forest);
+  font-size: 6px;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
 .concept-contact-fields {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8884,5 +8903,245 @@ footer {
   .layout-planner-note {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+/* Readable design controls: larger on desktop, compact and clear on phones */
+.design-studio-heading > div:first-child > p:last-child,
+.layout-planner-heading p:last-child {
+  font-size: clamp(12px, 0.78vw, 14px);
+}
+
+.design-version-controls button,
+.design-version-controls span,
+.design-mode-tabs button,
+.layout-mode-tabs button {
+  font-size: 12px;
+}
+
+.design-studio-layout {
+  grid-template-columns: minmax(350px, 0.38fr) minmax(0, 1fr);
+}
+
+.design-mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: visible;
+}
+
+.design-mode-tabs button {
+  flex: none;
+}
+
+.design-mode-tabs button:last-child {
+  grid-column: 1 / -1;
+}
+
+.plant-search-row input,
+.plant-search-row select {
+  font-size: 13px;
+}
+
+.plant-library-card strong {
+  font-size: 17px;
+}
+
+.plant-library-card small,
+.plant-library-card > div > span,
+.plant-library-card > button {
+  font-size: 12px;
+}
+
+.brush-controls > strong,
+.selected-plant-controls > strong {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.brush-controls > p,
+.selected-plant-controls > small {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.brush-controls label,
+.selected-plant-controls label,
+.brush-controls > button,
+.selected-plant-controls button,
+.selected-plant-controls > span {
+  font-size: 12px;
+}
+
+.design-plant-schedule > div:first-child > span,
+.design-plant-schedule > div:first-child > strong,
+.design-plant-schedule li small,
+.design-plant-schedule > small {
+  font-size: 12px;
+}
+
+.design-plant-schedule li > span,
+.plant-placement > span,
+.design-canvas-legend,
+.design-move-request > span,
+.design-move-pending {
+  font-size: 10px;
+}
+
+.design-plant-schedule li strong {
+  font-size: 16px;
+}
+
+.design-rendering span {
+  font-size: 12px;
+}
+
+.design-refine-panel > div:first-child > span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.quick-change-options {
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quick-change-options button {
+  min-height: 38px;
+  padding: 8px 11px;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.design-refine-panel textarea {
+  min-height: 112px;
+  padding: 13px;
+  font-size: 14px;
+}
+
+.design-refine-actions .button {
+  min-height: 58px;
+  font-size: 14px;
+}
+
+.design-refine-actions > button:not(.button) {
+  min-height: 48px;
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.design-refine-actions small,
+.design-studio-status {
+  font-size: 12px;
+}
+
+.layout-planner-heading > span {
+  font-size: 10px;
+}
+
+.layout-brush-controls,
+.layout-brush-controls button,
+.layout-control-panel legend,
+.layout-plant-counts > span,
+.layout-segmented-control button,
+.layout-plant-picker select,
+.layout-plant-picker button,
+.layout-selected-plant > span,
+.layout-selected-plant button,
+.layout-plant-counts li,
+.layout-planner-note {
+  font-size: 12px;
+}
+
+.layout-choice-stack strong,
+.layout-selected-plant > strong {
+  font-size: 17px;
+}
+
+.layout-choice-stack small,
+.layout-plant-picker p,
+.layout-selected-plant > small,
+.layout-selected-plant label {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.layout-plant-marker > span,
+.layout-stage-legend {
+  font-size: 9px;
+}
+
+@media (max-width: 1050px) {
+  .design-studio-layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 820px) {
+  .design-studio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .design-studio-heading > div:first-child > p:last-child,
+  .layout-planner-heading p:last-child {
+    font-size: 13px;
+  }
+
+  .design-mode-tabs button,
+  .layout-mode-tabs button {
+    min-height: 48px;
+    font-size: 11px;
+  }
+
+  .brush-controls > strong,
+  .selected-plant-controls > strong {
+    font-size: 22px;
+  }
+
+  .brush-controls > p,
+  .selected-plant-controls > small,
+  .design-refine-panel textarea {
+    font-size: 13px;
+  }
+
+  .quick-change-options button,
+  .design-refine-panel > div:first-child > span,
+  .design-refine-actions > button:not(.button) {
+    font-size: 12px;
+  }
+
+  .design-refine-actions .button {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 520px) {
+  .design-tool-panel,
+  .design-canvas-column {
+    padding: 12px;
+  }
+
+  .design-mode-tabs button {
+    min-height: 46px;
+  }
+
+  .design-refine-panel {
+    gap: 14px;
+    padding: 13px;
+  }
+
+  .quick-change-options button {
+    min-height: 36px;
+    padding: 7px 9px;
+  }
+
+  .design-refine-panel textarea {
+    min-height: 100px;
+  }
+
+  .design-canvas-legend {
+    gap: 8px;
+    font-size: 9px;
   }
 }

@@ -57,8 +57,6 @@ export async function POST(request: NextRequest) {
     "Move/remove adjustments": list(body.designAdjustments, 300),
     "Latest design instruction": text(body.designInstruction, 1000),
     "Selected design version": text(String(body.designVersion ?? ""), 20),
-    "Preferred visit date": text(body.preferredDate, 40),
-    "Preferred time": text(body.preferredTime, 40),
     Notes: text(body.notes, 1500),
     "Uploaded photo": text(body.photoName, 240),
     Source: text(body.source, 100) || "Landmark Plan My Yard",

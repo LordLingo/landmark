@@ -43,8 +43,6 @@ type PlannerState = {
   plantPreferences: string[];
   selectedPlantIds: string[];
   notes: string;
-  preferredDate: string;
-  preferredTime: string;
 };
 
 type ContactState = {
@@ -219,8 +217,6 @@ const defaultState: PlannerState = {
   plantPreferences: [],
   selectedPlantIds: [],
   notes: "",
-  preferredDate: "",
-  preferredTime: "Morning",
 };
 
 const steps = [
@@ -565,7 +561,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
 
     if (!photo || !contact.name || !contact.email || !contact.phone) {
       setStatusMessage(
-        "Add your name, email, phone and yard photo so Landmark can return your concept and follow up on the project.",
+        "Add the three required contact details and your yard photo to create and save your concept.",
       );
       return;
     }
@@ -1256,16 +1252,18 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
 
             <form className="concept-contact-form" onSubmit={createConcept}>
               <div>
-                <p className="eyebrow">Create and save the concept</p>
-                <h3>Where should Landmark connect this idea to you?</h3>
+                <p className="eyebrow">Create your no-pressure concept</p>
+                <h3>Save this yard idea to your project.</h3>
                 <p>
-                  Your contact details keep the photo, brief and visual direction
-                  together as one useful project record.
+                  These three required details keep your photo, choices and
+                  concept together. This does not schedule an appointment.
                 </p>
               </div>
               <div className="concept-contact-fields">
                 <label>
-                  <span>Name</span>
+                  <span className="concept-required-label">
+                    Name <em>Required</em>
+                  </span>
                   <input
                     type="text"
                     autoComplete="name"
@@ -1280,7 +1278,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   />
                 </label>
                 <label>
-                  <span>Email</span>
+                  <span className="concept-required-label">
+                    Email <em>Required</em>
+                  </span>
                   <input
                     type="email"
                     autoComplete="email"
@@ -1295,7 +1295,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   />
                 </label>
                 <label>
-                  <span>Phone</span>
+                  <span className="concept-required-label">
+                    Phone <em>Required</em>
+                  </span>
                   <input
                     type="tel"
                     autoComplete="tel"
@@ -1309,37 +1311,15 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                     }
                   />
                 </label>
-                <label>
-                  <span>Preferred visit date</span>
-                  <input
-                    type="date"
-                    value={state.preferredDate}
-                    onChange={(event) =>
-                      updateState("preferredDate", event.target.value)
-                    }
-                  />
-                </label>
-                <label>
-                  <span>Preferred time</span>
-                  <select
-                    value={state.preferredTime}
-                    onChange={(event) =>
-                      updateState("preferredTime", event.target.value)
-                    }
-                  >
-                    <option>Morning</option>
-                    <option>Afternoon</option>
-                    <option>Evening</option>
-                  </select>
-                </label>
                 <button className="button" type="submit" disabled={isGenerating}>
-                  {isGenerating ? "Creating my concept…" : "Reimagine my yard"}
+                  {isGenerating ? "Creating my concept…" : "Create my yard concept"}
                   <span>✦</span>
                 </button>
               </div>
               <p className="concept-consent">
                 By continuing, you agree that Landmark may contact you about
-                this project. No unrelated marketing.
+                this project. No appointment is scheduled and no unrelated
+                marketing.
               </p>
             </form>
 
