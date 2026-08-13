@@ -49,6 +49,8 @@ export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
   const image = formData.get("image");
+  const mask = formData.get("mask");
+  const mode = clean(formData.get("mode"), 20);
   const email = clean(formData.get("email"), 180).toLowerCase();
   const phone = clean(formData.get("phone"), 40);
   const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0];
@@ -61,13 +63,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (image.size > 4 * 1024 * 1024) {
+  if (image.size > 12 * 1024 * 1024) {
     return NextResponse.json(
       {
         error:
-          "The optimized yard photo is still too large. Please choose a smaller image.",
+          "The optimized yard image is still too large. Please choose a smaller image.",
       },
       { status: 413 },
+    );
+  }
+
+  if (
+    mode === "refine" &&
+    (!(mask instanceof File) || mask.type !== "image/png" || mask.size > 12 * 1024 * 1024)
+  ) {
+    return NextResponse.json(
+      { error: "The selected edit areas could not be read. Please mark them again." },
+      { status: 400 },
     );
   }
 
@@ -93,13 +105,12 @@ export async function POST(request: NextRequest) {
   const goals = clean(formData.get("goals"), 500);
   const features = clean(formData.get("features"), 500);
   const style = clean(formData.get("style"), 120);
-  const prompt = [
-    "Create a photorealistic residential landscape design inspiration concept by editing this exact homeowner photo.",
-    "Preserve the house architecture, roof, windows, doors, driveway, street, camera position, perspective, lighting direction, neighboring structures, and all hardscape that was not specifically requested.",
-    `Property context: ${city || "North Texas"}. Project area: ${area || "yard"}.`,
-    `Homeowner priorities: ${goals || "a more beautiful, practical yard"}.`,
-    `Requested features: ${features || "layered planting and a finished landscape"}.`,
-    `Visual direction: ${style || "refined North Texas residential landscape"}.`,
+  const preferences = clean(formData.get("preferences"), 500);
+  const plantSelections = clean(formData.get("plantSelections"), 1000);
+  const notes = clean(formData.get("notes"), 1200);
+  const placements = clean(formData.get("placements"), 6000);
+  const instruction = clean(formData.get("instruction"), 1200);
+  const plantRules = [
     "PLANT STANDARD: Every newly added plant must be native to the Dallas-Fort Worth area's Blackland Prairie or Cross Timbers ecoregions. This applies to every visual style, including traditional, modern, colorful, and resort-inspired concepts.",
     "Use only species from this approved North Texas native palette:",
     northTexasNativePlantPalette,
@@ -107,12 +118,50 @@ export async function POST(request: NextRequest) {
     "Do not introduce crape myrtle, Bradford pear, boxwood, privet or Ligustrum, Nandina, loropetalum, Japanese holly, Japanese barberry, Japanese honeysuckle, Asian jasmine, liriope or monkey grass, pampas grass, Mexican feathergrass, palms, elephant ears, or other non-native ornamentals.",
     "Make the transformation substantial but buildable, upscale, cohesive, well maintained, and believable for a professional residential landscape installation.",
     "Do not add a swimming pool. Do not add text, logos, labels, people, vehicles, fantasy architecture, impossible grading, or plants blocking doors and windows.",
-    "Return one wide landscape-oriented concept image.",
-  ].join("\n");
+  ];
+  const prompt =
+    mode === "refine"
+      ? [
+          "Refine this existing residential landscape concept using the supplied edit mask and the homeowner's exact placement decisions.",
+          "The transparent mask regions are the only areas allowed to change. Preserve every pixel and recognizable detail outside those regions as closely as possible, including the house, roof, windows, doors, driveway, street, camera, perspective, lighting, lawn and finished landscaping.",
+          "Blend the requested plants and changes photorealistically into the marked locations. The placement coordinates are percentages measured from the left and top of the image. Treat them as deliberate final positions, not suggestions.",
+          "For a move or resize action, remove the plant from its old coordinates and render it at the new coordinates. For a remove action, restore a natural continuation of the bed, lawn or background at that location.",
+          `Homeowner instruction: ${instruction || "Blend the marked native plants naturally into the selected areas."}`,
+          `Placement plan: ${placements || "No named placement plan supplied; follow the edit mask."}`,
+          `Property context: ${city || "North Texas"}. Project area: ${area || "yard"}.`,
+          `Visual direction: ${style || "refined North Texas residential landscape"}.`,
+          preferences ? `Plant priorities: ${preferences}.` : "",
+          plantSelections ? `Homeowner-selected plants: ${plantSelections}.` : "",
+          notes ? `Keep/avoid notes: ${notes}.` : "",
+          ...plantRules,
+          "Return one wide landscape-oriented concept image with no labels or placement markers.",
+        ]
+          .filter(Boolean)
+          .join("\n")
+      : [
+          "Create a photorealistic residential landscape design inspiration concept by editing this exact homeowner photo.",
+          "Preserve the house architecture, roof, windows, doors, driveway, street, camera position, perspective, lighting direction, neighboring structures, and all hardscape that was not specifically requested.",
+          `Property context: ${city || "North Texas"}. Project area: ${area || "yard"}.`,
+          `Homeowner priorities: ${goals || "a more beautiful, practical yard"}.`,
+          `Requested features: ${features || "layered planting and a finished landscape"}.`,
+          `Visual direction: ${style || "refined North Texas residential landscape"}.`,
+          preferences ? `Plant priorities: ${preferences}.` : "",
+          plantSelections
+            ? `Deliberately include these homeowner-selected plants where site conditions and mature space allow: ${plantSelections}.`
+            : "",
+          notes ? `Homeowner keep/avoid notes: ${notes}.` : "",
+          ...plantRules,
+          "Return one wide landscape-oriented concept image.",
+        ]
+          .filter(Boolean)
+          .join("\n");
 
   const openAiForm = new FormData();
   openAiForm.append("model", "gpt-image-2");
   openAiForm.append("image", image, image.name || "yard.jpg");
+  if (mode === "refine" && mask instanceof File) {
+    openAiForm.append("mask", mask, mask.name || "yard-mask.png");
+  }
   openAiForm.append("prompt", prompt);
   openAiForm.append("quality", "medium");
   openAiForm.append("size", "1536x1024");

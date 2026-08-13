@@ -10,6 +10,12 @@ import {
   useState,
 } from "react";
 import SiteImage from "../site-image";
+import YardDesignStudio from "./yard-design-studio";
+import {
+  describePlants,
+  plantPreferenceOptions,
+  yardPlants,
+} from "./plant-library";
 
 type Choice = {
   value: string;
@@ -29,6 +35,8 @@ type PlannerState = {
   goals: string[];
   features: string[];
   style: string;
+  plantPreferences: string[];
+  selectedPlantIds: string[];
   notes: string;
   preferredDate: string;
   preferredTime: string;
@@ -203,6 +211,8 @@ const defaultState: PlannerState = {
   goals: [],
   features: [],
   style: "",
+  plantPreferences: [],
+  selectedPlantIds: [],
   notes: "",
   preferredDate: "",
   preferredTime: "Morning",
@@ -228,6 +238,12 @@ function buildBrief(state: PlannerState) {
     `Goals: ${state.goals.join(", ")}`,
     `Features: ${state.features.join(", ")}`,
     `Style: ${state.style}`,
+    state.plantPreferences.length
+      ? `Plant priorities: ${state.plantPreferences.join(", ")}`
+      : "",
+    state.selectedPlantIds.length
+      ? `Plants requested: ${describePlants(state.selectedPlantIds)}`
+      : "",
     "Plant standard: North Texas natives only",
     state.notes ? `Notes: ${state.notes}` : "",
   ]
@@ -279,6 +295,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
   const [statusMessage, setStatusMessage] = useState("");
   const [leadDelivered, setLeadDelivered] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [comparePosition, setComparePosition] = useState(55);
   const [fieldError, setFieldError] = useState("");
   const [storageReady, setStorageReady] = useState(false);
   const plannerRef = useRef<HTMLElement>(null);
@@ -394,6 +411,7 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       body: JSON.stringify({
         ...contact,
         ...state,
+        selectedPlants: describePlants(state.selectedPlantIds),
         photoName: photo?.name ?? "",
       }),
     });
@@ -435,6 +453,9 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
       formData.append("goals", state.goals.join(", "));
       formData.append("features", state.features.join(", "));
       formData.append("style", state.style);
+      formData.append("preferences", state.plantPreferences.join(", "));
+      formData.append("plantSelections", describePlants(state.selectedPlantIds));
+      formData.append("notes", state.notes);
       formData.append("name", contact.name);
       formData.append("email", contact.email);
       formData.append("phone", contact.phone);
@@ -738,6 +759,88 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                 ))}
               </div>
             </fieldset>
+
+            <fieldset className="planner-fieldset plant-priority-fieldset">
+              <legend>What should every plant choice prioritize?</legend>
+              <p className="planner-field-hint">
+                Choose as many as you want. These guide both the first concept
+                and every revision.
+              </p>
+              <div className="plant-priority-grid">
+                {plantPreferenceOptions.map((preference) => (
+                  <label
+                    className={
+                      state.plantPreferences.includes(preference)
+                        ? "is-selected"
+                        : ""
+                    }
+                    key={preference}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={state.plantPreferences.includes(preference)}
+                      onChange={() =>
+                        updateState(
+                          "plantPreferences",
+                          toggleValue(state.plantPreferences, preference),
+                        )
+                      }
+                    />
+                    <span>{preference}</span>
+                    <i>✓</i>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset className="planner-fieldset plant-choice-fieldset">
+              <legend>See a plant you already love?</legend>
+              <p className="planner-field-hint">
+                Tap any favorites and the designer will deliberately work them
+                into the concept. You can place more plants after it is created.
+              </p>
+              <div className="planner-plant-choice-grid">
+                {yardPlants.map((plant) => (
+                  <label
+                    className={
+                      state.selectedPlantIds.includes(plant.id)
+                        ? "is-selected"
+                        : ""
+                    }
+                    key={plant.id}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={state.selectedPlantIds.includes(plant.id)}
+                      onChange={() =>
+                        updateState(
+                          "selectedPlantIds",
+                          toggleValue(state.selectedPlantIds, plant.id),
+                        )
+                      }
+                    />
+                    <span
+                      className="planner-plant-symbol"
+                      style={
+                        {
+                          "--plant-color": plant.markerColor,
+                        } as React.CSSProperties
+                      }
+                      aria-hidden="true"
+                    >
+                      {plant.glyph}
+                    </span>
+                    <span>
+                      <strong>{plant.name}</strong>
+                      <small>
+                        {plant.category} · {plant.height} · {plant.season}
+                      </small>
+                    </span>
+                    <i>{state.selectedPlantIds.includes(plant.id) ? "✓" : "+"}</i>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
           </div>
         )}
 
@@ -884,6 +987,18 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                     <dt>Visual direction</dt>
                     <dd>{state.style}</dd>
                   </div>
+                  {state.plantPreferences.length > 0 && (
+                    <div>
+                      <dt>Plant priorities</dt>
+                      <dd>{state.plantPreferences.join(" · ")}</dd>
+                    </div>
+                  )}
+                  {state.selectedPlantIds.length > 0 && (
+                    <div>
+                      <dt>Requested plants</dt>
+                      <dd>{describePlants(state.selectedPlantIds)}</dd>
+                    </div>
+                  )}
                   <div>
                     <dt>Plant standard</dt>
                     <dd>North Texas natives only</dd>
@@ -896,15 +1011,46 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                   <span>See my yard reimagined</span>
                   <small>AI inspiration concept</small>
                 </div>
-                <div className="concept-image-stage">
-                  <img
-                    src={generatedImage || photoUrl}
-                    alt={
-                      generatedImage
-                        ? "AI inspiration concept for your yard"
-                        : "Your uploaded yard"
-                    }
-                  />
+                <div
+                  className={`concept-image-stage${generatedImage ? " has-comparison" : ""}`}
+                  style={
+                    {
+                      "--compare-position": `${comparePosition}%`,
+                    } as React.CSSProperties
+                  }
+                >
+                  {generatedImage ? (
+                    <>
+                      <img
+                        className="concept-before-image"
+                        src={photoUrl}
+                        alt="Your yard before the design concept"
+                      />
+                      <div className="concept-after-image">
+                        <img
+                          src={generatedImage}
+                          alt="Your current AI yard design concept"
+                        />
+                      </div>
+                      <span className="concept-compare-line" aria-hidden="true" />
+                      <span className="concept-compare-label is-before">Before</span>
+                      <span className="concept-compare-label is-after">Current design</span>
+                      <label className="concept-compare-control">
+                        <span>Slide to compare before and after</span>
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={comparePosition}
+                          onChange={(event) =>
+                            setComparePosition(Number(event.target.value))
+                          }
+                        />
+                      </label>
+                    </>
+                  ) : (
+                    <img src={photoUrl} alt="Your uploaded yard" />
+                  )}
                   {!generatedImage && !isGenerating && (
                     <span className="concept-awaiting">
                       Add your details below to create the concept
@@ -1037,6 +1183,24 @@ export default function YardPlanner({ bookingUrl }: { bookingUrl: string }) {
                 <span>{generatedImage ? "✓" : "i"}</span>
                 <p>{statusMessage}</p>
               </div>
+            )}
+
+            {generatedImage && (
+              <YardDesignStudio
+                image={generatedImage}
+                context={{
+                  city: state.city,
+                  area: state.area,
+                  goals: state.goals,
+                  features: state.features,
+                  style: state.style,
+                  notes: state.notes,
+                  plantPreferences: state.plantPreferences,
+                  selectedPlantIds: state.selectedPlantIds,
+                }}
+                contact={contact}
+                onImageChange={setGeneratedImage}
+              />
             )}
 
             <div className="planner-next-actions">

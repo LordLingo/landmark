@@ -41,12 +41,17 @@ export async function POST(request: NextRequest) {
       ? body.features.map((value) => text(value, 100)).join(", ")
       : "",
     "Visual style": text(body.style, 100),
+    "Plant priorities": list(body.plantPreferences, 100),
+    "Requested plants": text(body.selectedPlants, 1500),
     "Plant standard": "North Texas natives only",
+    "Placed plant plan": list(body.designPlants, 240),
+    "Latest design instruction": text(body.designInstruction, 1000),
+    "Selected design version": text(String(body.designVersion ?? ""), 20),
     "Preferred visit date": text(body.preferredDate, 40),
     "Preferred time": text(body.preferredTime, 40),
     Notes: text(body.notes, 1500),
     "Uploaded photo": text(body.photoName, 240),
-    Source: "Landmark Plan My Yard",
+    Source: text(body.source, 100) || "Landmark Plan My Yard",
   };
 
   try {
