@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     absolute: "Plan My Yard: AI Landscape Visualizer | Landmark Landscapes",
   },
   description:
-    "Build a personalized North Texas landscaping brief, upload a yard photo and see your yard reimagined with native plants.",
+    "Upload a North Texas yard photo, choose native plants, generate a landscape concept and customize it in an interactive design studio.",
   alternates: {
     canonical: "/plan-my-yard",
   },
@@ -102,8 +102,8 @@ export default function PlanMyYardPage() {
           </h1>
           <p>
             Tell us what you want, choose the look that feels like home and
-            upload a photo. In a few minutes, you&apos;ll have a useful project
-            brief and the option to see your yard reimagined.
+            upload a photo. Then choose real North Texas plants, move them to
+            the locations you want and turn your choices into a realistic design.
           </p>
           <div className="planner-hero-actions">
             <a className="button" href="#yard-planner">
@@ -140,7 +140,7 @@ export default function PlanMyYardPage() {
         <span>01 · A useful yard brief</span>
         <span>02 · North Texas native plants</span>
         <span>03 · A concept made from your photo</span>
-        <span>04 · A better first conversation</span>
+        <span>04 · A design you can customize</span>
       </section>
 
       <YardPlanner bookingUrl={bookingUrl} />

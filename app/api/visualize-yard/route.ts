@@ -5,7 +5,7 @@ export const maxDuration = 300;
 
 const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 const requestWindow = 6 * 60 * 60 * 1000;
-const requestLimit = 3;
+const requestLimit = 6;
 const requestsByVisitor = new Map<string, number[]>();
 
 const northTexasNativePlantPalette = [
