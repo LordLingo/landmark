@@ -5,7 +5,7 @@ import { landscapeDesignPage } from "./seo-page-data";
 import { absoluteUrl } from "./site-url";
 import { waterRestrictionCities } from "./water-restrictions/water-restriction-data";
 
-const lastModified = new Date("2026-08-12T00:00:00-05:00");
+const lastModified = new Date("2026-08-31T00:00:00-05:00");
 
 const prioritySeoPages = [
   {

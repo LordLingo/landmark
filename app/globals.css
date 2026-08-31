@@ -2589,6 +2589,81 @@ footer {
   margin-top: 0;
 }
 
+.service-local-resources {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(55px, 8vw, 130px);
+  padding: 105px clamp(24px, 7vw, 118px);
+  background: var(--forest);
+  color: white;
+}
+
+.service-local-resources-heading h2 {
+  max-width: 620px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(42px, 4.8vw, 70px);
+  font-weight: 400;
+  letter-spacing: -0.048em;
+  line-height: 1;
+}
+
+.service-local-resources-heading .eyebrow {
+  color: #efc574;
+}
+
+.service-local-resources-heading > p:not(.eyebrow) {
+  max-width: 580px;
+  margin: 27px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.service-local-resource-links {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.service-local-resource-links a {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  gap: 22px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  transition: padding 220ms ease;
+}
+
+.service-local-resource-links a:hover {
+  padding-right: 9px;
+  padding-left: 9px;
+}
+
+.service-local-resource-links span,
+.service-local-resource-links i {
+  color: #efc574;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.service-local-resource-links h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.service-local-resource-links p {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
 .service-outcome {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -3374,6 +3449,7 @@ footer {
   .service-problem,
   .service-process,
   .service-faq,
+  .service-local-resources,
   .service-estimate {
     grid-template-columns: 1fr;
     gap: 42px;
@@ -3401,6 +3477,7 @@ footer {
 
   .service-process,
   .service-faq,
+  .service-local-resources,
   .related-services,
   .service-estimate {
     padding: 85px 22px;
@@ -3487,6 +3564,7 @@ footer {
   .service-problem h2,
   .service-outcome-copy h2,
   .service-process-heading h2,
+  .service-local-resources-heading h2,
   .service-faq h2,
   .related-heading h2,
   .service-estimate h2 {
