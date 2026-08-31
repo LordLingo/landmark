@@ -38,6 +38,16 @@ export type ServicePageData = {
     intro: string;
     items: ServiceFeature[];
   };
+  localResources?: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    links: Array<{
+      title: string;
+      copy: string;
+      href: string;
+    }>;
+  };
   process: ServiceFeature[];
   faqs: ServiceFaq[];
   searchTerms: string[];

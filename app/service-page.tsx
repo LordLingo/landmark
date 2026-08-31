@@ -252,6 +252,28 @@ export default function ServicePage({
         </>
       )}
 
+      {service.localResources && (
+        <section className="service-local-resources" aria-labelledby="local-resources-title">
+          <div className="service-local-resources-heading">
+            <p className="eyebrow">{service.localResources.eyebrow}</p>
+            <h2 id="local-resources-title">{service.localResources.title}</h2>
+            <p>{service.localResources.intro}</p>
+          </div>
+          <div className="service-local-resource-links">
+            {service.localResources.links.map((resource, index) => (
+              <a href={resource.href} key={resource.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{resource.title}</h3>
+                  <p>{resource.copy}</p>
+                </div>
+                <i aria-hidden="true">→</i>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="service-process" id="approach">
         <div className="service-process-heading">
           <p className="eyebrow">A clear way forward</p>

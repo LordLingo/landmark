@@ -260,15 +260,15 @@ export const northDallasPage: ServicePageData = {
 
 export const prosperPage: ServicePageData = {
   slug: "prosper-tx",
-  navLabel: "Residential landscaping in Prosper, TX",
+  navLabel: "Prosper landscaping services",
   shortLabel: "Prosper, TX",
-  eyebrow: "Landscaping company · Prosper, Texas",
-  title: "A Prosper yard designed to feel finished, welcoming and easier to live with.",
+  eyebrow: "Prosper landscaping services · Prosper, Texas",
+  title: "Prosper landscaping services designed around the whole home.",
   intro:
-    "Landmark helps Prosper homeowners improve the complete property with residential landscape design, planting, stonework, drainage solutions, landscape lighting and irrigation support.",
-  metaTitle: "Landscaping Company Prosper, TX",
+    "Landmark is a Prosper-based landscaping company helping homeowners improve the complete property with landscape design and installation, planting, stonework, drainage solutions, landscape lighting and irrigation support.",
+  metaTitle: "Prosper Landscaping Services & Design, TX",
   metaDescription:
-    "Residential landscaping in Prosper, TX including landscape design, planting, stone borders, drainage, outdoor lighting and irrigation support.",
+    "Prosper landscaping services for residential design and installation, planting, stone borders, drainage, outdoor lighting and irrigation support.",
   heroImage: "/images/front-yard-project.webp",
   heroAlt:
     "Completed residential front-yard landscaping project at a Prosper-area brick and stone home",
@@ -312,7 +312,7 @@ export const prosperPage: ServicePageData = {
     "A finished result designed for both curb appeal and everyday life",
   ],
   localSection: {
-    eyebrow: "Local landscaping knowledge",
+    eyebrow: "Local landscaping knowledge in Prosper",
     title: "Prosper properties share challenges—but no two yards need the same plan.",
     intro:
       "Landmark serves homes throughout Prosper, including areas near Windsong Ranch, Star Trail, Whitley Place, Gentle Creek and Lakes of La Cima. Neighborhood context matters, but the recommendation still begins with the actual lot, architecture and priorities in front of us.",
@@ -331,6 +331,32 @@ export const prosperPage: ServicePageData = {
         title: "Heat-aware, lower-maintenance planting",
         copy:
           "Direct sun, reflected heat, wind exposure and watering limits all influence plant selection. A resilient palette balances dependable structure with color at the level of care the homeowner actually wants.",
+      },
+    ],
+  },
+  localResources: {
+    eyebrow: "Useful for Prosper homeowners",
+    title: "Protect the landscape after installation.",
+    intro:
+      "A finished yard still has to work through North Texas heat, clay soil and changing watering rules. These Landmark resources connect local guidance with practical care for lawns, trees and planting beds.",
+    links: [
+      {
+        title: "Prosper watering restrictions",
+        copy:
+          "See the current Prosper watering zones, permitted schedule, official town source and the date Landmark last verified the information.",
+        href: "/water-restrictions/prosper-tx",
+      },
+      {
+        title: "North Texas landscape watering guide",
+        copy:
+          "Use cycle-and-soak guidance and practical advice for lawns, trees, shrubs and new landscaping in North Texas conditions.",
+        href: "/water-restrictions",
+      },
+      {
+        title: "Plan My Yard",
+        copy:
+          "Build a simple project brief from your phone and show Landmark which parts of the property you want to improve.",
+        href: "/plan-my-yard",
       },
     ],
   },
@@ -379,8 +405,8 @@ export const prosperPage: ServicePageData = {
     },
   ],
   searchTerms: [
-    "Landscaping company",
-    "Residential landscaping",
+    "Prosper landscaping",
+    "Landscape services",
     "Design + installation",
     "Prosper TX",
   ],
