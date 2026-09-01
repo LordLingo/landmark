@@ -42,7 +42,13 @@ export default function HolidayQuoteForm() {
   }
 
   return (
-    <form className={styles.quoteForm} action={formEndpoint} method="POST" onSubmit={handleSubmit}>
+    <form
+      className={styles.quoteForm}
+      action={formEndpoint}
+      method="POST"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit}
+    >
       <input type="hidden" name="subject" value="New Christmas lights quote request from Landmark website" />
       <input type="hidden" name="Source" value="Landmark Christmas lights landing page" />
       <input
@@ -73,6 +79,35 @@ export default function HolidayQuoteForm() {
       <label className={styles.fullField}>
         <span>Preferred install date *</span>
         <input name="Preferred install date" type="date" required />
+      </label>
+
+      <fieldset className={styles.lightOptions}>
+        <legend>What would you like us to light? <small>Optional — choose any that fit.</small></legend>
+        <div>
+          {[
+            "Rooflines, peaks + dormers",
+            "Archways + entry",
+            "Garage doors",
+            "Columns + windows",
+            "Trees + shrubs",
+            "Walkways + landscape beds",
+          ].map((option) => (
+            <label key={option}>
+              <input type="checkbox" name="Lighting areas" value={option} />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <label className={styles.photoUpload}>
+        <span>Optional: upload a photo of the front of your home</span>
+        <small>It helps us picture the layout before we call. A phone photo is perfect.</small>
+        <input
+          name="Front-of-home photo"
+          type="file"
+          accept="image/jpeg,image/png,image/webp,image/heic"
+        />
       </label>
 
       {formError && <p className={styles.formError}>{formError}</p>}
