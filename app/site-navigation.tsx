@@ -17,6 +17,10 @@ const locationLinks = [
 ];
 const navigationServices = [
   {
+    slug: "christmas-lights",
+    navLabel: "Christmas light installation",
+  },
+  {
     slug: "landscape-design",
     navLabel: "Landscape design + installation",
   },
