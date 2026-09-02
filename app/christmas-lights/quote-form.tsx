@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import styles from "./christmas-lights.module.css";
 
-const formEndpoint = "https://formspree.io/f/xppadrdq";
+const formEndpoint = "https://formspree.io/f/xwlkolgw";
 
 export default function HolidayQuoteForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
