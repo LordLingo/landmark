@@ -35,11 +35,11 @@ const cityDetails: Record<
     question: "What is the regular trash day?",
     placeholder: "Choose the regular trash day",
     options: [
-      { value: "Monday", label: "Monday", schedule: "Monday + Thursday" },
-      { value: "Tuesday", label: "Tuesday", schedule: "Tuesday + Friday" },
-      { value: "Wednesday", label: "Wednesday", schedule: "Wednesday + Saturday" },
-      { value: "Thursday", label: "Thursday", schedule: "Thursday + Sunday" },
-      { value: "Friday", label: "Friday", schedule: "Friday + Tuesday" },
+      { value: "Monday", label: "Monday", schedule: "Monday — check WaterWise for any conditional second day" },
+      { value: "Tuesday", label: "Tuesday", schedule: "Tuesday — check WaterWise for any conditional second day" },
+      { value: "Wednesday", label: "Wednesday", schedule: "Wednesday — check WaterWise for any conditional second day" },
+      { value: "Thursday", label: "Thursday", schedule: "Thursday — check WaterWise for any conditional second day" },
+      { value: "Friday", label: "Friday", schedule: "Friday — check WaterWise for any conditional second day" },
     ],
   },
   "mckinney-tx": {

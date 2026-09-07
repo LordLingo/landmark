@@ -19,7 +19,7 @@ export type WaterRestrictionCity = {
   serviceUrl: string;
 };
 
-export const lastVerified = "August 12, 2026";
+export const lastVerified = "September 7, 2026";
 
 export const waterRestrictionCities: WaterRestrictionCity[] = [
   {
@@ -100,35 +100,35 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
   {
     slug: "frisco-tx",
     city: "Frisco",
-    status: "Summer schedule · Up to two days",
+    status: "Fall schedule · One regular watering day",
     statusTone: "standard",
     intro:
-      "Frisco’s summer schedule allows watering on the regular trash day and one designated second day, as needed, from June 1 through August 31.",
-    scheduleLabel: "Trash day + designated second day",
+      "Frisco’s fall schedule allows spray or rotor irrigation once per week on the property’s regular trash day from September 1 through October 31.",
+    scheduleLabel: "Once weekly on regular trash day",
     scheduleDetail:
-      "Spring and fall allow one day on regular trash day. Spray irrigation of turfgrass is not allowed during winter.",
+      "Water on the regular trash day and check Frisco’s current WaterWise recommendation before relying on any conditional second day.",
     timeRule: "No automatic irrigation from 10 a.m. to 6 p.m., April 1–October 31.",
     newLandscapeRule:
-      "Frisco does not grant turfgrass exemptions for existing homes during June, July and August. Drip-irrigated landscape areas may be watered as needed.",
+      "Temporary exemptions may allow daily watering for up to 30 days for new construction or severe erosion control. Apply before work begins; approval is not guaranteed. Hand watering may establish new plants without an exemption.",
     rules: [
-      "Summer watering is allowed on regular trash day and one designated second day, as needed.",
+      "Fall spray and rotor irrigation is limited to the property’s regular trash day.",
+      "Check Frisco’s weekly WaterWise recommendation for any conditional second-day allowance.",
       "Hand-held hoses, soaker hoses, drip irrigation and bubblers may be used when needed.",
-      "Frisco changes the allowed frequency by season.",
     ],
     schedule: [
-      { label: "Monday trash day", value: "Monday + Thursday" },
-      { label: "Tuesday trash day", value: "Tuesday + Friday" },
-      { label: "Wednesday trash day", value: "Wednesday + Saturday" },
-      { label: "Thursday trash day", value: "Thursday + Sunday" },
-      { label: "Friday trash day", value: "Friday + Tuesday" },
+      { label: "Monday trash day", value: "Monday" },
+      { label: "Tuesday trash day", value: "Tuesday" },
+      { label: "Wednesday trash day", value: "Wednesday" },
+      { label: "Thursday trash day", value: "Thursday" },
+      { label: "Friday trash day", value: "Friday" },
     ],
     landscapeAdvice: [
-      "Check Frisco’s weekly WaterWise recommendation before deciding whether the optional second day is necessary.",
+      "Check Frisco’s weekly WaterWise recommendation before using any conditional second watering day.",
       "Keep new beds on drip where practical so water reaches roots without wetting pavement or losing as much to evaporation.",
-      "Adjust the controller when the season changes; Frisco’s spring, summer, fall and winter schedules differ.",
+      "Request any qualifying new-construction or erosion-control exemption before work begins, then return the controller to the normal schedule when it ends.",
     ],
-    officialUrl: "https://www.friscotexas.gov/378/Water-Management-Plan",
-    officialLabel: "City of Frisco Water Management Plan",
+    officialUrl: "https://www.friscotexas.gov/2001/Watering-Schedule",
+    officialLabel: "City of Frisco Watering Schedule",
     serviceUrl: "/frisco-tx",
   },
   {
