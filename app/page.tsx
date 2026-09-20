@@ -6,6 +6,7 @@ import { serviceList } from "./service-data";
 import { locationPageList } from "./location-page-data";
 import SiteNavigation from "./site-navigation";
 import SiteImage from "./site-image";
+import ChristmasHomeHero from "./christmas-home-hero";
 
 const phoneDisplay = "469-492-8450";
 const phoneHref = "tel:+14694928450";
@@ -293,142 +294,11 @@ export default function Home() {
     <main>
       <SiteNavigation
         variant="home"
-        contactHref="/plan-my-yard"
-        actionLabel="Plan my yard"
+        contactHref="/christmas-lights#quote"
+        actionLabel="Christmas quote"
       />
 
-      <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">Residential landscaping · Prosper + North Dallas</p>
-          <h1>
-            North Texas landscaping that feels like the{" "}
-            <em>
-              best part
-              <svg viewBox="0 0 240 18" aria-hidden="true">
-                <path d="M4 13C58 3 172 2 236 10" />
-              </svg>
-            </em>{" "}
-            of home.
-          </h1>
-          <p className="hero-intro">
-            Landmark is a Prosper-based landscaping company designing and
-            installing planting, stone, lighting, drainage and irrigation
-            around how you want to live—beautiful on day one, easier every day
-            after.
-          </p>
-          <div className="hero-buttons">
-            <Link className="button" href="/plan-my-yard">
-              Plan my yard <span>✦</span>
-            </Link>
-            <a className="text-link" href="#transformation">
-              See a transformation <span>→</span>
-            </a>
-          </div>
-          <div className="hero-proof" aria-label="Service areas">
-            <span className="proof-flower">✣</span>
-            <p>
-              Creating beautiful everyday life in{" "}
-              <strong>Prosper, Frisco, McKinney, Celina</strong> and{" "}
-              <strong>The Colony.</strong>
-            </p>
-          </div>
-        </div>
-
-        <div className="hero-visual">
-          <div className="hero-blob" aria-hidden="true" />
-          <figure className="hero-photo">
-            <SiteImage
-              src="/images/texas-home-after-stone.webp"
-              alt="Upscale Texas home with a richly layered front landscape, ornamental grasses, flowers and natural stone"
-              sizes="(max-width: 820px) 100vw, 50vw"
-              preload
-            />
-          </figure>
-          <div className="little-note note-one">
-            <svg
-              className="callout-accent callout-flowers"
-              viewBox="0 0 92 116"
-              aria-hidden="true"
-            >
-              <g className="accent-grass">
-                <path d="M38 110C40 77 32 41 15 8" />
-                <path d="M44 111C46 72 43 35 40 4" />
-                <path d="M48 111C50 75 58 38 70 12" />
-                <path d="M42 110C34 80 23 55 4 37" />
-                <path d="M51 111C58 82 70 59 88 42" />
-                <path d="M47 110C48 75 52 49 58 25" />
-                <path d="M40 110C35 82 34 60 33 27" />
-              </g>
-              <g className="accent-flowers">
-                <g transform="translate(20 79)">
-                  <circle cx="0" cy="-5" r="4" />
-                  <circle cx="5" cy="0" r="4" />
-                  <circle cx="0" cy="5" r="4" />
-                  <circle cx="-5" cy="0" r="4" />
-                  <circle className="flower-center" r="2.5" />
-                </g>
-                <g transform="translate(40 68) scale(.82)">
-                  <circle cx="0" cy="-5" r="4" />
-                  <circle cx="5" cy="0" r="4" />
-                  <circle cx="0" cy="5" r="4" />
-                  <circle cx="-5" cy="0" r="4" />
-                  <circle className="flower-center" r="2.5" />
-                </g>
-                <g transform="translate(53 88) scale(.68)">
-                  <circle cx="0" cy="-5" r="4" />
-                  <circle cx="5" cy="0" r="4" />
-                  <circle cx="0" cy="5" r="4" />
-                  <circle cx="-5" cy="0" r="4" />
-                  <circle className="flower-center" r="2.5" />
-                </g>
-              </g>
-            </svg>
-            <div className="callout-stone">
-              <span>01</span>
-              <strong>Warm welcomes</strong>
-            </div>
-          </div>
-          <div className="little-note note-two">
-            <div className="callout-stone">
-              <span>02</span>
-              <strong>Easy evenings</strong>
-            </div>
-            <svg
-              className="callout-accent callout-planter"
-              viewBox="0 0 86 124"
-              aria-hidden="true"
-            >
-              <g className="accent-grass">
-                <path d="M42 72C38 46 27 21 10 5" />
-                <path d="M43 72C42 42 43 18 48 1" />
-                <path d="M46 72C52 42 65 20 80 9" />
-                <path d="M43 72C33 46 20 34 3 27" />
-                <path d="M46 72C58 48 69 38 84 33" />
-                <path d="M44 72C48 47 54 29 62 13" />
-                <path d="M42 72C39 47 35 29 29 13" />
-              </g>
-              <path
-                className="planter-rim"
-                d="M20 66C20 61 26 58 44 58C62 58 68 61 68 66L65 74H23Z"
-              />
-              <path
-                className="planter-pot"
-                d="M24 73H64L59 115C58 121 31 121 30 115Z"
-              />
-              <path className="planter-highlight" d="M32 78L35 111" />
-            </svg>
-          </div>
-          <div className="sun-stamp" aria-hidden="true">
-            <span>Landmark · Landscapes ·</span>
-            <i>✦</i>
-          </div>
-        </div>
-
-        <a className="scroll-cue" href="#feeling" aria-label="Scroll to discover">
-          <span />
-          Discover
-        </a>
-      </section>
+      <ChristmasHomeHero />
 
       <section className="feeling-strip" id="feeling">
         <p>Designed around a feeling</p>
