@@ -24,8 +24,8 @@ export const christmasCities: ChristmasCity[] = [
       "Whitley Place",
     ],
     heroPosition: "center",
-    heroImage: "/images/christmas-lights-prosper-gallery.webp",
-    detailImage: "/images/christmas-lights-estate-gallery.webp",
+    heroImage: "/images/christmas-lights-prosper-green-hero.webp",
+    detailImage: "/images/christmas-lights-prosper-green-detail.webp",
     theme: "prosperTheme",
     intro:
       "Landmark designs and installs custom Christmas lights for Prosper homes, coordinating rooflines, entries, trees and landscape accents into a polished holiday display.",
@@ -87,8 +87,8 @@ export const christmasCities: ChristmasCity[] = [
       "Glen Crossing",
     ],
     heroPosition: "center",
-    heroImage: "/images/christmas-lights-celina-hero.webp",
-    detailImage: "/images/christmas-lights-prosper-gallery.webp",
+    heroImage: "/images/christmas-lights-celina-orange-hero.webp",
+    detailImage: "/images/christmas-lights-celina-orange-detail.webp",
     theme: "celinaTheme",
     intro:
       "Landmark creates custom Christmas light displays for Celina homes, coordinating rooflines, entries, trees and landscape accents into one polished holiday design.",
