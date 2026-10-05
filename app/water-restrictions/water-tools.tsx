@@ -23,7 +23,11 @@ const cityDetails: Record<
     options: [
       { value: "Zone I", label: "Zone I", schedule: "Monday + Thursday" },
       { value: "Zone II", label: "Zone II", schedule: "Tuesday + Friday" },
-      { value: "Zone III", label: "Zone III", schedule: "Wednesday + Saturday" },
+      {
+        value: "Zone III",
+        label: "Zone III",
+        schedule: "Wednesday + Saturday",
+      },
       {
         value: "Not sure",
         label: "I need to check the official zone map",
@@ -35,11 +39,31 @@ const cityDetails: Record<
     question: "What is the regular trash day?",
     placeholder: "Choose the regular trash day",
     options: [
-      { value: "Monday", label: "Monday", schedule: "Monday — check WaterWise for any conditional second day" },
-      { value: "Tuesday", label: "Tuesday", schedule: "Tuesday — check WaterWise for any conditional second day" },
-      { value: "Wednesday", label: "Wednesday", schedule: "Wednesday — check WaterWise for any conditional second day" },
-      { value: "Thursday", label: "Thursday", schedule: "Thursday — check WaterWise for any conditional second day" },
-      { value: "Friday", label: "Friday", schedule: "Friday — check WaterWise for any conditional second day" },
+      {
+        value: "Monday",
+        label: "Monday",
+        schedule: "Monday only during the fall schedule",
+      },
+      {
+        value: "Tuesday",
+        label: "Tuesday",
+        schedule: "Tuesday only during the fall schedule",
+      },
+      {
+        value: "Wednesday",
+        label: "Wednesday",
+        schedule: "Wednesday only during the fall schedule",
+      },
+      {
+        value: "Thursday",
+        label: "Thursday",
+        schedule: "Thursday only during the fall schedule",
+      },
+      {
+        value: "Friday",
+        label: "Friday",
+        schedule: "Friday only during the fall schedule",
+      },
     ],
   },
   "mckinney-tx": {
@@ -48,7 +72,11 @@ const cityDetails: Record<
     options: [
       { value: "Monday", label: "Monday", schedule: "Monday + Thursday" },
       { value: "Tuesday", label: "Tuesday", schedule: "Tuesday + Friday" },
-      { value: "Wednesday", label: "Wednesday", schedule: "Wednesday + Saturday" },
+      {
+        value: "Wednesday",
+        label: "Wednesday",
+        schedule: "Wednesday + Saturday",
+      },
       { value: "Thursday", label: "Thursday", schedule: "Thursday + Sunday" },
       { value: "Friday", label: "Friday", schedule: "Friday + Monday" },
     ],
@@ -93,7 +121,10 @@ const symptoms = [
   { value: "Standing water", label: "Standing water or a soggy area" },
   { value: "Runoff", label: "Water runs into the street" },
   { value: "Uneven growth", label: "Some areas thrive while others struggle" },
-  { value: "High water bill", label: "A higher water bill without better results" },
+  {
+    value: "High water bill",
+    label: "A higher water bill without better results",
+  },
 ];
 
 const soilOptions = [
@@ -115,8 +146,7 @@ function diagnose(symptom: string, soil: string, system: string) {
   if (symptom === "Standing water") {
     return {
       title: "This looks more like a drainage or grading problem.",
-      copy:
-        "More irrigation will usually make it worse. Photograph the area after rain, note how long the water remains and have Landmark evaluate where the runoff should move.",
+      copy: "More irrigation will usually make it worse. Photograph the area after rain, note how long the water remains and have Landmark evaluate where the runoff should move.",
       service: "Yard drainage",
     };
   }
@@ -124,8 +154,7 @@ function diagnose(symptom: string, soil: string, system: string) {
   if (symptom === "Runoff") {
     return {
       title: "The soil may need shorter cycle-and-soak watering.",
-      copy:
-        "North Texas clay often sheds water when a zone runs too long. Split the runtime into shorter cycles, pause between them and inspect heads for overspray or excessive flow.",
+      copy: "North Texas clay often sheds water when a zone runs too long. Split the runtime into shorter cycles, pause between them and inspect heads for overspray or excessive flow.",
       service: "Sprinkler repair",
     };
   }
@@ -133,8 +162,7 @@ function diagnose(symptom: string, soil: string, system: string) {
   if (symptom === "High water bill" || system === "Automatic sprinklers") {
     return {
       title: "Start with an irrigation efficiency check.",
-      copy:
-        "Broken heads, poor coverage, hidden leaks and outdated controller settings can waste water while plants still struggle. Test every zone before increasing runtime.",
+      copy: "Broken heads, poor coverage, hidden leaks and outdated controller settings can waste water while plants still struggle. Test every zone before increasing runtime.",
       service: "Sprinkler repair",
     };
   }
@@ -142,8 +170,7 @@ function diagnose(symptom: string, soil: string, system: string) {
   if (soil === "Wet or sticky") {
     return {
       title: "Pause watering and look for trapped water.",
-      copy:
-        "Wet soil plus plant decline can point to overwatering, poor drainage or a leak. Let the area dry, check nearby irrigation and avoid adding new plants until the cause is clear.",
+      copy: "Wet soil plus plant decline can point to overwatering, poor drainage or a leak. Let the area dry, check nearby irrigation and avoid adding new plants until the cause is clear.",
       service: "Yard drainage",
     };
   }
@@ -151,16 +178,14 @@ function diagnose(symptom: string, soil: string, system: string) {
   if (soil === "Dry two inches down" || symptom === "Drooping plants") {
     return {
       title: "The root zone may not be receiving useful water.",
-      copy:
-        "Water during allowed hours, apply it slowly and verify that moisture reaches below the surface. Beds often benefit from targeted drip or soaker-hose watering where city rules allow.",
+      copy: "Water during allowed hours, apply it slowly and verify that moisture reaches below the surface. Beds often benefit from targeted drip or soaker-hose watering where city rules allow.",
       service: "Water-conscious landscape design",
     };
   }
 
   return {
     title: "The pattern needs a closer look before adding water.",
-    copy:
-      "Compare sun exposure, sprinkler coverage and soil moisture across the healthy and struggling areas. A side-by-side pattern often reveals whether the cause is water, plant placement or soil.",
+    copy: "Compare sun exposure, sprinkler coverage and soil moisture across the healthy and struggling areas. A side-by-side pattern often reveals whether the cause is water, plant placement or soil.",
     service: "Landscape design + installation",
   };
 }
@@ -309,7 +334,9 @@ export default function WaterTools() {
                 </label>
                 <button type="submit">Send it →</button>
               </form>
-              {emailStatus && <p className="schedule-email-status">{emailStatus}</p>}
+              {emailStatus && (
+                <p className="schedule-email-status">{emailStatus}</p>
+              )}
             </div>
           )}
         </article>

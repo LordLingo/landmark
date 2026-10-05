@@ -5,7 +5,14 @@ import { landscapeDesignPage } from "./seo-page-data";
 import { absoluteUrl } from "./site-url";
 import { waterRestrictionCities } from "./water-restrictions/water-restriction-data";
 
-const lastModified = new Date("2026-09-01T00:00:00-05:00");
+const lastModified = new Date("2026-10-05T00:00:00-05:00");
+
+const christmasCitySlugs = [
+  "frisco-tx",
+  "celina-tx",
+  "mckinney-tx",
+  "the-colony-tx",
+];
 
 const prioritySeoPages = [
   {
@@ -43,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.94,
     },
+    ...christmasCitySlugs.map((slug) => ({
+      url: absoluteUrl(`/christmas-lights/${slug}`),
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.92,
+    })),
     {
       url: absoluteUrl("/plan-my-yard"),
       lastModified,

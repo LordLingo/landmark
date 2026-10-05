@@ -19,7 +19,7 @@ export type WaterRestrictionCity = {
   serviceUrl: string;
 };
 
-export const lastVerified = "September 7, 2026";
+export const lastVerified = "October 5, 2026";
 
 export const waterRestrictionCities: WaterRestrictionCity[] = [
   {
@@ -106,13 +106,14 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
       "Frisco’s fall schedule allows spray or rotor irrigation once per week on the property’s regular trash day from September 1 through October 31.",
     scheduleLabel: "Once weekly on regular trash day",
     scheduleDetail:
-      "Water on the regular trash day and check Frisco’s current WaterWise recommendation before relying on any conditional second day.",
-    timeRule: "No automatic irrigation from 10 a.m. to 6 p.m., April 1–October 31.",
+      "Fall irrigation is limited to the property’s regular trash day. Frisco’s detailed schedule says second watering days are not available during fall.",
+    timeRule:
+      "No automatic irrigation from 10 a.m. to 6 p.m., April 1–October 31.",
     newLandscapeRule:
       "Temporary exemptions may allow daily watering for up to 30 days for new construction or severe erosion control. Apply before work begins; approval is not guaranteed. Hand watering may establish new plants without an exemption.",
     rules: [
       "Fall spray and rotor irrigation is limited to the property’s regular trash day.",
-      "Check Frisco’s weekly WaterWise recommendation for any conditional second-day allowance.",
+      "Watering more than once per week is not allowed during the fall schedule.",
       "Hand-held hoses, soaker hoses, drip irrigation and bubblers may be used when needed.",
     ],
     schedule: [
@@ -123,7 +124,7 @@ export const waterRestrictionCities: WaterRestrictionCity[] = [
       { label: "Friday trash day", value: "Friday" },
     ],
     landscapeAdvice: [
-      "Check Frisco’s weekly WaterWise recommendation before using any conditional second watering day.",
+      "Check Frisco’s weekly WaterWise recommendation before running the system; the city may advise keeping sprinklers off after rain or during cooler weather.",
       "Keep new beds on drip where practical so water reaches roots without wetting pavement or losing as much to evaporation.",
       "Request any qualifying new-construction or erosion-control exemption before work begins, then return the controller to the normal schedule when it ends.",
     ],
