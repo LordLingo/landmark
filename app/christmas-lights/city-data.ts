@@ -11,6 +11,36 @@ export type ChristmasCity = {
 
 export const christmasCities: ChristmasCity[] = [
   {
+    slug: "prosper-tx",
+    city: "Prosper",
+    county: "Collin and Denton counties",
+    neighborhoods: [
+      "Windsong Ranch",
+      "Star Trail",
+      "Gentle Creek",
+      "Whitley Place",
+    ],
+    heroPosition: "center",
+    intro:
+      "Landmark designs and installs custom Christmas lights for Prosper homes, coordinating rooflines, entries, trees and landscape accents into a polished holiday display.",
+    propertyNote:
+      "Prosper homes often have broad elevations, multiple roof peaks, tall entries and larger front landscapes. A custom lighting plan uses that scale intentionally so the display feels balanced from the street and welcoming at the front door.",
+    localDetails: [
+      {
+        title: "Large-home rooflines",
+        copy: "Custom-fit warm-white LEDs can trace peaks, dormers and long eaves with clean spacing that complements the home's architecture.",
+      },
+      {
+        title: "Entries + statement features",
+        copy: "Columns, wreaths, garland and prominent entry details can become a clear holiday focal point without competing with the full elevation.",
+      },
+      {
+        title: "Trees + landscape depth",
+        copy: "Wrapped trees, shrubs and walkway accents extend the display through larger Prosper lots while keeping the design cohesive.",
+      },
+    ],
+  },
+  {
     slug: "frisco-tx",
     city: "Frisco",
     county: "Collin and Denton counties",

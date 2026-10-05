@@ -8,6 +8,7 @@ import { waterRestrictionCities } from "./water-restrictions/water-restriction-d
 const lastModified = new Date("2026-10-05T00:00:00-05:00");
 
 const christmasCitySlugs = [
+  "prosper-tx",
   "frisco-tx",
   "celina-tx",
   "mckinney-tx",
