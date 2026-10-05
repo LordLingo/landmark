@@ -18,6 +18,8 @@ export async function generateMetadata({
   const title = `Christmas Light Installation ${city.city}, TX | Landmark`;
   const description = `Professional Christmas light installation in ${city.city}, TX. Custom rooflines, trees and entries with take-down and storage planning. Request a quote.`;
   const url = `/christmas-lights/${city.slug}`;
+  const heroImage =
+    city.heroImage ?? "/images/christmas-lights-celina-hero.webp";
   return {
     title: { absolute: title },
     description,
@@ -29,7 +31,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/images/christmas-lights-celina-hero.webp",
+          url: heroImage,
           width: 1440,
           height: 810,
           alt: `Professional Christmas light installation in ${city.city}, Texas`,
@@ -40,7 +42,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/christmas-lights-celina-hero.webp"],
+      images: [heroImage],
     },
   };
 }

@@ -4,6 +4,9 @@ export type ChristmasCity = {
   county: string;
   neighborhoods: string[];
   heroPosition: string;
+  heroImage?: string;
+  detailImage?: string;
+  theme?: "celinaTheme" | "prosperTheme";
   intro: string;
   propertyNote: string;
   localDetails: Array<{ title: string; copy: string }>;
@@ -21,6 +24,9 @@ export const christmasCities: ChristmasCity[] = [
       "Whitley Place",
     ],
     heroPosition: "center",
+    heroImage: "/images/christmas-lights-prosper-gallery.webp",
+    detailImage: "/images/christmas-lights-estate-gallery.webp",
+    theme: "prosperTheme",
     intro:
       "Landmark designs and installs custom Christmas lights for Prosper homes, coordinating rooflines, entries, trees and landscape accents into a polished holiday display.",
     propertyNote:
@@ -81,6 +87,9 @@ export const christmasCities: ChristmasCity[] = [
       "Glen Crossing",
     ],
     heroPosition: "center",
+    heroImage: "/images/christmas-lights-celina-hero.webp",
+    detailImage: "/images/christmas-lights-prosper-gallery.webp",
+    theme: "celinaTheme",
     intro:
       "Landmark creates custom Christmas light displays for Celina homes, coordinating rooflines, entries, trees and landscape accents into one polished holiday design.",
     propertyNote:

@@ -21,6 +21,10 @@ function Sparkle() {
 export default function ChristmasCityPage({ city }: { city: ChristmasCity }) {
   const route = `/christmas-lights/${city.slug}`;
   const pageUrl = absoluteUrl(route);
+  const heroImage =
+    city.heroImage ?? "/images/christmas-lights-celina-hero.webp";
+  const detailImage =
+    city.detailImage ?? "/images/christmas-lights-estate-gallery.webp";
   const faqs = [
     {
       question: `How much does Christmas light installation cost in ${city.city}?`,
@@ -56,7 +60,7 @@ export default function ChristmasCityPage({ city }: { city: ChristmasCity }) {
         name: "Landmark Landscape Services, LLC",
         alternateName: "Landmark Landscapes",
         url: pageUrl,
-        image: absoluteUrl("/images/christmas-lights-celina-hero.webp"),
+        image: absoluteUrl(heroImage),
         logo: absoluteUrl("/images/landmark-logo.webp"),
         telephone: "+14694928450",
         email,
@@ -111,7 +115,7 @@ export default function ChristmasCityPage({ city }: { city: ChristmasCity }) {
   };
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${city.theme ? styles[city.theme] : ""}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -151,7 +155,7 @@ export default function ChristmasCityPage({ city }: { city: ChristmasCity }) {
 
       <section className={styles.hero} aria-labelledby="hero-title">
         <Image
-          src="/images/christmas-lights-celina-hero.webp"
+          src={heroImage}
           alt={`Christmas light installation design for a ${city.city}, Texas home`}
           fill
           priority
@@ -252,7 +256,7 @@ export default function ChristmasCityPage({ city }: { city: ChristmasCity }) {
       <section className={styles.whySection} id="how-it-works">
         <div className={styles.whyVisual}>
           <Image
-            src="/images/christmas-lights-estate-gallery.webp"
+            src={detailImage}
             alt={`Warm-white roofline and tree lighting design for a ${city.city} home`}
             fill
             sizes="(max-width: 880px) 100vw, 48vw"
