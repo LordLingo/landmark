@@ -9,6 +9,11 @@ for (const [header, expected] of [
  ['text/markdown;q=0, text/html;q=0',null], ['application/json',null],
  ['TEXT/MARKDOWN; charset=utf-8','markdown'], ['text/html;q=bogus, text/markdown','markdown'],
  ['text/html, text/markdown','html'],
+ ['text/html;level=1;q=1,text/html;q=0,text/markdown;q=0.5','markdown'],
+ ['text/html;charset=utf-8;q=0,text/html;q=1,text/markdown;q=0.5','markdown'],
+ ['text/markdown;charset="UTF-8"','markdown'],
+ ['text/markdown;charset=iso-8859-1',null],
+ ['text/markdown;profile="a,b;c",text/html','html'],
 ]) test(`Accept ${header}`, () => assert.equal(negotiate(header), expected));
 
 import { readFileSync, existsSync } from 'node:fs';
@@ -23,4 +28,10 @@ test('every generated page is registered in sitemap or explicitly excluded', { s
   if(['/robots.txt','/sitemap.xml','/_not-found','/_global-error','/thank-you'].includes(path)) continue;
   assert.ok(sitemap.includes(`<loc>https://golandmarktx.com${path}</loc>`),`${path} must be registered in sitemap before Markdown routing`);
  }
+});
+
+test('privacy discloses property addresses and their form provider',()=>{
+ const notice=readFileSync(new URL('../app/privacy/page.tsx',import.meta.url),'utf8');
+ assert.match(notice,/property city and street address/);
+ assert.match(notice,/including any property street address you provide, are sent through Formspree/);
 });
