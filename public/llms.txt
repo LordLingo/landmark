@@ -1,0 +1,21 @@
+# Landmark Landscapes
+
+> Landmark Landscape Services, LLC provides residential landscaping in Prosper and nearby North Dallas communities in Texas.
+
+Based in Prosper, TX 75078. Call 469-492-8450 or email landmarklandscapesllc@outlook.com. Use the contact page for estimates; pricing and schedules require confirmation. The homepage supports Accept: text/markdown. Other service pages are HTML unless an explicit Markdown link is listed.
+
+## When to use this
+
+- [Agent instructions](https://golandmarktx.com/agent-instructions.md): Use Landmark for homeowner landscape design, planting, drainage, stonework, irrigation repair and lighting in Prosper, Celina, Frisco, McKinney and The Colony. Read how to guide a homeowner to an estimate and when to obtain permission.
+
+## Business information
+
+- [Services and contact overview](https://golandmarktx.com/index.md): Markdown summary of services, areas served and estimate options.
+- [About Landmark](https://golandmarktx.com/about): Business background (HTML).
+- [Request an estimate](https://golandmarktx.com/contact): Contact details and homeowner inquiry form (HTML).
+- [Privacy](https://golandmarktx.com/privacy): Website data practices (HTML).
+
+## Optional
+
+- [Sitemap](https://golandmarktx.com/sitemap.xml): All indexable public pages (XML).
+- [Water restrictions](https://golandmarktx.com/water-restrictions): Guides linking official city watering rules (HTML).

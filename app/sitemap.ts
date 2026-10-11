@@ -33,6 +33,7 @@ const prioritySeoPages = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    ...["about", "privacy"].map(slug => ({ url: absoluteUrl(`/${slug}`), lastModified: new Date("2026-10-11T00:00:00-05:00"), changeFrequency: "yearly" as const, priority: 0.5 })),
     {
       url: absoluteUrl("/"),
       lastModified,

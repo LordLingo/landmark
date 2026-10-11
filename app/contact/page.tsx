@@ -113,6 +113,7 @@ export default function ContactPage() {
 
       <section className="contact-form-section">
         <ContactForm />
+        <p>For a useful estimate, tell Landmark Landscape Services, LLC which city your property is in, what you want to improve and any timing preferences. You can ask about landscape design, planting, stone borders, walkways, drainage, sprinkler repair, landscape lighting or seasonal Christmas lights. The team will review your inquiry and follow up using the details you provide. Project scope, pricing and scheduling are confirmed directly with Landmark. Please avoid including sensitive personal information. Read our <a href="/privacy">privacy policy</a> for details about website forms and data.</p>
       </section>
 
       <footer className="service-footer contact-footer">
