@@ -316,7 +316,7 @@ export default function Home() {
       <section className="story-section">
         <div className="story-copy reveal">
           <p className="eyebrow">The real reason to redesign</p>
-          <h2>It isn&apos;t about adding more. It&apos;s about enjoying more.</h2>
+          <h2>Landmark Landscapes: landscaping for life outdoors.</h2>
           <p>
             More dinners that drift past sunset. More barefoot mornings. More
             pride when you pull into the driveway. Landmark brings the pieces
@@ -836,6 +836,7 @@ export default function Home() {
           </div>
         </div>
         <div className="footer-bottom">
+          <span><Link href="/about">About</Link> · <Link href="/privacy">Privacy</Link></span>
           <span>© 2026 Landmark Landscape Services, LLC</span>
           <span>Prosper · McKinney · Frisco · The Colony · Celina</span>
         </div>

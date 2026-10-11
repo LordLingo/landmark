@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
+  async headers() {
+    return [{ source: "/", headers: [{ key: "Vary", value: "Accept" }] }, { source: "/:file(llms.txt|index.md|agent-instructions.md)", headers: [{ key: "Content-Type", value: "text/markdown; charset=utf-8" }] }];
+  },
   async redirects() {
     return [
       {

@@ -13,7 +13,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "North Texas Residential Landscaping | Landmark Landscapes",
+    default: "Landmark Landscapes | Landscaping in Prosper & North Dallas",
     template: "%s | Landmark Landscapes",
   },
   description:
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "North Texas Residential Landscaping | Landmark Landscapes",
+    title: "Landmark Landscapes | Landscaping in Prosper & North Dallas",
     description:
       "Residential landscape design and installation for Prosper and nearby North Texas communities.",
     url: "/",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "North Texas Residential Landscaping | Landmark Landscapes",
+    title: "Landmark Landscapes | Landscaping in Prosper & North Dallas",
     description:
       "Residential landscape design and installation for Prosper and nearby North Texas communities.",
     images: ["/images/texas-home-after.webp"],
@@ -85,7 +85,7 @@ export default function RootLayout({
         },
       },
       {
-        "@type": "HomeAndConstructionBusiness",
+        "@type": ["Organization", "HomeAndConstructionBusiness"],
         "@id": absoluteUrl("/#business"),
         name: "Landmark Landscape Services, LLC",
         alternateName: "Landmark Landscapes",
@@ -113,6 +113,7 @@ export default function RootLayout({
           "@type": "ContactPoint",
           telephone: "+14694928450",
           contactType: "customer service",
+          email: "landmarklandscapesllc@outlook.com",
           areaServed: "US-TX",
           availableLanguage: "English",
         },
