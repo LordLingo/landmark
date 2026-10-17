@@ -1,0 +1,84 @@
+{
+  "base": "http://127.0.0.1:3100",
+  "pages": [
+    {
+      "path": "/landscape-lighting",
+      "status": 200,
+      "title": "Outdoor Landscape Lighting North Texas | Landmark Landscapes",
+      "description": "Year-round landscape lighting for Prosper, Celina, Frisco, McKinney and The Colony. Explore house uplighting, pathways, trees and garden accents with Landmark.",
+      "words": 1052
+    },
+    {
+      "path": "/landscape-lighting-prosper-tx",
+      "status": 200,
+      "title": "Landscape Lighting Prosper, TX | Landmark Landscapes",
+      "description": "Prosper landscape-lighting installation for house uplighting, walkways, trees and garden accents. Request a property-specific estimate from Landmark Landscapes.",
+      "words": 856
+    },
+    {
+      "path": "/landscape-lighting/architectural-uplighting",
+      "status": 200,
+      "title": "Architectural uplighting | North Texas | Landmark Landscapes",
+      "description": "House uplighting for brick, stone, columns and entryways across Prosper and North Texas. Plan a restrained architectural lighting installation with Landmark.",
+      "words": 879
+    },
+    {
+      "path": "/landscape-lighting/pathway-lighting",
+      "status": 200,
+      "title": "Pathway lighting | North Texas | Landmark Landscapes",
+      "description": "Walkway and pathway lighting installation for North Texas homes. Reveal edges, turns and steps with a coordinated Landmark landscape-lighting plan.",
+      "words": 876
+    },
+    {
+      "path": "/landscape-lighting/tree-garden-lighting",
+      "status": 200,
+      "title": "Tree &amp; garden lighting | North Texas | Landmark Landscapes",
+      "description": "Tree uplighting and garden accent lighting for Prosper and nearby North Texas cities. Highlight selected trees and planting beds with Landmark Landscapes.",
+      "words": 885
+    },
+    {
+      "path": "/landscape-lighting/patio-backyard-lighting",
+      "status": 200,
+      "title": "Patio &amp; backyard accents | North Texas | Landmark Landscapes",
+      "description": "Plan landscape lighting around patios, backyard paths and garden beds in North Texas. Connect outdoor living areas with warm, restrained Landmark accents.",
+      "words": 853
+    },
+    {
+      "path": "/landscape-lighting/cost",
+      "status": 200,
+      "title": "Lighting cost &amp; planning | North Texas | Landmark Landscapes",
+      "description": "Compare landscape-lighting estimates by fixtures, layout, cable routes, controls and installation scope. Plan a North Texas lighting project with Landmark.",
+      "words": 931
+    },
+    {
+      "path": "/landscape-lighting/celina-tx",
+      "status": 200,
+      "title": "Landscape Lighting Celina, TX | Landmark Landscapes",
+      "description": "Celina landscape-lighting installation for new and established yards. Plan architectural uplighting, paths and tree accents with Landmark Landscapes.",
+      "words": 868
+    },
+    {
+      "path": "/landscape-lighting/frisco-tx",
+      "status": 200,
+      "title": "Landscape Lighting Frisco, TX | Landmark Landscapes",
+      "description": "Frisco outdoor and landscape-lighting installation. Balance house uplighting, existing porch lights, pathways and garden accents with Landmark Landscapes.",
+      "words": 844
+    },
+    {
+      "path": "/landscape-lighting/mckinney-tx",
+      "status": 200,
+      "title": "Landscape Lighting McKinney, TX | Landmark Landscapes",
+      "description": "McKinney landscape-lighting installation for trees, textured architecture and garden paths. Plan an integrated evening landscape with Landmark Landscapes.",
+      "words": 859
+    },
+    {
+      "path": "/landscape-lighting/the-colony-tx",
+      "status": 200,
+      "title": "Landscape Lighting The Colony, TX | Landmark Landscapes",
+      "description": "Outdoor landscape lighting in The Colony, TX. Connect backyard paths, patio surroundings and front entries with a Landmark lighting installation plan.",
+      "words": 880
+    }
+  ],
+  "internalLinksChecked": 40,
+  "status": "passed"
+}
