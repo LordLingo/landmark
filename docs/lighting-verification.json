@@ -1,19 +1,19 @@
 {
-  "base": "http://127.0.0.1:3100",
+  "base": "http://127.0.0.1:3101",
   "pages": [
     {
       "path": "/landscape-lighting",
       "status": 200,
-      "title": "Outdoor Landscape Lighting North Texas | Landmark Landscapes",
-      "description": "Year-round landscape lighting for Prosper, Celina, Frisco, McKinney and The Colony. Explore house uplighting, pathways, trees and garden accents with Landmark.",
-      "words": 1057
+      "title": "Landscape Lighting Installation | North Texas | Landmark Landscapes",
+      "description": "Landscape lighting design and installation in Prosper, Celina, Frisco, McKinney and The Colony. Plan house, path and garden lighting. Request an estimate.",
+      "words": 1058
     },
     {
       "path": "/landscape-lighting-prosper-tx",
       "status": 200,
-      "title": "Landscape Lighting Prosper, TX | Landmark Landscapes",
-      "description": "Prosper landscape-lighting installation for house uplighting, walkways, trees and garden accents. Request a property-specific estimate from Landmark Landscapes.",
-      "words": 861
+      "title": "Landscape Lighting Installation Prosper, TX | Landmark Landscapes",
+      "description": "Landscape lighting design and installation in Prosper, TX. House uplighting, paths, trees and garden accents from a Prosper-based team. Request an estimate.",
+      "words": 942
     },
     {
       "path": "/landscape-lighting/architectural-uplighting",
@@ -67,9 +67,9 @@
     {
       "path": "/landscape-lighting/mckinney-tx",
       "status": 200,
-      "title": "Landscape Lighting McKinney, TX | Landmark Landscapes",
-      "description": "McKinney landscape-lighting installation for trees, textured architecture and garden paths. Plan an integrated evening landscape with Landmark Landscapes.",
-      "words": 864
+      "title": "Landscape Lighting Installation McKinney, TX | Landmark Landscapes",
+      "description": "Residential landscape lighting design and installation in McKinney, TX. Plan house uplighting, tree accents and pathways with Landmark. Request an estimate.",
+      "words": 983
     },
     {
       "path": "/landscape-lighting/the-colony-tx",

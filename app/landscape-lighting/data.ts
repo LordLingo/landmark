@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { absoluteUrl } from '../site-url';
 
 export type LightingPageData = {
-  slug: string; label: string; title: string; description: string; intro: string;
+  slug: string; label: string; title: string; metaTitle?: string; description: string; intro: string;
   image: string; alt: string; city?: string; keyword: string;
   sections: { title: string; copy: string; points?: string[] }[];
   faqs: { question: string; answer: string }[];
@@ -13,8 +13,9 @@ const garden = { image: '/images/lighting-landscape-bed.webp', alt: 'Illuminated
 export const lightingPages: LightingPageData[] = [
   {
     slug: '', label: 'Outdoor lighting', keyword: 'landscape lighting installation North Texas',
-    title: 'Outdoor lighting that makes home worth a second look.',
-    description: 'Year-round landscape lighting for Prosper, Celina, Frisco, McKinney and The Colony. Explore house uplighting, pathways, trees and garden accents with Landmark.',
+    title: 'Outdoor landscape lighting, designed and installed for everyday evenings.',
+    metaTitle: 'Landscape Lighting Installation | North Texas',
+    description: 'Landscape lighting design and installation in Prosper, Celina, Frisco, McKinney and The Colony. Plan house, path and garden lighting. Request an estimate.',
     intro: 'Keep the best parts of your home visible after sunset. Landmark designs and installs landscape lighting around the architecture, paths, trees and planting you already enjoy, with one connected plan for the evening view.', ...house,
     sections: [
       { title: 'Start with the view you want to change.', copy: 'An entrance that disappears at dusk needs a different approach from a patio surrounded by dark planting. We look at where you arrive, walk, sit and look out through the windows. That gives every fixture a purpose before a quantity is discussed.', points: ['Reveal stone, brick and columns with architectural uplighting.', 'Define walkway edges and changes in level with controlled path lighting.', 'Give selected trees and garden beds depth rather than lighting every plant.', 'Connect the patio to the surrounding landscape with lower, quieter accents.'] },
@@ -117,9 +118,10 @@ export const lightingPages: LightingPageData[] = [
 const cities = [
   {
     slug: 'prosper-tx', city: 'Prosper', label: 'Prosper landscape lighting',
-    title: 'Landscape lighting in Prosper, planned around the whole arrival.',
-    description: 'Prosper landscape-lighting installation for house uplighting, walkways, trees and garden accents. Request a property-specific estimate from Landmark Landscapes.',
-    intro: 'Landmark is based in Prosper. Our landscape-lighting service brings the entry, front elevation and planted areas into one evening composition, whether you are improving a new landscape or adding light to a yard you already enjoy.', ...house,
+    title: 'Landscape lighting installation in Prosper, planned around the whole arrival.',
+    metaTitle: 'Landscape Lighting Installation Prosper, TX',
+    description: 'Landscape lighting design and installation in Prosper, TX. House uplighting, paths, trees and garden accents from a Prosper-based team. Request an estimate.',
+    intro: 'Looking for a landscape lighting installer in Prosper? Landmark designs and installs year-round outdoor lighting for house uplighting, walkways, trees and garden beds. We are based in Prosper and plan the entry, front elevation and planting as one evening composition.', ...house,
     sections: [
       { title: 'An entry-first plan for a Prosper home.', copy: 'If the front of the house is the priority, begin with the route from the driveway to the door. Balance the entrance, the main architectural features and a small number of planting accents. This avoids spending the entire budget on walls while leaving the actual arrival difficult to read.', points: ['First priority: the door, the approach and any level changes.', 'Second priority: selected stone, brick or columns that give the elevation depth.', 'Third priority: a tree or garden focal point that connects the house to the yard.'] },
       { title: 'Planning while the landscape is still growing.', copy: 'If your Prosper yard has young trees or recently installed shrubs, light the present landscape without crowding its future shape. Tell us which planting is staying and whether beds will expand. Coordinate fixture access with irrigation, stone borders and the way the garden will be maintained.' },
@@ -127,10 +129,11 @@ const cities = [
       { title: 'Before your Prosper estimate.', copy: 'Share your address, the view that matters most and any HOA requirements you already have. Ask for the proposed lighting areas, fixture and control choices, installation scope and schedule in writing. Photos shown here are from Landmark’s North Texas gallery and are not presented as a named Prosper case study.' },
     ],
     faqs: [
+      { question: 'Do you design and install outdoor lighting in Prosper?', answer: 'Yes. Landmark designs and installs residential landscape lighting in Prosper, including architectural uplighting, walkway lighting and tree or planting accents. Share your priorities and property photos to request an installation estimate; fixtures, controls, pricing and timing are confirmed in the proposal.' },
       { question: 'Is Landmark based in Prosper?', answer: 'Yes. The site lists Landmark Landscape Services, LLC in Prosper, Texas 75078, serving Prosper and nearby North Texas cities. Call 469-492-8450 to discuss your property.' },
       { question: 'Can you add uplighting to my existing front beds?', answer: 'Yes, existing beds and architecture can be evaluated. Growth, access, power and the view from the house all influence fixture placement.' },
       { question: 'Are seasonal Christmas lights included?', answer: 'No. This estimate is for everyday landscape lighting. Landmark has a separate Christmas lighting service for seasonal displays; specify which project you need.' },
-    ], related: ['architectural-uplighting', 'pathway-lighting', 'cost'],
+    ], related: ['architectural-uplighting', 'pathway-lighting', 'cost', 'mckinney-tx'],
   },
   {
     slug: 'celina-tx', city: 'Celina', label: 'Celina landscape lighting',
@@ -166,15 +169,18 @@ const cities = [
   },
   {
     slug: 'mckinney-tx', city: 'McKinney', label: 'McKinney landscape lighting',
-    title: 'Landscape lighting in McKinney, shaped by trees and texture.',
-    description: 'McKinney landscape-lighting installation for trees, textured architecture and garden paths. Plan an integrated evening landscape with Landmark Landscapes.',
-    intro: 'An established tree and a textured facade can carry the whole evening view when they are lit with care. Landmark helps McKinney homeowners connect architecture, canopy and paths without flattening the landscape into uniform brightness.', ...garden,
+    title: 'Landscape lighting installation in McKinney, shaped by trees and texture.',
+    metaTitle: 'Landscape Lighting Installation McKinney, TX',
+    description: 'Residential landscape lighting design and installation in McKinney, TX. Plan house uplighting, tree accents and pathways with Landmark. Request an estimate.',
+    intro: 'Landmark designs and installs residential landscape lighting in McKinney, including house uplighting, tree and garden accents, and pathway lighting. An established tree and a textured facade can carry the evening view when the architecture, canopy and routes are planned together.', ...garden,
     sections: [
       { title: 'If mature trees are the feature, begin from the windows.', copy: 'Choose the view you want to enjoy from the house, then compare it with the view from the driveway. Canopy size, trunk shape and surrounding planting affect how much light reaches the feature. Avoid using the same layout for every tree simply because the trunks are evenly spaced.', points: ['Identify the tree or garden feature that should lead the evening view.', 'Keep the entrance visible so the focal tree does not overpower the home.', 'Review access around roots, beds and irrigation before deciding fixture positions.'] },
       { title: 'Let textured architecture keep its character.', copy: 'Brick and stone can gain depth from carefully directed light, but a bright hot spot can hide the very texture you want to show. Discuss the surface, viewing distance and nearby windows. Selective architectural emphasis can link the tree canopy to the front of the home.' },
       { title: 'A renovation should account for what stays.', copy: 'If a McKinney yard has established borders, paths or beds, map those features before planning cable access. Identify areas where you want minimal disturbance and any drainage or planting work already planned. Installation methods and restoration expectations belong in the project-specific scope.' },
+      { title: 'Plan your McKinney lighting installation.', copy: 'Start with the house elevation, tree or walking route you want to improve. Share daytime and dusk photos, existing lighting details and any planned planting changes. The installation proposal should identify the areas covered, fixture placement, cable access, power and controls before pricing and scheduling are confirmed. You can request a lighting-only project without committing to a complete landscape renovation.' },
       { title: 'Different property, different starting point.', copy: 'For a newer McKinney yard, shift the conversation toward future tree growth and phased planting instead of assuming a mature-canopy design. Send the address, wide daytime photos and a dusk view of the main feature. Landmark serves McKinney from Prosper, with scope and availability confirmed directly.' },
     ], faqs: [
+      { question: 'Do you install residential landscape lighting in McKinney?', answer: 'Yes. Landmark serves McKinney from its Prosper base with landscape-lighting design and installation. House uplighting, pathways and tree or garden accents can be considered together or as a focused lighting project. Confirm scope, pricing and availability directly with Landmark.' },
       { question: 'Can lighting highlight mature trees in McKinney?', answer: 'Yes. Landmark’s existing service includes tree and planting accents. The canopy, root area, intended view and installation access need review for the actual tree.' },
       { question: 'Can old landscape lighting be reused?', answer: 'Possibly, but compatibility and condition need evaluation. Share the equipment details and ask Landmark whether work on that existing system is available before assuming reuse or repair is included.' },
       { question: 'Is this only for older McKinney properties?', answer: 'No. The plan can also address newer yards. Young planting, future phases and different access conditions call for a different lighting direction.' },
@@ -202,7 +208,7 @@ export function lightingPath(page: LightingPageData) {
   return page.slug === 'prosper-tx' ? '/landscape-lighting-prosper-tx' : `/landscape-lighting${page.slug ? `/${page.slug}` : ''}`;
 }
 export function lightingMetadata(page: LightingPageData): Metadata {
-  const title = `${page.city ? `Landscape Lighting ${page.city}, TX` : page.label === 'Outdoor lighting' ? 'Outdoor Landscape Lighting North Texas' : page.label + ' | North Texas'} | Landmark Landscapes`;
+  const title = `${page.metaTitle ?? (page.city ? `Landscape Lighting ${page.city}, TX` : page.label === 'Outdoor lighting' ? 'Outdoor Landscape Lighting North Texas' : page.label + ' | North Texas')} | Landmark Landscapes`;
   return { title: { absolute: title }, description: page.description, alternates: { canonical: lightingPath(page) },
     openGraph: { title, description: page.description, url: absoluteUrl(lightingPath(page)), type: 'website', images: [{ url: page.image, alt: page.alt }] },
     twitter: { card: 'summary_large_image', title, description: page.description, images: [page.image] } };

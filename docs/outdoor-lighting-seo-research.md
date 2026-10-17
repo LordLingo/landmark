@@ -1,5 +1,7 @@
 # Outdoor lighting research and implementation — October 17, 2026
 
+Update: Search Console access has since been restored. See [Search Console follow-up](lighting-search-console-followup.md) for measured keyword data and subsequent lighting-only improvements. Earlier access limitations below describe the initial research stage.
+
 ## Scope and evidence
 
 Site: https://golandmarktx.com. Research combines live HTML/metadata, repository routes and redirects, and web results for installation searches across the five cities. Search results are a sampled competitive landscape, not a localized Google Maps rank report. No keyword-volume, CPC, difficulty or ranking numbers are invented. The connected GSC Wizard account returned payment_required, so query performance, index coverage, conversions and a traffic baseline could not be retrieved. The user's report that Prosper landscaping ranks on page one is preserved as user context, not independently measured.

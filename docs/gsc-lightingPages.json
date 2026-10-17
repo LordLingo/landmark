@@ -1,0 +1,60 @@
+{
+  "siteUrl": "sc-domain:golandmarktx.com",
+  "startDate": "2026-07-17",
+  "endDate": "2026-10-14",
+  "dimensions": [
+    "page"
+  ],
+  "searchType": "web",
+  "rowCount": 3,
+  "rows": [
+    {
+      "keys": [
+        "https://golandmarktx.com/christmas-lights"
+      ],
+      "clicks": 0,
+      "impressions": 91,
+      "ctr": 0,
+      "position": 28.692307692307693
+    },
+    {
+      "keys": [
+        "https://golandmarktx.com/landscape-lighting-prosper-tx"
+      ],
+      "clicks": 0,
+      "impressions": 343,
+      "ctr": 0,
+      "position": 35.98250728862974
+    },
+    {
+      "keys": [
+        "https://golandmarktx.com/landscape-lighting-prosper-tx/"
+      ],
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 19.25
+    }
+  ],
+  "pagination": {
+    "limit": 1000,
+    "offset": 0,
+    "returned": 3,
+    "hasMore": false,
+    "note": "Showing all 3 rows."
+  },
+  "dataSource": "api",
+  "settledThrough": "2026-10-14",
+  "dataMaturity": {
+    "firstIncompleteDate": "2026-10-15",
+    "settledThrough": "2026-10-14",
+    "dateBasis": "America/Los_Angeles",
+    "source": "gsc-api-metadata",
+    "probe": {
+      "searchType": "web",
+      "startDate": "2026-10-08",
+      "endDate": "2026-10-17",
+      "dataState": "all"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "siteUrl": "sc-domain:golandmarktx.com",
+  "startDate": "2026-09-17",
+  "endDate": "2026-10-14",
+  "dimensions": [
+    "query"
+  ],
+  "searchType": "web",
+  "rowCount": 17,
+  "rows": [
+    {
+      "keys": [
+        "backyard lighting near me"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "landscape lighting installation mckinney tx"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 75.66666666666667
+    },
+    {
+      "keys": [
+        "landscape lighting installation near me"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "landscape lighting mckinney"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "keys": [
+        "landscape lighting mckinney tx"
+      ],
+      "clicks": 0,
+      "impressions": 21,
+      "ctr": 0,
+      "position": 69.04761904761905
+    },
+    {
+      "keys": [
+        "landscape lighting near me"
+      ],
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 9.25
+    },
+    {
+      "keys": [
+        "landscape lighting prosper"
+      ],
+      "clicks": 0,
+      "impressions": 41,
+      "ctr": 0,
+      "position": 11.585365853658537
+    },
+    {
+      "keys": [
+        "landscape lighting service near me"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "landscaping companies \"tx\" \"@outlook.com\""
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 222
+    },
+    {
+      "keys": [
+        "landscaping light installer mckinney tx"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 76
+    },
+    {
+      "keys": [
+        "landscaping light services mckinney tx"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 79
+    },
+    {
+      "keys": [
+        "lighting installation prosper texas"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 82
+    },
+    {
+      "keys": [
+        "outdoor lighting installation near me"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "outdoor lighting near me"
+      ],
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 12.789473684210526
+    },
+    {
+      "keys": [
+        "outdoor lighting prosper"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 19.764705882352942
+    },
+    {
+      "keys": [
+        "outdoor lighting prosper tx"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 31.4
+    },
+    {
+      "keys": [
+        "residential landscape lighting mckinney tx"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    }
+  ],
+  "pagination": {
+    "limit": 1000,
+    "offset": 0,
+    "returned": 17,
+    "hasMore": false,
+    "note": "Showing all 17 rows."
+  },
+  "dataSource": "api",
+  "settledThrough": "2026-10-14",
+  "dataMaturity": {
+    "firstIncompleteDate": "2026-10-15",
+    "settledThrough": "2026-10-14",
+    "dateBasis": "America/Los_Angeles",
+    "source": "gsc-api-metadata",
+    "probe": {
+      "searchType": "web",
+      "startDate": "2026-10-08",
+      "endDate": "2026-10-17",
+      "dataState": "all"
+    }
+  }
+}
