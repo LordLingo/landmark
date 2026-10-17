@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/outdoor-lighting",
-        destination: "https://golandmarktx.com/landscape-lighting-prosper-tx",
+        destination: "https://golandmarktx.com/landscape-lighting",
         permanent: true,
       },
       {
@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/upgrade-your-home-with-landscape-lightning-service-in-celina-tx",
-        destination: "https://golandmarktx.com/landscape-lighting-prosper-tx",
+        destination: "https://golandmarktx.com/landscape-lighting/celina-tx",
         permanent: true,
       },
       {

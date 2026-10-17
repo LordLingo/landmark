@@ -1,0 +1,51 @@
+{
+  "siteUrl": "sc-domain:golandmarktx.com",
+  "startDate": "2026-09-17",
+  "endDate": "2026-10-14",
+  "dimensions": [
+    "device"
+  ],
+  "searchType": "web",
+  "rowCount": 2,
+  "rows": [
+    {
+      "keys": [
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": 0,
+      "position": 49.34782608695652
+    },
+    {
+      "keys": [
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 104,
+      "ctr": 0,
+      "position": 17.028846153846153
+    }
+  ],
+  "pagination": {
+    "limit": 100,
+    "offset": 0,
+    "returned": 2,
+    "hasMore": false,
+    "note": "Showing all 2 rows."
+  },
+  "dataSource": "api",
+  "settledThrough": "2026-10-14",
+  "dataMaturity": {
+    "firstIncompleteDate": "2026-10-15",
+    "settledThrough": "2026-10-14",
+    "dateBasis": "America/Los_Angeles",
+    "source": "gsc-api-metadata",
+    "probe": {
+      "searchType": "web",
+      "startDate": "2026-10-08",
+      "endDate": "2026-10-17",
+      "dataState": "all"
+    }
+  }
+}

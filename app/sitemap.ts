@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { lightingPages, lightingPath } from "./landscape-lighting/data";
 import { locationPageList } from "./location-page-data";
 import { serviceList } from "./service-data";
 import { landscapeDesignPage } from "./seo-page-data";
@@ -33,6 +34,7 @@ const prioritySeoPages = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    ...lightingPages.map(page => ({ url: absoluteUrl(lightingPath(page)), lastModified: new Date("2026-10-17T00:00:00-05:00"), changeFrequency: "monthly" as const, priority: page.city ? 0.88 : 0.9 })),
     ...["about", "privacy"].map(slug => ({ url: absoluteUrl(`/${slug}`), lastModified: new Date("2026-10-11T00:00:00-05:00"), changeFrequency: "yearly" as const, priority: 0.5 })),
     {
       url: absoluteUrl("/"),
@@ -70,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: page.priority,
     })),
-    ...serviceList.map((service) => ({
+    ...serviceList.filter(service => service.slug !== "landscape-lighting-prosper-tx").map((service) => ({
       url: absoluteUrl(`/${service.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,

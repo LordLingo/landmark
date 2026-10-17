@@ -1,0 +1,158 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "url": "https://golandmarktx.com/",
+    "title": [
+      "Landmark Landscapes | Landscaping in Prosper &amp; North Dallas"
+    ],
+    "canonical": [
+      "https://golandmarktx.com"
+    ],
+    "h1": [
+      "Make coming<br/>home feel like<br/><em>Christmas.</em>"
+    ],
+    "description": [
+      "Prosper-based residential landscaping company serving Prosper, Frisco, McKinney, Celina and The Colony with design, planting, stone, drainage and lighting."
+    ]
+  },
+  {
+    "path": "/landscape-lighting-prosper-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/landscape-lighting-prosper-tx",
+    "title": [
+      "Landscape Lighting Prosper, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/landscape-lighting-prosper-tx"
+    ],
+    "h1": [
+      "Your home deserves a second first impression."
+    ],
+    "description": [
+      "Residential landscape lighting in Prosper, TX including house uplighting, walkway lighting and tree lighting designed for a warm, elegant nighttime look."
+    ]
+  },
+  {
+    "path": "/prosper-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/prosper-tx",
+    "title": [
+      "Prosper Landscaping Services &amp; Design, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/prosper-tx"
+    ],
+    "h1": [
+      "Prosper landscaping services designed around the whole home."
+    ],
+    "description": [
+      "Prosper landscaping services for residential design and installation, planting, stone borders, drainage, outdoor lighting and irrigation support."
+    ]
+  },
+  {
+    "path": "/celina-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/celina-tx",
+    "title": [
+      "Landscaping Company Celina, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/celina-tx"
+    ],
+    "h1": [
+      "Give a new Celina home the landscape it was always meant to have."
+    ],
+    "description": [
+      "Residential landscaping in Celina, TX for new and established homes, including design, planting, stone, drainage, lighting and irrigation support."
+    ]
+  },
+  {
+    "path": "/frisco-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/frisco-tx",
+    "title": [
+      "Landscaping Company Frisco, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/frisco-tx"
+    ],
+    "h1": [
+      "Make the whole Frisco property feel considered\u2014from the curb to the backyard."
+    ],
+    "description": [
+      "Residential landscaping in Frisco, TX including landscape design, planting, stone borders, drainage, landscape lighting and irrigation support."
+    ]
+  },
+  {
+    "path": "/mckinney-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/mckinney-tx",
+    "title": [
+      "Landscaping Company McKinney, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/mckinney-tx"
+    ],
+    "h1": [
+      "Bring new life to a McKinney landscape without losing what makes it feel established."
+    ],
+    "description": [
+      "Residential landscaping in McKinney, TX including landscape renovation, planting, stone borders, drainage, outdoor lighting and irrigation support."
+    ]
+  },
+  {
+    "path": "/the-colony-tx",
+    "status": 200,
+    "url": "https://golandmarktx.com/the-colony-tx",
+    "title": [
+      "Landscaping Company The Colony, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/the-colony-tx"
+    ],
+    "h1": [
+      "Turn a well-used The Colony yard into a space that feels easier, greener and more connected."
+    ],
+    "description": [
+      "Residential landscaping in The Colony, TX with front-yard updates, backyard planting, drainage, stone walkways, lighting and irrigation support."
+    ]
+  },
+  {
+    "path": "/contact",
+    "status": 200,
+    "url": "https://golandmarktx.com/contact",
+    "title": [
+      "Landscaping Estimate Prosper, TX | Landmark Landscapes"
+    ],
+    "canonical": [
+      "https://golandmarktx.com/contact"
+    ],
+    "h1": [
+      "Tell us what you want home to feel like."
+    ],
+    "description": [
+      "Tell Landmark Landscapes about your residential landscaping, drainage, lighting, stonework or sprinkler project in Prosper and North Dallas."
+    ]
+  },
+  {
+    "path": "/robots.txt",
+    "status": 200,
+    "url": "https://golandmarktx.com/robots.txt",
+    "title": [],
+    "canonical": [],
+    "h1": [],
+    "description": [],
+    "body": "User-Agent: *\nAllow: /\nDisallow: /api/\n\nHost: https://golandmarktx.com\nSitemap: https://golandmarktx.com/sitemap.xml\n"
+  },
+  {
+    "path": "/sitemap.xml",
+    "status": 200,
+    "url": "https://golandmarktx.com/sitemap.xml",
+    "title": [],
+    "canonical": [],
+    "h1": [],
+    "description": [],
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://golandmarktx.com/about</loc>\n<lastmod>2026-10-11T05:00:00.000Z</lastmod>\n<changefreq>yearly</changefreq>\n<priority>0.5</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/privacy</loc>\n<lastmod>2026-10-11T05:00:00.000Z</lastmod>\n<changefreq>yearly</changefreq>\n<priority>0.5</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/contact</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>yearly</changefreq>\n<priority>0.8</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.94</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights/prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights/frisco-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights/celina-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights/mckinney-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/christmas-lights/the-colony-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/plan-my-yard</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.96</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/landscape-design</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.95</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/north-dallas-landscaping</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.96</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.95</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/frisco-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/mckinney-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/celina-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/the-colony-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.92</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/front-yard-landscaping-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/flower-bed-installation-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/yard-drainage-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/stone-borders-walkways-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/landscape-lighting-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/sprinkler-repair-prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.82</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions/celina-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.78</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions/mckinney-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.78</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions/frisco-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.78</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions/prosper-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.78</priority>\n</url>\n<url>\n<loc>https://golandmarktx.com/water-restrictions/the-colony-tx</loc>\n<lastmod>2026-10-05T05:00:00.000Z</lastmod>\n<changefreq>weekly</changefreq>\n<priority>0.78</priority>\n</url>\n</urlset>\n"
+  }
+]
